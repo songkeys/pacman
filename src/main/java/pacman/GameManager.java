@@ -98,7 +98,7 @@ public class GameManager {
 
   /** Draws the board of the game with the cookies and the Pacman */
   public void drawBoard() {
-    this.maze.CreateMaze(root);
+    this.maze.draw(root);
     // 1st line
     Integer skip[] = {5, 17};
     for (int i = 0; i < 23; i++) {

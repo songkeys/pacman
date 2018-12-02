@@ -1,9 +1,7 @@
 package pacman;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
@@ -17,7 +15,7 @@ public class Main extends Application {
 
   @Override
   public void start(Stage theStage) throws Exception {
-//    Parent root = FXMLLoader.load(getClass().getResource("pacman.fxml"));
+    //    Parent root = FXMLLoader.load(getClass().getResource("pacman.fxml"));
     theStage.setTitle("Pacman");
 
     Group root = new Group();
