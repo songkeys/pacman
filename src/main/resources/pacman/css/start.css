@@ -1,0 +1,57 @@
+.root {
+  -fx-font-size: 30px;
+  -fx-background-image: url("../image/startbg.jpg");
+  -fx-background-repeat: no-repeat;
+  -fx-background-attachment: fixed;
+  -fx-background-position: center;
+  -fx-background-size: 100%;
+}
+
+.top {
+  -fx-background-image: url("../image/title.png");
+  -fx-background-repeat: no-repeat;
+  -fx-background-attachment: fixed;
+  -fx-background-position: center;
+  -fx-background-size: 50%;
+}
+
+.center {
+  -fx-padding: 40px;
+  -fx-background-color: rgba(255, 255, 255, 0.2);
+  -fx-background-radius: 50px;
+  -fx-border-radius: 50px;
+  -fx-border-width: 5px;
+  -fx-border-color: rgba(255, 0, 0, 0.2);
+  -fx-effect: dropshadow(three-pass-box, rgba(255, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.menu {
+  -fx-alignment: center;
+}
+
+.menu-item {
+  -fx-background-color: rgba(255, 255, 255, 0);
+  -fx-alignment: center;
+  -fx-font-size: 30px;
+  -fx-text-fill: #fff;
+  -fx-font-weight: bold;
+
+  /* workaround for margin: https://stackoverflow.com/a/33141605 */
+  -fx-padding: 30px;
+  -fx-border-insets: 30px;
+  -fx-background-insets: 30px;
+}
+.menu-item:hover {
+  -fx-text-fill: #ff0;
+  -fx-font-size: 33px;
+  -fx-stroke: #f00;
+  -fx-stroke-width: 1;
+  -fx-effect: dropshadow(three-pass-box, rgba(255, 0, 0, 0.8), 10, 0, 0, 0);
+}
+.menu-item:pressed {
+  -fx-text-fill: #ff0;
+  -fx-font-size: 35px;
+  -fx-stroke: #f00;
+  -fx-stroke-width: 1;
+  -fx-effect: dropshadow(three-pass-box, rgba(255, 0, 0, 0.9), 10, 0, 0, 0);
+}

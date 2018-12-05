@@ -2,7 +2,7 @@ package pacman;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import pacman.Constant.Orientation;
+import pacman.constant.Orientation;
 
 public class BarObstacle extends Rectangle {
 
