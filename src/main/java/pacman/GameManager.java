@@ -28,7 +28,7 @@ public class GameManager {
   private int cookiesEaten;
 
   /** Constructor */
-  GameManager(Group root) {
+  public GameManager(Group root) {
     this.root = root;
     this.maze = new Maze();
     this.pacman = new Pacman(2.5 * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);

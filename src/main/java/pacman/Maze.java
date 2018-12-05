@@ -3,7 +3,7 @@ package pacman;
 import java.util.HashSet;
 import java.util.Set;
 import javafx.scene.Group;
-import pacman.Constant.Orientation;
+import pacman.constant.Orientation;
 
 public class Maze {
 

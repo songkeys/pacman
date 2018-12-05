@@ -1,4 +1,4 @@
-package pacman.Constant;
+package pacman.constant;
 
 public enum Orientation {
   HORIZONTAL,
