@@ -14,6 +14,7 @@ public class Score {
   Score(Group root) {
     this.score = new Text(BarObstacle.THICKNESS * 4, BarObstacle.THICKNESS * 28, "Score: 0");
     this.lifes = new Text(BarObstacle.THICKNESS * 20, BarObstacle.THICKNESS * 28, "Lifes: 3");
+  public Score(Group root) {
     score.setFill(Color.MAGENTA);
     score.setFont(Font.font("Arial", 30));
 

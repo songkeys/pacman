@@ -13,6 +13,7 @@ public class Maze {
 
   /** Initializes the Maze object. */
   Maze() {
+  public Maze() {
     obstacles = new HashSet<>();
   }
 
