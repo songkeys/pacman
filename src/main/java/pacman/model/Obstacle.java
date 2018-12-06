@@ -39,6 +39,18 @@ public class Obstacle extends Rectangle {
     this.setFill(Color.CADETBLUE);
 
     // set stroke width
-    this.setStrokeWidth(300000);
+    this.setStrokeWidth(3);
+  }
+
+  public Obstacle(double x, double y) {
+    // set coordinates
+    this.setX(x * 50);
+    this.setY(y * 50);
+
+    // set height and width
+    this.setHeight(50);
+    this.setWidth(50);
+    // set color
+    this.setFill(Color.RED);
   }
 }

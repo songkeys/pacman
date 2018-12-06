@@ -87,7 +87,7 @@ public class GameManager {
   }
 
   /** Restart the game */
-  public void restartGame(KeyEvent event) {
+  public void restartGame(KeyEvent event) throws Exception {
     if (event.getCode() == KeyCode.ESCAPE && gameEnded) {
       root.getChildren().clear();
       this.cookieSet.clear();
@@ -103,7 +103,7 @@ public class GameManager {
   }
 
   /** Draws the board of the game with the cookies and the Pacman */
-  public void drawBoard() {
+  public void drawBoard() throws Exception {
     this.maze.draw(root);
     // 1st line
     Integer skip[] = {5, 17};

@@ -20,7 +20,7 @@ public class SceneSwitch {
     Main.getPrimaryStage().show();
   }
 
-  private void switchToGame() {
+  private void switchToGame() throws Exception {
     Main.getPrimaryStage().hide();
     Group root = new Group();
     Scene theScene = new Scene(root);
@@ -34,7 +34,7 @@ public class SceneSwitch {
 
     theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.movePacman(event));
     theScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameManager.stopPacman(event));
-    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.restartGame(event));
+//    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.restartGame(event));
     Main.getPrimaryStage().show();
   }
 
