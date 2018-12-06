@@ -26,7 +26,7 @@ public class SceneSwitch {
     Scene theScene = new Scene(root);
     Main.getPrimaryStage().setScene(theScene);
 
-    Canvas canvas = new Canvas(1225, 600);
+    Canvas canvas = new Canvas(1250, 600);
     root.getChildren().add(canvas);
     GameManager gameManager = new GameManager(root);
 
