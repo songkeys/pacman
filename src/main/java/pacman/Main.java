@@ -1,10 +1,9 @@
 package pacman;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pacman.constant.SceneName;
+import pacman.util.SceneSwitch;
 
 public class Main extends Application {
 
@@ -14,7 +13,6 @@ public class Main extends Application {
     launch(args);
   }
 
-  // usage: Main.getPrimaryStage().setScene(newScene);
   public static Stage getPrimaryStage() {
     return primaryStage;
   }
@@ -27,10 +25,7 @@ public class Main extends Application {
     primaryStage.setTitle("Pacman");
 
     // set up start scene
-    Parent root = FXMLLoader.load(getClass().getResource("/pacman/view/start.fxml"));
-    Scene startScene = new Scene(root);
-    primaryStage.setScene(startScene);
-
-    primaryStage.show();
+    SceneSwitch sceneSwitch = new SceneSwitch();
+    sceneSwitch.switchTo(SceneName.START);
   }
 }
