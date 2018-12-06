@@ -9,10 +9,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import pacman.model.Obstacle;
 import pacman.model.Cookie;
 import pacman.model.Ghost;
 import pacman.model.Maze;
+import pacman.model.Obstacle;
 import pacman.model.Pacman;
 import pacman.model.Score;
 
@@ -109,8 +109,7 @@ public class GameManager {
     Integer skip[] = {5, 17};
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 2.5 * Obstacle.THICKNESS);
+        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 2.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -120,8 +119,7 @@ public class GameManager {
     skip = new Integer[] {1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20, 21};
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 4.5 * Obstacle.THICKNESS);
+        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 4.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -131,8 +129,7 @@ public class GameManager {
     skip = new Integer[] {1, 21};
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 6.5 * Obstacle.THICKNESS);
+        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 6.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -142,8 +139,7 @@ public class GameManager {
     skip = new Integer[] {1, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 21};
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 8.5 * Obstacle.THICKNESS);
+        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 8.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -153,8 +149,7 @@ public class GameManager {
     skip = new Integer[] {1, 7, 8, 9, 10, 11, 12, 13, 14, 15, 21};
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 10.5 * Obstacle.THICKNESS);
+        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 10.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -164,8 +159,7 @@ public class GameManager {
     skip = new Integer[] {3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19};
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS);
+        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -175,8 +169,7 @@ public class GameManager {
     skip = new Integer[] {1, 7, 8, 9, 10, 11, 12, 13, 14, 15, 21};
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 14.5 * Obstacle.THICKNESS);
+        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 14.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -186,8 +179,7 @@ public class GameManager {
     skip = new Integer[] {1, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 21};
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 16.5 * Obstacle.THICKNESS);
+        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 16.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -197,8 +189,7 @@ public class GameManager {
     skip = new Integer[] {1, 21};
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 18.5 * Obstacle.THICKNESS);
+        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 18.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -208,8 +199,7 @@ public class GameManager {
     skip = new Integer[] {1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20, 21};
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 20.5 * Obstacle.THICKNESS);
+        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 20.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -219,8 +209,7 @@ public class GameManager {
     skip = new Integer[] {5, 17};
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 22.5 * Obstacle.THICKNESS);
+        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 22.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -235,28 +224,15 @@ public class GameManager {
   public void generateGhosts() {
     this.ghosts.add(
         new Ghost(
-            18.5 * Obstacle.THICKNESS,
-            12.5 * Obstacle.THICKNESS,
-            Color.DEEPPINK,
-            maze,
-            this));
+            18.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.DEEPPINK, maze, this));
     this.ghosts.add(
         new Ghost(
-            22.5 * Obstacle.THICKNESS,
-            12.5 * Obstacle.THICKNESS,
-            Color.GREENYELLOW,
-            maze,
-            this));
+            22.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.GREENYELLOW, maze, this));
+    this.ghosts.add(
+        new Ghost(28.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.BLACK, maze, this));
     this.ghosts.add(
         new Ghost(
-            28.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.BLACK, maze, this));
-    this.ghosts.add(
-        new Ghost(
-            28.5 * Obstacle.THICKNESS,
-            9.5 * Obstacle.THICKNESS,
-            Color.SPRINGGREEN,
-            maze,
-            this));
+            28.5 * Obstacle.THICKNESS, 9.5 * Obstacle.THICKNESS, Color.SPRINGGREEN, maze, this));
   }
 
   /** Moves the pacman */

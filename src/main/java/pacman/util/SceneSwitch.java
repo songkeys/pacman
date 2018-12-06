@@ -8,6 +8,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
 import pacman.GameManager;
 import pacman.Main;
+import pacman.constant.Map;
 import pacman.constant.SceneName;
 
 public class SceneSwitch {
@@ -26,7 +27,7 @@ public class SceneSwitch {
     Scene theScene = new Scene(root);
     Main.getPrimaryStage().setScene(theScene);
 
-    Canvas canvas = new Canvas(1250, 600);
+    Canvas canvas = new Canvas(Map.WIDTH, Map.HEIGHT);
     root.getChildren().add(canvas);
     GameManager gameManager = new GameManager(root);
 
