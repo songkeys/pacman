@@ -9,7 +9,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import pacman.model.BarObstacle;
+import pacman.model.Obstacle;
 import pacman.model.Cookie;
 import pacman.model.Ghost;
 import pacman.model.Maze;
@@ -37,7 +37,7 @@ public class GameManager {
   public GameManager(Group root) {
     this.root = root;
     this.maze = new Maze();
-    this.pacman = new Pacman(2.5 * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
+    this.pacman = new Pacman(2.5 * Obstacle.THICKNESS, 2.5 * Obstacle.THICKNESS);
     this.cookieSet = new HashSet<>();
     this.ghosts = new HashSet<>();
     this.leftPacmanAnimation = this.createAnimation("left");
@@ -58,8 +58,8 @@ public class GameManager {
     for (Ghost ghost : ghosts) {
       ghost.getAnimation().stop();
     }
-    this.pacman.setCenterX(2.5 * BarObstacle.THICKNESS);
-    this.pacman.setCenterY(2.5 * BarObstacle.THICKNESS);
+    this.pacman.setCenterX(2.5 * Obstacle.THICKNESS);
+    this.pacman.setCenterY(2.5 * Obstacle.THICKNESS);
     lifes--;
     score -= 10;
     this.scoreBoard.lifes.setText("Lifes: " + this.lifes);
@@ -77,8 +77,8 @@ public class GameManager {
       root.getChildren().remove(ghost);
     }
     javafx.scene.text.Text endGame = new javafx.scene.text.Text("Game Over, press ESC to restart");
-    endGame.setX(BarObstacle.THICKNESS * 3);
-    endGame.setY(BarObstacle.THICKNESS * 28);
+    endGame.setX(Obstacle.THICKNESS * 3);
+    endGame.setY(Obstacle.THICKNESS * 28);
     endGame.setFont(Font.font("Arial", 40));
     endGame.setFill(Color.ROYALBLUE);
     root.getChildren().remove(this.scoreBoard.score);
@@ -93,8 +93,8 @@ public class GameManager {
       this.cookieSet.clear();
       this.ghosts.clear();
       this.drawBoard();
-      this.pacman.setCenterX(2.5 * BarObstacle.THICKNESS);
-      this.pacman.setCenterY(2.5 * BarObstacle.THICKNESS);
+      this.pacman.setCenterX(2.5 * Obstacle.THICKNESS);
+      this.pacman.setCenterY(2.5 * Obstacle.THICKNESS);
       this.lifes = 3;
       this.score = 0;
       this.cookiesEaten = 0;
@@ -110,7 +110,7 @@ public class GameManager {
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
         Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 2.5 * BarObstacle.THICKNESS);
+            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 2.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -121,7 +121,7 @@ public class GameManager {
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
         Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 4.5 * BarObstacle.THICKNESS);
+            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 4.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -132,7 +132,7 @@ public class GameManager {
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
         Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 6.5 * BarObstacle.THICKNESS);
+            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 6.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -143,7 +143,7 @@ public class GameManager {
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
         Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 8.5 * BarObstacle.THICKNESS);
+            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 8.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -154,7 +154,7 @@ public class GameManager {
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
         Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 10.5 * BarObstacle.THICKNESS);
+            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 10.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -165,7 +165,7 @@ public class GameManager {
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
         Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS);
+            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -176,7 +176,7 @@ public class GameManager {
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
         Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 14.5 * BarObstacle.THICKNESS);
+            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 14.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -187,7 +187,7 @@ public class GameManager {
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
         Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 16.5 * BarObstacle.THICKNESS);
+            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 16.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -198,7 +198,7 @@ public class GameManager {
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
         Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 18.5 * BarObstacle.THICKNESS);
+            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 18.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -209,7 +209,7 @@ public class GameManager {
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
         Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 20.5 * BarObstacle.THICKNESS);
+            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 20.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -220,7 +220,7 @@ public class GameManager {
     for (int i = 0; i < 23; i++) {
       if (!Arrays.asList(skip).contains(i)) {
         Cookie cookie =
-            new Cookie(((2 * i) + 2.5) * BarObstacle.THICKNESS, 22.5 * BarObstacle.THICKNESS);
+            new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 22.5 * Obstacle.THICKNESS);
         this.cookieSet.add(cookie);
         root.getChildren().add(cookie);
       }
@@ -235,25 +235,25 @@ public class GameManager {
   public void generateGhosts() {
     this.ghosts.add(
         new Ghost(
-            18.5 * BarObstacle.THICKNESS,
-            12.5 * BarObstacle.THICKNESS,
+            18.5 * Obstacle.THICKNESS,
+            12.5 * Obstacle.THICKNESS,
             Color.DEEPPINK,
             maze,
             this));
     this.ghosts.add(
         new Ghost(
-            22.5 * BarObstacle.THICKNESS,
-            12.5 * BarObstacle.THICKNESS,
+            22.5 * Obstacle.THICKNESS,
+            12.5 * Obstacle.THICKNESS,
             Color.GREENYELLOW,
             maze,
             this));
     this.ghosts.add(
         new Ghost(
-            28.5 * BarObstacle.THICKNESS, 12.5 * BarObstacle.THICKNESS, Color.BLACK, maze, this));
+            28.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.BLACK, maze, this));
     this.ghosts.add(
         new Ghost(
-            28.5 * BarObstacle.THICKNESS,
-            9.5 * BarObstacle.THICKNESS,
+            28.5 * Obstacle.THICKNESS,
+            9.5 * Obstacle.THICKNESS,
             Color.SPRINGGREEN,
             maze,
             this));

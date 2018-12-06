@@ -4,13 +4,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import pacman.constant.Orientation;
 
-public class BarObstacle extends Rectangle {
+public class Obstacle extends Rectangle {
 
   /** The thickness of the obstacle. */
   public static double THICKNESS = 25;
 
   /**
-   * Initializes the BarObstacle object.
+   * Initializes the Obstacle object.
    *
    * @param x the x-coordinate of the start point of the obstacle
    * @param y the y-coordinate of the start point of the obstacle
@@ -19,14 +19,14 @@ public class BarObstacle extends Rectangle {
    *     Orientation.HORIZONTAL</code>
    * @param length the length of the obstacle (1 == 100px)
    */
-  public BarObstacle(double x, double y, Orientation orientation, double length) {
+  public Obstacle(double x, double y, Orientation orientation, double length) {
     // set coordinates
     this.setX(x);
     this.setY(y);
 
     // set height and width
-    double longSide = length * BarObstacle.THICKNESS;
-    double shortSide = BarObstacle.THICKNESS;
+    double longSide = length * Obstacle.THICKNESS;
+    double shortSide = Obstacle.THICKNESS;
     if (orientation == Orientation.HORIZONTAL) {
       this.setHeight(shortSide);
       this.setWidth(longSide);
