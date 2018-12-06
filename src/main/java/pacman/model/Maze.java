@@ -1,9 +1,10 @@
-package pacman;
+package pacman.model;
 
 import java.util.HashSet;
 import java.util.Set;
 import javafx.scene.Group;
 import pacman.constant.Orientation;
+import pacman.model.BarObstacle;
 
 public class Maze {
 

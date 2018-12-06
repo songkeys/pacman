@@ -9,6 +9,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import pacman.model.BarObstacle;
+import pacman.model.Cookie;
+import pacman.model.Ghost;
+import pacman.model.Maze;
+import pacman.model.Pacman;
+import pacman.model.Score;
 
 public class GameManager {
 

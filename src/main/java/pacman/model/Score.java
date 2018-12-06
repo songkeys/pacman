@@ -1,9 +1,10 @@
-package pacman;
+package pacman.model;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import pacman.model.BarObstacle;
 
 public class Score {
 

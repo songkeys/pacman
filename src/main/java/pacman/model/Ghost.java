@@ -1,9 +1,10 @@
-package pacman;
+package pacman.model;
 
 import java.util.Random;
 import javafx.animation.AnimationTimer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import pacman.GameManager;
 
 public class Ghost extends Rectangle implements Runnable {
 
