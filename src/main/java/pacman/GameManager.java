@@ -57,8 +57,8 @@ public class GameManager {
     for (Ghost ghost : ghosts) {
       ghost.getAnimation().stop();
     }
-    this.pacman.setCenterX(2.5 * Obstacle.THICKNESS);
-    this.pacman.setCenterY(2.5 * Obstacle.THICKNESS);
+    this.pacman.setX(2.5 * Obstacle.THICKNESS);
+    this.pacman.setY(2.5 * Obstacle.THICKNESS);
     lifes--;
     score -= 10;
     this.scoreBoard.lifes.setText("Lifes: " + this.lifes);
@@ -92,8 +92,8 @@ public class GameManager {
       this.cookieSet.clear();
       this.ghosts.clear();
       this.drawMap();
-      this.pacman.setCenterX(2.5 * Obstacle.THICKNESS);
-      this.pacman.setCenterY(2.5 * Obstacle.THICKNESS);
+      this.pacman.setX(2.5 * Obstacle.THICKNESS);
+      this.pacman.setY(2.5 * Obstacle.THICKNESS);
       this.lifes = 3;
       this.score = 0;
       this.cookiesEaten = 0;
@@ -173,32 +173,32 @@ public class GameManager {
         switch (direction) {
           case "left":
             if (!maze.isTouching(
-                pacman.getCenterX() - pacman.getRadius(), pacman.getCenterY(), 15)) {
-              pacman.setCenterX(pacman.getCenterX() - step);
+                pacman.getX() - pacman.getWidth(), pacman.getY(), 15)) {
+              pacman.setX(pacman.getX() - step);
               checkCookieCoalition(pacman, "x");
               checkGhostCoalition();
             }
             break;
           case "right":
             if (!maze.isTouching(
-                pacman.getCenterX() + pacman.getRadius(), pacman.getCenterY(), 15)) {
-              pacman.setCenterX(pacman.getCenterX() + step);
+                pacman.getX() + pacman.getWidth(), pacman.getY(), 15)) {
+              pacman.setX(pacman.getX() + step);
               checkCookieCoalition(pacman, "x");
               checkGhostCoalition();
             }
             break;
           case "up":
             if (!maze.isTouching(
-                pacman.getCenterX(), pacman.getCenterY() - pacman.getRadius(), 15)) {
-              pacman.setCenterY(pacman.getCenterY() - step);
+                pacman.getX(), pacman.getY() - pacman.getWidth(), 15)) {
+              pacman.setY(pacman.getY() - step);
               checkCookieCoalition(pacman, "y");
               checkGhostCoalition();
             }
             break;
           case "down":
             if (!maze.isTouching(
-                pacman.getCenterX(), pacman.getCenterY() + pacman.getRadius(), 15)) {
-              pacman.setCenterY(pacman.getCenterY() + step);
+                pacman.getX(), pacman.getY() + pacman.getWidth(), 15)) {
+              pacman.setY(pacman.getY() + step);
               checkCookieCoalition(pacman, "y");
               checkGhostCoalition();
             }
@@ -210,19 +210,19 @@ public class GameManager {
 
   /** Checks if the Pacman touches cookies. */
   private void checkCookieCoalition(Pacman pacman, String axis) {
-    double pacmanCenterY = pacman.getCenterY();
-    double pacmanCenterX = pacman.getCenterX();
-    double pacmanLeftEdge = pacmanCenterX - pacman.getRadius();
-    double pacmanRightEdge = pacmanCenterX + pacman.getRadius();
-    double pacmanTopEdge = pacmanCenterY - pacman.getRadius();
-    double pacmanBottomEdge = pacmanCenterY + pacman.getRadius();
+    double pacmanCenterY = pacman.getX();
+    double pacmanCenterX = pacman.getX();
+    double pacmanLeftEdge = pacmanCenterX - pacman.getWidth();
+    double pacmanRightEdge = pacmanCenterX + pacman.getWidth();
+    double pacmanTopEdge = pacmanCenterY - pacman.getWidth();
+    double pacmanBottomEdge = pacmanCenterY + pacman.getWidth();
     for (Cookie cookie : cookieSet) {
-      double cookieCenterX = cookie.getCenterX();
-      double cookieCenterY = cookie.getCenterY();
-      double cookieLeftEdge = cookieCenterX - cookie.getRadius();
-      double cookieRightEdge = cookieCenterX + cookie.getRadius();
-      double cookieTopEdge = cookieCenterY - cookie.getRadius();
-      double cookieBottomEdge = cookieCenterY + cookie.getRadius();
+      double cookieCenterX = cookie.getX();
+      double cookieCenterY = cookie.getY();
+      double cookieLeftEdge = cookieCenterX - cookie.getWidth();
+      double cookieRightEdge = cookieCenterX + cookie.getWidth();
+      double cookieTopEdge = cookieCenterY - cookie.getWidth();
+      double cookieBottomEdge = cookieCenterY + cookie.getWidth();
       if (axis.equals("x")) {
         // pacman goes right
         if ((cookieCenterY >= pacmanTopEdge && cookieCenterY <= pacmanBottomEdge)
@@ -271,12 +271,12 @@ public class GameManager {
 
   /** Checks if pacman is touching a ghost */
   public void checkGhostCoalition() {
-    double pacmanCenterY = pacman.getCenterY();
-    double pacmanCenterX = pacman.getCenterX();
-    double pacmanLeftEdge = pacmanCenterX - pacman.getRadius();
-    double pacmanRightEdge = pacmanCenterX + pacman.getRadius();
-    double pacmanTopEdge = pacmanCenterY - pacman.getRadius();
-    double pacmanBottomEdge = pacmanCenterY + pacman.getRadius();
+    double pacmanCenterY = pacman.getY();
+    double pacmanCenterX = pacman.getX();
+    double pacmanLeftEdge = pacmanCenterX - pacman.getWidth();
+    double pacmanRightEdge = pacmanCenterX + pacman.getWidth();
+    double pacmanTopEdge = pacmanCenterY - pacman.getWidth();
+    double pacmanBottomEdge = pacmanCenterY + pacman.getWidth();
     for (Ghost ghost : ghosts) {
       double ghostLeftEdge = ghost.getX();
       double ghostRightEdge = ghost.getX() + ghost.getWidth();

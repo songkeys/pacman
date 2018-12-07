@@ -2,22 +2,25 @@ package pacman.model;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import pacman.constant.MapConfig;
 
-public class Cookie extends Circle {
+public class Cookie extends Rectangle {
 
   private int value;
 
   public Cookie(double x, double y) {
     this.value = 5;
 
-    double centerX = x * MapConfig.GRID_LENGTH + MapConfig.GRID_LENGTH / 2;
-    double centerY = y * MapConfig.GRID_LENGTH + MapConfig.GRID_LENGTH / 2;
-    this.setCenterX(centerX);
-    this.setCenterY(centerY);
+    // set coordinates
+    this.setX(x * MapConfig.GRID_LENGTH);
+    this.setY(y * MapConfig.GRID_LENGTH);
 
-    double radius = MapConfig.GRID_LENGTH / 4;
-    this.setRadius(radius);
+    // set height and width
+    this.setHeight(MapConfig.GRID_LENGTH);
+    this.setWidth(MapConfig.GRID_LENGTH);
+
+    // set image
     this.setFill(Color.SADDLEBROWN);
   }
 
