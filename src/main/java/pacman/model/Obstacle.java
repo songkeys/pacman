@@ -2,7 +2,7 @@ package pacman.model;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import pacman.constant.Map;
+import pacman.constant.MapConfig;
 
 public class Obstacle extends Rectangle {
 
@@ -17,12 +17,13 @@ public class Obstacle extends Rectangle {
    */
   public Obstacle(double x, double y) {
     // set coordinates
-    this.setX(x * Map.GRID_LENGTH);
-    this.setY(y * Map.GRID_LENGTH);
+    this.setX(x * MapConfig.GRID_LENGTH);
+    this.setY(y * MapConfig.GRID_LENGTH);
 
     // set height and width
-    this.setHeight(Map.GRID_LENGTH);
-    this.setWidth(Map.GRID_LENGTH);
+    this.setHeight(MapConfig.GRID_LENGTH);
+    this.setWidth(MapConfig.GRID_LENGTH);
+
     // set color
     this.setFill(Color.RED);
   }

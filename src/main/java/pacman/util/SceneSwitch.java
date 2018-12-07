@@ -8,21 +8,31 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
 import pacman.GameManager;
 import pacman.Main;
-import pacman.constant.Map;
+import pacman.constant.FileName;
+import pacman.constant.MapConfig;
+import pacman.model.Map;
 import pacman.constant.SceneName;
 
 public class SceneSwitch {
 
-  private void switchToStart() throws Exception {
+  private void hideStage() {
     Main.getPrimaryStage().hide();
-    Parent root = FXMLLoader.load(getClass().getResource("/pacman/view/start.fxml"));
-    Scene startScene = new Scene(root);
-    Main.getPrimaryStage().setScene(startScene);
+  }
+
+  private void showStage() {
     Main.getPrimaryStage().show();
   }
 
+  private void switchToStart() throws Exception {
+    this.hideStage();
+    Parent root = FXMLLoader.load(getClass().getResource("/pacman/view/start.fxml"));
+    Scene startScene = new Scene(root);
+    Main.getPrimaryStage().setScene(startScene);
+    this.showStage();
+  }
+
   private void switchToGame() throws Exception {
-    Main.getPrimaryStage().hide();
+    this.hideStage();
     Group root = new Group();
     Scene theScene = new Scene(root);
     Main.getPrimaryStage().setScene(theScene);
@@ -31,12 +41,15 @@ public class SceneSwitch {
     root.getChildren().add(canvas);
     GameManager gameManager = new GameManager(root);
 
-    gameManager.drawBoard();
+    //    gameManager.drawMap();
+
+    Map map = new Map(FileName.MAP_LEVEL_1);
+    map.draw(root);
 
     theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.movePacman(event));
     theScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameManager.stopPacman(event));
-//    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.restartGame(event));
-    Main.getPrimaryStage().show();
+    //    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.restartGame(event));
+    this.showStage();
   }
 
   public void switchTo(SceneName sceneName) throws Exception {

@@ -1,6 +1,5 @@
 package pacman;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import javafx.animation.AnimationTimer;
@@ -92,7 +91,7 @@ public class GameManager {
       root.getChildren().clear();
       this.cookieSet.clear();
       this.ghosts.clear();
-      this.drawBoard();
+      this.drawMap();
       this.pacman.setCenterX(2.5 * Obstacle.THICKNESS);
       this.pacman.setCenterY(2.5 * Obstacle.THICKNESS);
       this.lifes = 3;
@@ -102,118 +101,10 @@ public class GameManager {
     }
   }
 
-  /** Draws the board of the game with the cookies and the Pacman */
-  public void drawBoard() throws Exception {
+  /** Draws the map of the game with the cookies and the Pacman */
+  public void drawMap() throws Exception {
     this.maze.draw(root);
-    // 1st line
-    Integer skip[] = {5, 17};
-    for (int i = 0; i < 23; i++) {
-      if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 2.5 * Obstacle.THICKNESS);
-        this.cookieSet.add(cookie);
-        root.getChildren().add(cookie);
-      }
-    }
 
-    // 2nd line
-    skip = new Integer[] {1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20, 21};
-    for (int i = 0; i < 23; i++) {
-      if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 4.5 * Obstacle.THICKNESS);
-        this.cookieSet.add(cookie);
-        root.getChildren().add(cookie);
-      }
-    }
-
-    // 3rd line
-    skip = new Integer[] {1, 21};
-    for (int i = 0; i < 23; i++) {
-      if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 6.5 * Obstacle.THICKNESS);
-        this.cookieSet.add(cookie);
-        root.getChildren().add(cookie);
-      }
-    }
-
-    // 4th line
-    skip = new Integer[] {1, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 21};
-    for (int i = 0; i < 23; i++) {
-      if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 8.5 * Obstacle.THICKNESS);
-        this.cookieSet.add(cookie);
-        root.getChildren().add(cookie);
-      }
-    }
-
-    // 5th line
-    skip = new Integer[] {1, 7, 8, 9, 10, 11, 12, 13, 14, 15, 21};
-    for (int i = 0; i < 23; i++) {
-      if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 10.5 * Obstacle.THICKNESS);
-        this.cookieSet.add(cookie);
-        root.getChildren().add(cookie);
-      }
-    }
-
-    // 6th line
-    skip = new Integer[] {3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19};
-    for (int i = 0; i < 23; i++) {
-      if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS);
-        this.cookieSet.add(cookie);
-        root.getChildren().add(cookie);
-      }
-    }
-
-    // 7th line
-    skip = new Integer[] {1, 7, 8, 9, 10, 11, 12, 13, 14, 15, 21};
-    for (int i = 0; i < 23; i++) {
-      if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 14.5 * Obstacle.THICKNESS);
-        this.cookieSet.add(cookie);
-        root.getChildren().add(cookie);
-      }
-    }
-
-    // 8th line
-    skip = new Integer[] {1, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 21};
-    for (int i = 0; i < 23; i++) {
-      if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 16.5 * Obstacle.THICKNESS);
-        this.cookieSet.add(cookie);
-        root.getChildren().add(cookie);
-      }
-    }
-
-    // 9th line
-    skip = new Integer[] {1, 21};
-    for (int i = 0; i < 23; i++) {
-      if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 18.5 * Obstacle.THICKNESS);
-        this.cookieSet.add(cookie);
-        root.getChildren().add(cookie);
-      }
-    }
-
-    // 10th line
-    skip = new Integer[] {1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20, 21};
-    for (int i = 0; i < 23; i++) {
-      if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 20.5 * Obstacle.THICKNESS);
-        this.cookieSet.add(cookie);
-        root.getChildren().add(cookie);
-      }
-    }
-
-    // 11th line
-    skip = new Integer[] {5, 17};
-    for (int i = 0; i < 23; i++) {
-      if (!Arrays.asList(skip).contains(i)) {
-        Cookie cookie = new Cookie(((2 * i) + 2.5) * Obstacle.THICKNESS, 22.5 * Obstacle.THICKNESS);
-        this.cookieSet.add(cookie);
-        root.getChildren().add(cookie);
-      }
-    }
     root.getChildren().add(this.pacman);
     this.generateGhosts();
     root.getChildren().addAll(this.ghosts);
