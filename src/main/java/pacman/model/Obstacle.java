@@ -4,7 +4,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import pacman.constant.MapConfig;
 
-public class Obstacle extends Rectangle {
+public class Obstacle extends Grid {
 
   /** The thickness of the obstacle. */
   public static double THICKNESS = 25;
@@ -16,13 +16,7 @@ public class Obstacle extends Rectangle {
    * @param y the y-coordinate of the start point of the obstacle
    */
   public Obstacle(double x, double y) {
-    // set coordinates
-    this.setX(x * MapConfig.GRID_LENGTH);
-    this.setY(y * MapConfig.GRID_LENGTH);
-
-    // set height and width
-    this.setHeight(MapConfig.GRID_LENGTH);
-    this.setWidth(MapConfig.GRID_LENGTH);
+    super(x, y);
 
     // set color
     this.setFill(Color.RED);

@@ -64,10 +64,11 @@ public class Map {
     // build map
     MapBuilder mapBuilder = new MapBuilder(root);
     mapBuilder.buildObstacles(this.obstacles);
-    mapBuilder.buildPacman(this.pacman);
     mapBuilder.buildCookies(this.cookies);
+    mapBuilder.buildPacman(this.pacman);
   }
 
+  // TODO: make it into GameManager
   public void movePacman(KeyEvent event) {
     switch (event.getCode()) {
       case RIGHT:
