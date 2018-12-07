@@ -46,8 +46,10 @@ public class SceneSwitch {
     Map map = new Map(FileName.MAP_LEVEL_1);
     map.draw(root);
 
-    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.movePacman(event));
-    theScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameManager.stopPacman(event));
+    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> map.movePacman(event));
+    theScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> map.stopPacman(event));
+//    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.movePacman(event));
+//    theScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameManager.stopPacman(event));
     //    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.restartGame(event));
     this.showStage();
   }

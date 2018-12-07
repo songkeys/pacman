@@ -172,32 +172,28 @@ public class GameManager {
       public void handle(long currentNanoTime) {
         switch (direction) {
           case "left":
-            if (!maze.isTouching(
-                pacman.getX() - pacman.getWidth(), pacman.getY(), 15)) {
+            if (!maze.isTouching(pacman.getX() - pacman.getWidth(), pacman.getY(), 15)) {
               pacman.setX(pacman.getX() - step);
               checkCookieCoalition(pacman, "x");
               checkGhostCoalition();
             }
             break;
           case "right":
-            if (!maze.isTouching(
-                pacman.getX() + pacman.getWidth(), pacman.getY(), 15)) {
+            if (!maze.isTouching(pacman.getX() + pacman.getWidth(), pacman.getY(), 15)) {
               pacman.setX(pacman.getX() + step);
               checkCookieCoalition(pacman, "x");
               checkGhostCoalition();
             }
             break;
           case "up":
-            if (!maze.isTouching(
-                pacman.getX(), pacman.getY() - pacman.getWidth(), 15)) {
+            if (!maze.isTouching(pacman.getX(), pacman.getY() - pacman.getWidth(), 15)) {
               pacman.setY(pacman.getY() - step);
               checkCookieCoalition(pacman, "y");
               checkGhostCoalition();
             }
             break;
           case "down":
-            if (!maze.isTouching(
-                pacman.getX(), pacman.getY() + pacman.getWidth(), 15)) {
+            if (!maze.isTouching(pacman.getX(), pacman.getY() + pacman.getWidth(), 15)) {
               pacman.setY(pacman.getY() + step);
               checkCookieCoalition(pacman, "y");
               checkGhostCoalition();
