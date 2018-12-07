@@ -5,17 +5,22 @@ import java.io.FileReader;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
+import pacman.model.Cookie;
 import pacman.model.Obstacle;
+import pacman.model.Pacman;
 
 public class MapReader {
 
   private String fileName;
-  private Set<Obstacle> obstacles;
   private int mazeLineCount;
+  private Set<Obstacle> obstacles;
+  private Pacman pacman;
+  private Set<Cookie> cookies;
 
   public MapReader(String fileName) {
     this.fileName = fileName;
     this.obstacles = new HashSet<>();
+    this.cookies = new HashSet<>();
     this.mazeLineCount = 0;
   }
 
@@ -23,8 +28,24 @@ public class MapReader {
     return obstacles;
   }
 
+  public Pacman getPacman() {
+    return pacman;
+  }
+
+  public Set<Cookie> getCookies() {
+    return cookies;
+  }
+
   private boolean isPacmanGrid(String grid) {
     return grid.equals("@");
+  }
+
+  private boolean isGhostGrid(String grid) {
+    return grid.equals("X");
+  }
+
+  private boolean isCookieGrid(String grid) {
+    return grid.equals(".");
   }
 
   private boolean isObstacleGrid(String grid) {
@@ -57,7 +78,18 @@ public class MapReader {
       }
 
       // pacman
-      // if (isPacmanGrid(grid)) {}
+      if (isPacmanGrid(grid)) {
+        this.pacman = new Pacman(mazeGridCount, mazeLineCount);
+      }
+
+      // cookie
+      if (isCookieGrid(grid)) {
+        Cookie cookie = new Cookie(mazeGridCount, mazeLineCount);
+        this.cookies.add(cookie);
+      }
+
+      // ghost
+      if (isGhostGrid(grid)) {}
 
       mazeGridCount++;
     }
