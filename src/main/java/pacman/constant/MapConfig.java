@@ -1,6 +1,6 @@
 package pacman.constant;
 
-public class Map {
+public class MapConfig {
   public static final int WIDTH = 1250; // 25 grids in x
   public static final int HEIGHT = 550; // 11 grids in y
 

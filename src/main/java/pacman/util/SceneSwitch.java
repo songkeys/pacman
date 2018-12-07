@@ -27,7 +27,7 @@ public class SceneSwitch {
     Scene theScene = new Scene(root);
     Main.getPrimaryStage().setScene(theScene);
 
-    Canvas canvas = new Canvas(Map.WIDTH, Map.HEIGHT);
+    Canvas canvas = new Canvas(MapConfig.WIDTH, MapConfig.HEIGHT);
     root.getChildren().add(canvas);
     GameManager gameManager = new GameManager(root);
 
