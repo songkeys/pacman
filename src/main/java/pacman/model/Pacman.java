@@ -9,8 +9,8 @@ import pacman.constant.MapConfig;
 
 public class Pacman extends MovableGrid {
 
-  public Pacman(Map map, double x, double y) {
-    super(map, x, y);
+  public Pacman(Map map, double row, double column) {
+    super(map, row, column);
 
     // set image
     Image image = new Image(FileName.IMAGE_PACMAN);

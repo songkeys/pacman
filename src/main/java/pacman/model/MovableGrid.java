@@ -12,8 +12,8 @@ public abstract class MovableGrid extends Grid {
   public AnimationTimer moveUp;
   public AnimationTimer moveDown;
 
-  public MovableGrid(Map map, double x, double y) {
-    super(map, x, y);
+  public MovableGrid(Map map, double row, double column) {
+    super(map, row, column);
 
     // set animation
     this.moveLeft = this.move(Direction.LEFT);

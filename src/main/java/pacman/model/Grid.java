@@ -7,14 +7,14 @@ public class Grid extends Rectangle {
 
   private Map parentMap;
 
-  public Grid(Map parentMap, double x, double y) {
+  public Grid(Map parentMap, double row, double column) {
 
     // set map
     this.parentMap = parentMap;
 
     // set position
-    this.setX(x * MapConfig.GRID_LENGTH);
-    this.setY(y * MapConfig.GRID_LENGTH);
+    this.setX(row * MapConfig.GRID_LENGTH);
+    this.setY(column * MapConfig.GRID_LENGTH);
 
     // set height and width
     this.setHeight(MapConfig.GRID_LENGTH);
