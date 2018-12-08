@@ -1,7 +1,7 @@
 package pacman.model;
 
 import java.util.Set;
-import javafx.scene.Group;
+import javafx.scene.layout.Pane;
 import pacman.util.MapPainter;
 import pacman.util.MapReader;
 
@@ -62,7 +62,7 @@ public class Map {
     ghosts = mapReader.getGhosts();
   }
 
-  public void draw(Group root) throws Exception {
+  public void draw(Pane root) throws Exception {
 
     // read map
     this.read(this.mapFileName);

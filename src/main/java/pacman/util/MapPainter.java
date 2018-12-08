@@ -1,7 +1,7 @@
 package pacman.util;
 
 import java.util.Set;
-import javafx.scene.Group;
+import javafx.scene.layout.Pane;
 import pacman.model.Cookie;
 import pacman.model.Ghost;
 import pacman.model.Obstacle;
@@ -9,9 +9,9 @@ import pacman.model.Pacman;
 
 public class MapPainter {
 
-  private Group root;
+  private Pane root;
 
-  public MapPainter(Group root) {
+  public MapPainter(Pane root) {
     this.root = root;
   }
 

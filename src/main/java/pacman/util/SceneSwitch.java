@@ -1,11 +1,10 @@
 package pacman.util;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import pacman.GameManager;
 import pacman.Main;
 import pacman.constant.FileName;
@@ -28,13 +27,13 @@ public class SceneSwitch {
   }
 
   private void switchToStart() throws Exception {
-    Parent root = FXMLLoader.load(getClass().getResource("/pacman/view/start.fxml"));
+    Pane root = FXMLLoader.load(getClass().getResource("/pacman/view/start.fxml"));
     Scene startScene = new Scene(root);
     setScene(startScene);
   }
 
   private void switchToGame() throws Exception {
-    Group root = new Group();
+    Pane root = new Pane();
     Scene theScene = new Scene(root);
     setScene(theScene);
 
@@ -46,8 +45,8 @@ public class SceneSwitch {
 
     GameManager gameManager = new GameManager(map);
 
-    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.movePacman(event));
-    theScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameManager.stopPacman(event));
+    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.handleKeyPressed(event));
+    theScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameManager.handleKeyReleased(event));
   }
 
   public void switchTo(SceneName sceneName) throws Exception {
