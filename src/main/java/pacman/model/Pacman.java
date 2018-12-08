@@ -1,6 +1,5 @@
 package pacman.model;
 
-import java.util.Set;
 import javafx.animation.AnimationTimer;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
@@ -15,8 +14,6 @@ public class Pacman extends Grid {
   public AnimationTimer moveUp;
   public AnimationTimer moveDown;
 
-  private Set<Obstacle> obstacles;
-
   public Pacman(double x, double y) {
     super(x, y);
 
@@ -29,10 +26,6 @@ public class Pacman extends Grid {
     this.moveRight = this.move(Direction.RIGHT);
     this.moveUp = this.move(Direction.UP);
     this.moveDown = this.move(Direction.DOWN);
-  }
-
-  public void setObstacles(Set<Obstacle> obstacles) {
-    this.obstacles = obstacles;
   }
 
   private AnimationTimer move(Direction direction) {
@@ -89,7 +82,7 @@ public class Pacman extends Grid {
     Grid nextPacman = new Grid(nextX / MapConfig.GRID_LENGTH, nextY / MapConfig.GRID_LENGTH);
 
     // check if the mock pacman overlaps any obstacle
-    for (Obstacle obstacle : obstacles) {
+    for (Obstacle obstacle : this.getParentMap().getObstacles()) {
       if (obstacle.isTouching(nextPacman, 5)) {
         return true;
       }

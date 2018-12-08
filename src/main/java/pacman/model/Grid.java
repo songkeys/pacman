@@ -5,6 +5,8 @@ import pacman.constant.MapConfig;
 
 public class Grid extends Rectangle {
 
+  private Map parentMap;
+
   public Grid(double x, double y) {
 
     // set position
@@ -14,6 +16,14 @@ public class Grid extends Rectangle {
     // set height and width
     this.setHeight(MapConfig.GRID_LENGTH);
     this.setWidth(MapConfig.GRID_LENGTH);
+  }
+
+  public Map getParentMap() {
+    return parentMap;
+  }
+
+  public void setParentMap(Map parentMap) {
+    this.parentMap = parentMap;
   }
 
   public boolean isTouching(Grid grid, double padding) {

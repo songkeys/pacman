@@ -3,8 +3,6 @@ package pacman.model;
 import java.util.Set;
 import javafx.scene.Group;
 import javafx.scene.input.KeyEvent;
-import pacman.constant.Direction;
-import pacman.constant.MapConfig;
 import pacman.util.MapBuilder;
 import pacman.util.MapReader;
 
@@ -54,8 +52,7 @@ public class Map {
     cookies = mapReader.getCookies();
     pacman = mapReader.getPacman();
 
-    // give pacman obstacles to know where not to go
-    pacman.setObstacles(obstacles);
+    pacman.setParentMap(this);
   }
 
   public void draw(Group root) throws Exception {
@@ -74,16 +71,16 @@ public class Map {
   public void movePacman(KeyEvent event) {
     switch (event.getCode()) {
       case RIGHT:
-          pacman.moveRight.start();
+        pacman.moveRight.start();
         break;
       case LEFT:
-          pacman.moveLeft.start();
+        pacman.moveLeft.start();
         break;
       case UP:
-          pacman.moveUp.start();
+        pacman.moveUp.start();
         break;
       case DOWN:
-          pacman.moveDown.start();
+        pacman.moveDown.start();
         break;
     }
   }
@@ -104,6 +101,4 @@ public class Map {
         break;
     }
   }
-
-
 }
