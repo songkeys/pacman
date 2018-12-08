@@ -3,6 +3,7 @@ package pacman.model;
 import java.util.Set;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
+import pacman.constant.Direction;
 import pacman.constant.FileName;
 import pacman.constant.MapConfig;
 
@@ -17,28 +18,22 @@ public class Pacman extends MovableGrid {
   }
 
   @Override
-  public void handleMove(double x, double y) {
+  public void handleMove(Direction direction) {
+    switch (direction) {
+      case UP:
+        Pacman.this.setRotate(270);
+        break;
+      case DOWN:
+        Pacman.this.setRotate(90);
+        break;
+      case LEFT:
+        Pacman.this.setRotate(180);
+        break;
+      case RIGHT:
+        Pacman.this.setRotate(0);
+        break;
+    }
     Pacman.this.checkTouchingCookies();
-  }
-
-  @Override
-  public void handleMoveRight(double x, double y) {
-    Pacman.this.setRotate(0);
-  }
-
-  @Override
-  public void handleMoveLeft(double x, double y) {
-    Pacman.this.setRotate(180);
-  }
-
-  @Override
-  public void handleMoveUp(double x, double y) {
-    Pacman.this.setRotate(270);
-  }
-
-  @Override
-  public void handleMoveDown(double x, double y) {
-    Pacman.this.setRotate(90);
   }
 
   private void checkTouchingCookies() {

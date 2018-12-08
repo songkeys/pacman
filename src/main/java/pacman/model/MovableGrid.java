@@ -31,30 +31,28 @@ public abstract class MovableGrid extends Grid {
           case RIGHT:
             if (!MovableGrid.this.isGoingToTouchGrids(Direction.RIGHT, obstacles)) {
               MovableGrid.this.setX(MovableGrid.this.getX() + MapConfig.STEP);
-              MovableGrid.this.handleMoveRight(MovableGrid.this.getX(), MovableGrid.this.getY());
+              MovableGrid.this.handleMove(Direction.RIGHT);
             }
             break;
           case LEFT:
             if (!MovableGrid.this.isGoingToTouchGrids(Direction.LEFT, obstacles)) {
               MovableGrid.this.setX(MovableGrid.this.getX() - MapConfig.STEP);
-              MovableGrid.this.handleMoveLeft(MovableGrid.this.getX(), MovableGrid.this.getY());
+              MovableGrid.this.handleMove(Direction.LEFT);
             }
             break;
           case UP:
             if (!MovableGrid.this.isGoingToTouchGrids(Direction.UP, obstacles)) {
               MovableGrid.this.setY(MovableGrid.this.getY() - MapConfig.STEP);
-              MovableGrid.this.handleMoveUp(MovableGrid.this.getX(), MovableGrid.this.getY());
+              MovableGrid.this.handleMove(Direction.UP);
             }
             break;
           case DOWN:
             if (!MovableGrid.this.isGoingToTouchGrids(Direction.DOWN, obstacles)) {
               MovableGrid.this.setY(MovableGrid.this.getY() + MapConfig.STEP);
-              MovableGrid.this.handleMoveDown(MovableGrid.this.getX(), MovableGrid.this.getY());
+              MovableGrid.this.handleMove(Direction.DOWN);
             }
             break;
         }
-
-        MovableGrid.this.handleMove(MovableGrid.this.getX(), MovableGrid.this.getY());
       }
     };
   }
@@ -93,13 +91,5 @@ public abstract class MovableGrid extends Grid {
     return this.isGoingToTouchGrids(direction, grids, 0);
   }
 
-  public void handleMove(double x, double y) {};
-
-  public void handleMoveRight(double x, double y) {};
-
-  public void handleMoveLeft(double x, double y) {};
-
-  public void handleMoveUp(double x, double y) {};
-
-  public void handleMoveDown(double x, double y) {};
+  public void handleMove(Direction direction) {};
 }
