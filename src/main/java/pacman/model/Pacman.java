@@ -42,21 +42,25 @@ public class Pacman extends Grid {
           case RIGHT:
             if (!Pacman.this.isTouchingObstacle(Direction.RIGHT)) {
               Pacman.this.setX(Pacman.this.getX() + MapConfig.STEP);
+              Pacman.this.setRotate(0);
             }
             break;
           case LEFT:
             if (!Pacman.this.isTouchingObstacle(Direction.LEFT)) {
               Pacman.this.setX(Pacman.this.getX() - MapConfig.STEP);
+              Pacman.this.setRotate(180);
             }
             break;
           case UP:
             if (!Pacman.this.isTouchingObstacle(Direction.UP)) {
               Pacman.this.setY(Pacman.this.getY() - MapConfig.STEP);
+              Pacman.this.setRotate(270);
             }
             break;
           case DOWN:
             if (!Pacman.this.isTouchingObstacle(Direction.DOWN)) {
               Pacman.this.setY(Pacman.this.getY() + MapConfig.STEP);
+              Pacman.this.setRotate(90);
             }
             break;
         }
