@@ -1,203 +1,111 @@
 package pacman.model;
 
+import java.util.HashSet;
 import java.util.Random;
-import javafx.animation.AnimationTimer;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import pacman.GameManager;
+import java.util.Set;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import pacman.constant.Direction;
+import pacman.constant.FileName;
 
-public class Ghost extends Rectangle implements Runnable {
+public class Ghost extends MovableGrid implements Runnable {
 
-  String direction;
-  GameManager gameManager;
-  Maze maze;
-  AnimationTimer animation;
-  int timesWalked;
+  private Direction direction;
+  private int timeWalked;
 
-  public Ghost(double x, double y, Color color, Maze maze, GameManager gameManager) {
-    this.setX(x);
-    this.setY(y);
-    this.maze = maze;
-    this.gameManager = gameManager;
-    this.setHeight(50);
-    this.setWidth(50);
-    this.setFill(color);
-    this.timesWalked = 0;
-    this.direction = "down";
-    this.createAnimation();
+  public Ghost(Map map, double x, double y) {
+    super(map, x, y);
+
+    // set image
+    Image image = new Image(FileName.IMAGE_PACMAN);
+    this.setFill(new ImagePattern(image));
+
+    // set initial direction
+    this.direction = Direction.UP;
+
+    run();
   }
 
-  private String getRandomDirection(String exclude1, String exclude2) {
-    String[] directions = {"left", "right", "up", "down"};
-    int rnd = new Random().nextInt(directions.length);
-    while (directions[rnd].equals(exclude1) || directions[rnd].equals(exclude2)) {
-      rnd = new Random().nextInt(directions.length);
-    }
-    return directions[rnd];
-  }
-
-  private boolean getRandomBoolean() {
-    Random rand = new Random();
-    return rand.nextBoolean();
-  }
-
-  /** Gets the animation for the ghost */
-  public AnimationTimer getAnimation() {
-    return animation;
-  }
-
-  /** @param direction */
-  private void checkIftheresPathToGo(String direction) {
-    double rightEdge, leftEdge, topEdge, bottomEdge;
+  private void moveTo(Direction direction) {
     switch (direction) {
-      case "down":
-        leftEdge = getX() - 10;
-        bottomEdge = getY() + getHeight() + 15;
-        rightEdge = getX() + getWidth() + 10;
-        if (!maze.hasObstacle(leftEdge, rightEdge, bottomEdge - 1, bottomEdge)) {
-          this.direction = direction;
-        }
+      case UP:
+        moveUp.start();
         break;
-      case "up":
-        leftEdge = getX() - 10;
-        rightEdge = getX() + getWidth() + 10;
-        topEdge = getY() - 15;
-        if (!maze.hasObstacle(leftEdge, rightEdge, topEdge - 1, topEdge)) {
-          this.direction = direction;
-        }
+      case DOWN:
+        moveDown.start();
         break;
-      case "left":
-        leftEdge = getX() - 15;
-        bottomEdge = getY() + getHeight() + 10;
-        topEdge = getY() - 10;
-        if (!maze.hasObstacle(leftEdge - 1, leftEdge, topEdge, bottomEdge)) {
-          this.direction = direction;
-        }
+      case LEFT:
+        moveLeft.start();
         break;
-      case "right":
-        bottomEdge = getY() + getHeight() + 10;
-        rightEdge = getX() + getWidth() + 15;
-        topEdge = getY() - 10;
-        if (!maze.hasObstacle(rightEdge - 1, rightEdge, topEdge, bottomEdge)) {
-          this.direction = direction;
-        }
+      case RIGHT:
+        moveRight.start();
         break;
     }
   }
 
-  /**
-   * @param whereToGo
-   * @param whereToChangeTo
-   * @param leftEdge
-   * @param topEdge
-   * @param rightEdge
-   * @param bottomEdge
-   * @param padding
-   */
-  private void moveUntilYouCant(
-      String whereToGo,
-      String whereToChangeTo,
-      double leftEdge,
-      double topEdge,
-      double rightEdge,
-      double bottomEdge,
-      double padding) {
-    double step = 5;
-    switch (whereToGo) {
-      case "left":
-        if (!maze.isTouching(leftEdge, topEdge, padding)) {
-          setX(leftEdge - step);
-        } else {
-          while (maze.isTouching(getX(), getY(), padding)) {
-            setX(getX() + 1);
-          }
-          direction = whereToChangeTo;
+  private Direction findDirectionToMove() {
+    Set<Direction> directionsToGo = new HashSet<>();
+    Set<Grid> obstacles = (Set<Grid>) (Set<?>) getParentMap().getObstacles();
+    switch (direction) {
+      case UP:
+      case DOWN:
+        if (!isGoingToTouchGrids(Direction.LEFT, obstacles)) {
+          directionsToGo.add(Direction.LEFT);
+        }
+        if (!isGoingToTouchGrids(Direction.RIGHT, obstacles)) {
+          directionsToGo.add(Direction.RIGHT);
         }
         break;
-      case "right":
-        if (!maze.isTouching(rightEdge, topEdge, padding)) {
-          setX(leftEdge + step);
-        } else {
-          while (maze.isTouching(getX() + getWidth(), getY(), padding)) {
-            setX(getX() - 1);
-          }
-          direction = whereToChangeTo;
+      case LEFT:
+      case RIGHT:
+        if (!isGoingToTouchGrids(Direction.UP, obstacles)) {
+          directionsToGo.add(Direction.UP);
         }
-        break;
-      case "up":
-        if (!maze.isTouching(leftEdge, topEdge, padding)) {
-          setY(topEdge - step);
-        } else {
-          while (maze.isTouching(getX(), getY(), padding)) {
-            setY(getY() + 1);
-          }
-          direction = "left";
-        }
-        break;
-      case "down":
-        if (!maze.isTouching(leftEdge, bottomEdge, padding)) {
-          setY(topEdge + step);
-        } else {
-          while (maze.isTouching(getX(), getY() + getHeight(), padding)) {
-            setY(getY() - 1);
-          }
-          direction = "right";
+        if (!isGoingToTouchGrids(Direction.DOWN, obstacles)) {
+          directionsToGo.add(Direction.DOWN);
         }
         break;
     }
+
+    Direction directionToGo = direction;
+    int i = 0;
+    Boolean randBool = new Random().nextBoolean();
+    int j = randBool ? 1 : 0;
+    for (Direction direction : directionsToGo) {
+      if (i == j) {
+        directionToGo = direction;
+      }
+      i++;
+    }
+
+    return directionToGo;
   }
 
-  /** Creates an animation of the ghost */
-  public void createAnimation() {
+  private void moveToAnotherDirection() {
+    this.direction = findDirectionToMove();
+    moveUp.stop();
+    moveDown.stop();
+    moveLeft.stop();
+    moveRight.stop();
+    moveTo(this.direction);
+  }
 
-    this.animation =
-        new AnimationTimer() {
-          public void handle(long currentNanoTime) {
-            gameManager.checkGhostCoalition();
-            double leftEdge = getX();
-            double topEdge = getY();
-            double rightEdge = getX() + getWidth();
-            double bottomEdge = getY() + getHeight();
-            double padding = 12;
-            timesWalked++;
-            int walkAtLeast = 4;
-            switch (direction) {
-              case "left":
-                moveUntilYouCant("left", "down", leftEdge, topEdge, rightEdge, bottomEdge, padding);
-                if (timesWalked > walkAtLeast) {
-                  checkIftheresPathToGo(getRandomDirection("left", "right"));
-                  timesWalked = 0;
-                }
-                break;
-              case "right":
-                moveUntilYouCant("right", "up", leftEdge, topEdge, rightEdge, bottomEdge, padding);
-                if (timesWalked > walkAtLeast) {
-                  checkIftheresPathToGo(getRandomDirection("left", "right"));
-                  timesWalked = 0;
-                }
-                break;
-              case "up":
-                moveUntilYouCant("up", "left", leftEdge, topEdge, rightEdge, bottomEdge, padding);
-                if (timesWalked > walkAtLeast) {
-                  checkIftheresPathToGo(getRandomDirection("up", "down"));
-                  timesWalked = 0;
-                }
-                break;
-              case "down":
-                moveUntilYouCant(
-                    "down", "right", leftEdge, topEdge, rightEdge, bottomEdge, padding);
-                if (timesWalked > walkAtLeast) {
-                  checkIftheresPathToGo(getRandomDirection("up", "down"));
-                  timesWalked = 0;
-                }
-                break;
-            }
-          }
-        };
+  @Override
+  public void handleMove(Direction direction) {
+    timeWalked++;
+    if (timeWalked >= 10) {
+      moveToAnotherDirection();
+      timeWalked = 0;
+    }
+  }
+
+  @Override
+  public void handleCantMove(Direction direction) {
+    moveToAnotherDirection();
   }
 
   @Override
   public void run() {
-    this.animation.start();
+    moveTo(direction);
   }
 }
