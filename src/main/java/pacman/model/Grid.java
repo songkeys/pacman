@@ -7,7 +7,10 @@ public class Grid extends Rectangle {
 
   private Map parentMap;
 
-  public Grid(double x, double y) {
+  public Grid(Map parentMap, double x, double y) {
+
+    // set map
+    this.parentMap = parentMap;
 
     // set position
     this.setX(x * MapConfig.GRID_LENGTH);
@@ -20,10 +23,6 @@ public class Grid extends Rectangle {
 
   public Map getParentMap() {
     return parentMap;
-  }
-
-  public void setParentMap(Map parentMap) {
-    this.parentMap = parentMap;
   }
 
   public boolean isTouching(Grid grid, double padding) {

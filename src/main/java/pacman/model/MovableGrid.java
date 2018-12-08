@@ -12,8 +12,8 @@ public abstract class MovableGrid extends Grid {
   public AnimationTimer moveUp;
   public AnimationTimer moveDown;
 
-  public MovableGrid(double x, double y) {
-    super(x, y);
+  public MovableGrid(Map map, double x, double y) {
+    super(map, x, y);
 
     // set animation
     this.moveLeft = this.move(Direction.LEFT);
@@ -32,24 +32,32 @@ public abstract class MovableGrid extends Grid {
             if (!MovableGrid.this.isGoingToTouchGrids(Direction.RIGHT, obstacles)) {
               MovableGrid.this.setX(MovableGrid.this.getX() + MapConfig.STEP);
               MovableGrid.this.handleMove(Direction.RIGHT);
+            } else {
+              MovableGrid.this.handleCantMove(Direction.RIGHT);
             }
             break;
           case LEFT:
             if (!MovableGrid.this.isGoingToTouchGrids(Direction.LEFT, obstacles)) {
               MovableGrid.this.setX(MovableGrid.this.getX() - MapConfig.STEP);
               MovableGrid.this.handleMove(Direction.LEFT);
+            } else {
+              MovableGrid.this.handleCantMove(Direction.LEFT);
             }
             break;
           case UP:
             if (!MovableGrid.this.isGoingToTouchGrids(Direction.UP, obstacles)) {
               MovableGrid.this.setY(MovableGrid.this.getY() - MapConfig.STEP);
               MovableGrid.this.handleMove(Direction.UP);
+            } else {
+              MovableGrid.this.handleCantMove(Direction.UP);
             }
             break;
           case DOWN:
             if (!MovableGrid.this.isGoingToTouchGrids(Direction.DOWN, obstacles)) {
               MovableGrid.this.setY(MovableGrid.this.getY() + MapConfig.STEP);
               MovableGrid.this.handleMove(Direction.DOWN);
+            } else {
+              MovableGrid.this.handleCantMove(Direction.DOWN);
             }
             break;
         }
@@ -57,8 +65,8 @@ public abstract class MovableGrid extends Grid {
     };
   }
 
-  private boolean isGoingToTouchGrids(Direction direction, Set<Grid> grids, double padding) {
-    // generate a mock pacman at the next step
+  public boolean isGoingToTouchGrids(Direction direction, Set<Grid> grids, double padding) {
+    // generate a mock grid at the next step
     double nextX = this.getX();
     double nextY = this.getY();
     switch (direction) {
@@ -75,9 +83,10 @@ public abstract class MovableGrid extends Grid {
         nextY += MapConfig.STEP;
         break;
     }
-    Grid nextPositionGrid = new Grid(nextX / MapConfig.GRID_LENGTH, nextY / MapConfig.GRID_LENGTH);
+    Grid nextPositionGrid =
+        new Grid(getParentMap(), nextX / MapConfig.GRID_LENGTH, nextY / MapConfig.GRID_LENGTH);
 
-    // check if the mock pacman overlaps any obstacle
+    // check if the mock grid overlaps any obstacle
     for (Grid grid : grids) {
       if (grid.isTouching(nextPositionGrid, padding)) {
         return true;
@@ -87,9 +96,11 @@ public abstract class MovableGrid extends Grid {
     return false;
   }
 
-  private boolean isGoingToTouchGrids(Direction direction, Set<Grid> grids) {
+  public boolean isGoingToTouchGrids(Direction direction, Set<Grid> grids) {
     return this.isGoingToTouchGrids(direction, grids, 0);
   }
 
-  public void handleMove(Direction direction) {};
+  public void handleMove(Direction direction) {}
+
+  public void handleCantMove(Direction direction) {}
 }

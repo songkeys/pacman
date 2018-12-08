@@ -6,6 +6,8 @@ import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
 import pacman.model.Cookie;
+import pacman.model.Ghost;
+import pacman.model.Map;
 import pacman.model.Obstacle;
 import pacman.model.Pacman;
 
@@ -13,15 +15,19 @@ public class MapReader {
 
   private String fileName;
   private int mazeLineCount;
+  private Map map;
   private Set<Obstacle> obstacles;
-  private Pacman pacman;
   private Set<Cookie> cookies;
+  private Set<Ghost> ghosts;
+  private Pacman pacman;
 
-  public MapReader(String fileName) {
+  public MapReader(String fileName, Map map) {
     this.fileName = fileName;
+    this.map = map;
+    this.mazeLineCount = 0;
     this.obstacles = new HashSet<>();
     this.cookies = new HashSet<>();
-    this.mazeLineCount = 0;
+    this.ghosts = new HashSet<>();
   }
 
   public Set<Obstacle> getObstacles() {
@@ -34,6 +40,10 @@ public class MapReader {
 
   public Set<Cookie> getCookies() {
     return cookies;
+  }
+
+  public Set<Ghost> getGhosts() {
+    return ghosts;
   }
 
   private boolean isPacmanGrid(String grid) {
@@ -73,23 +83,26 @@ public class MapReader {
 
       // obstacle
       if (isObstacleGrid(grid)) {
-        Obstacle obstacle = new Obstacle(mazeGridCount, mazeLineCount);
-        this.obstacles.add(obstacle);
+        Obstacle obstacle = new Obstacle(map, mazeGridCount, mazeLineCount);
+        obstacles.add(obstacle);
       }
 
       // pacman
       if (isPacmanGrid(grid)) {
-        this.pacman = new Pacman(mazeGridCount, mazeLineCount);
+        pacman = new Pacman(map, mazeGridCount, mazeLineCount);
       }
 
       // cookie
       if (isCookieGrid(grid)) {
-        Cookie cookie = new Cookie(mazeGridCount, mazeLineCount);
-        this.cookies.add(cookie);
+        Cookie cookie = new Cookie(map, mazeGridCount, mazeLineCount);
+        cookies.add(cookie);
       }
 
       // ghost
-      if (isGhostGrid(grid)) {}
+      if (isGhostGrid(grid)) {
+        Ghost ghost = new Ghost(map, mazeGridCount, mazeLineCount);
+        ghosts.add(ghost);
+      }
 
       mazeGridCount++;
     }

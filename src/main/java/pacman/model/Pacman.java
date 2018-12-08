@@ -9,8 +9,8 @@ import pacman.constant.MapConfig;
 
 public class Pacman extends MovableGrid {
 
-  public Pacman(double x, double y) {
-    super(x, y);
+  public Pacman(Map map, double x, double y) {
+    super(map, x, y);
 
     // set image
     Image image = new Image(FileName.IMAGE_PACMAN);
@@ -39,7 +39,7 @@ public class Pacman extends MovableGrid {
   private void checkTouchingCookies() {
     Set<Cookie> cookies = Pacman.this.getParentMap().getCookies();
     for (Cookie cookie : cookies) {
-      if (this.isTouching(cookie, MapConfig.COOKIE_PADDING)) {
+      if (isTouching(cookie, MapConfig.COOKIE_PADDING)) {
         cookie.hide();
         return;
       }

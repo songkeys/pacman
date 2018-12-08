@@ -10,8 +10,9 @@ public class Map {
 
   private String mapFileName;
   private Set<Obstacle> obstacles;
-  private Pacman pacman;
   private Set<Cookie> cookies;
+  private Set<Ghost> ghosts;
+  private Pacman pacman;
 
   public Map(String mapFileName) {
     this.mapFileName = mapFileName;
@@ -41,18 +42,25 @@ public class Map {
     this.obstacles = obstacles;
   }
 
+  public Set<Ghost> getGhosts() {
+    return ghosts;
+  }
+
+  public void setGhosts(Set<Ghost> ghosts) {
+    this.ghosts = ghosts;
+  }
+
   private void read(String fileName) throws Exception {
 
     // read map
-    MapReader mapReader = new MapReader(fileName);
+    MapReader mapReader = new MapReader(fileName, this);
     mapReader.readFile();
 
-    // initialize variables
+    // initialize grids
     obstacles = mapReader.getObstacles();
     cookies = mapReader.getCookies();
     pacman = mapReader.getPacman();
-
-    pacman.setParentMap(this);
+    ghosts = mapReader.getGhosts();
   }
 
   public void draw(Group root) throws Exception {
@@ -62,9 +70,10 @@ public class Map {
 
     // build map
     MapBuilder mapBuilder = new MapBuilder(root);
-    mapBuilder.buildObstacles(this.obstacles);
-    mapBuilder.buildCookies(this.cookies);
-    mapBuilder.buildPacman(this.pacman);
+    mapBuilder.buildObstacles(obstacles);
+    mapBuilder.buildCookies(cookies);
+    mapBuilder.buildPacman(pacman);
+    mapBuilder.buildGhost(ghosts);
   }
 
   // TODO: make it into GameManager

@@ -13,8 +13,8 @@ public class Obstacle extends Grid {
    * @param x the x-coordinate of the start point of the obstacle
    * @param y the y-coordinate of the start point of the obstacle
    */
-  public Obstacle(double x, double y) {
-    super(x, y);
+  public Obstacle(Map map, double x, double y) {
+    super(map, x, y);
 
     // set color
     this.setFill(Color.RED);

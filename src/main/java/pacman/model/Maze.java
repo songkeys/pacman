@@ -60,9 +60,5 @@ public class Maze {
 
   /** Draws the maze */
   public void draw(Group root) throws Exception {
-    MapReader mapReader = new MapReader("level1.txt");
-    mapReader.readFile();
-    this.obstacles = mapReader.getObstacles();
-    root.getChildren().addAll(obstacles);
   }
 }

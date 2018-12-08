@@ -8,8 +8,8 @@ public class Cookie extends Grid {
 
   private int value;
 
-  public Cookie(double x, double y) {
-    super(x, y);
+  public Cookie(Map map, double x, double y) {
+    super(map, x, y);
 
     // set image
     Image image = new Image(FileName.IMAGE_COOKIE);

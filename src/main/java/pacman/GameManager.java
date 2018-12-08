@@ -37,7 +37,7 @@ public class GameManager {
   public GameManager(Group root) {
     this.root = root;
     this.maze = new Maze();
-    this.pacman = new Pacman(2.5 * Obstacle.THICKNESS, 2.5 * Obstacle.THICKNESS);
+//    this.pacman = new Pacman(2.5 * Obstacle.THICKNESS, 2.5 * Obstacle.THICKNESS);
     this.cookieSet = new HashSet<>();
     this.ghosts = new HashSet<>();
     this.leftPacmanAnimation = this.createAnimation("left");
@@ -56,7 +56,7 @@ public class GameManager {
     this.upPacmanAnimation.stop();
     this.downPacmanAnimation.stop();
     for (Ghost ghost : ghosts) {
-      ghost.getAnimation().stop();
+//      ghost.getAnimation().stop();
     }
     this.pacman.setX(2.5 * Obstacle.THICKNESS);
     this.pacman.setY(2.5 * Obstacle.THICKNESS);
@@ -114,17 +114,17 @@ public class GameManager {
 
   /** Generates the ghosts for the pacman! */
   public void generateGhosts() {
-    this.ghosts.add(
-        new Ghost(
-            18.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.DEEPPINK, maze, this));
-    this.ghosts.add(
-        new Ghost(
-            22.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.GREENYELLOW, maze, this));
-    this.ghosts.add(
-        new Ghost(28.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.BLACK, maze, this));
-    this.ghosts.add(
-        new Ghost(
-            28.5 * Obstacle.THICKNESS, 9.5 * Obstacle.THICKNESS, Color.SPRINGGREEN, maze, this));
+//    this.ghosts.add(
+//        new Ghost(
+//            18.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.DEEPPINK, maze, this));
+//    this.ghosts.add(
+//        new Ghost(
+//            22.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.GREENYELLOW, maze, this));
+//    this.ghosts.add(
+//        new Ghost(28.5 * Obstacle.THICKNESS, 12.5 * Obstacle.THICKNESS, Color.BLACK, maze, this));
+//    this.ghosts.add(
+//        new Ghost(
+//            28.5 * Obstacle.THICKNESS, 9.5 * Obstacle.THICKNESS, Color.SPRINGGREEN, maze, this));
   }
 
   /** Moves the pacman */
