@@ -3,7 +3,7 @@ package pacman.model;
 import java.util.Set;
 import javafx.scene.Group;
 import javafx.scene.input.KeyEvent;
-import pacman.util.MapBuilder;
+import pacman.util.MapPainter;
 import pacman.util.MapReader;
 
 public class Map {
@@ -69,11 +69,11 @@ public class Map {
     this.read(this.mapFileName);
 
     // build map
-    MapBuilder mapBuilder = new MapBuilder(root);
-    mapBuilder.buildObstacles(obstacles);
-    mapBuilder.buildCookies(cookies);
-    mapBuilder.buildPacman(pacman);
-    mapBuilder.buildGhost(ghosts);
+    MapPainter mapPainter = new MapPainter(root);
+    mapPainter.drawObstacles(obstacles);
+    mapPainter.drawCookies(cookies);
+    mapPainter.drawPacman(pacman);
+    mapPainter.drawGhost(ghosts);
   }
 
   // TODO: make it into GameManager

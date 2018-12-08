@@ -37,7 +37,7 @@ public class Pacman extends MovableGrid {
   }
 
   private void checkTouchingCookies() {
-    Set<Cookie> cookies = Pacman.this.getParentMap().getCookies();
+    Set<Cookie> cookies = getParentMap().getCookies();
     for (Cookie cookie : cookies) {
       if (isTouching(cookie, MapConfig.COOKIE_PADDING)) {
         cookie.hide();
