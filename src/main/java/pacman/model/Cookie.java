@@ -1,6 +1,8 @@
 package pacman.model;
 
-import javafx.scene.paint.Color;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import pacman.constant.FileName;
 
 public class Cookie extends Grid {
 
@@ -9,10 +11,9 @@ public class Cookie extends Grid {
   public Cookie(double x, double y) {
     super(x, y);
 
-    this.value = 5;
-
     // set image
-    this.setFill(Color.SADDLEBROWN);
+    Image image = new Image(FileName.IMAGE_COOKIE);
+    this.setFill(new ImagePattern(image));
   }
 
   public int getValue() {

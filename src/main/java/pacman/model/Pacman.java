@@ -104,7 +104,7 @@ public class Pacman extends Grid {
     Set<Cookie> cookies =  Pacman.this.getParentMap().getCookies();
     for (Cookie cookie : cookies) {
       if (this.isTouching(cookie, MapConfig.COOKIE_PADDING)) {
-        cookie.setVisible(false);
+        cookie.hide();
         return;
       }
     }
