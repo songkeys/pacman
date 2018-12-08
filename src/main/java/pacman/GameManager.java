@@ -8,6 +8,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import pacman.constant.Direction;
 import pacman.model.Cookie;
 import pacman.model.Ghost;
 import pacman.model.Maze;
@@ -133,16 +134,16 @@ public class GameManager {
     }
     switch (event.getCode()) {
       case RIGHT:
-        this.rightPacmanAnimation.start();
+          this.rightPacmanAnimation.start();
         break;
       case LEFT:
-        this.leftPacmanAnimation.start();
+          this.leftPacmanAnimation.start();
         break;
       case UP:
-        this.upPacmanAnimation.start();
+          this.upPacmanAnimation.start();
         break;
       case DOWN:
-        this.downPacmanAnimation.start();
+          this.downPacmanAnimation.start();
         break;
     }
   }

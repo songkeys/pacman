@@ -1,8 +1,6 @@
 package pacman.model;
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import pacman.constant.MapConfig;
 
 public class Obstacle extends Grid {
 
