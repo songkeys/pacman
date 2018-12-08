@@ -1,4 +1,4 @@
-package pacman;
+package pacman.model;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -10,9 +10,9 @@ public class Score {
   public Text score;
   public Text lifes;
 
-  Score(Group root) {
-    this.score = new Text(BarObstacle.THICKNESS * 4, BarObstacle.THICKNESS * 28, "Score: 0");
-    this.lifes = new Text(BarObstacle.THICKNESS * 20, BarObstacle.THICKNESS * 28, "Lifes: 3");
+  public Score(Group root) {
+    this.score = new Text(Obstacle.THICKNESS * 4, Obstacle.THICKNESS * 28, "Score: 0");
+    this.lifes = new Text(Obstacle.THICKNESS * 20, Obstacle.THICKNESS * 28, "Lifes: 3");
     score.setFill(Color.MAGENTA);
     score.setFont(Font.font("Arial", 30));
 
