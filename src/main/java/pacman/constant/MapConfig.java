@@ -7,4 +7,6 @@ public class MapConfig {
   public static final double GRID_LENGTH = 50;
 
   public static final double STEP = 5;
+
+  public static final double COOKIE_PADDING = 15;
 }
