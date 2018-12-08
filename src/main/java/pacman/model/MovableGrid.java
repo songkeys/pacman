@@ -29,25 +29,25 @@ public abstract class MovableGrid extends Grid {
 
         switch (direction) {
           case RIGHT:
-            if (!MovableGrid.this.isTouchingGrids(Direction.RIGHT, obstacles)) {
+            if (!MovableGrid.this.isGoingToTouchGrids(Direction.RIGHT, obstacles)) {
               MovableGrid.this.setX(MovableGrid.this.getX() + MapConfig.STEP);
               MovableGrid.this.handleMoveRight(MovableGrid.this.getX(), MovableGrid.this.getY());
             }
             break;
           case LEFT:
-            if (!MovableGrid.this.isTouchingGrids(Direction.LEFT, obstacles)) {
+            if (!MovableGrid.this.isGoingToTouchGrids(Direction.LEFT, obstacles)) {
               MovableGrid.this.setX(MovableGrid.this.getX() - MapConfig.STEP);
               MovableGrid.this.handleMoveLeft(MovableGrid.this.getX(), MovableGrid.this.getY());
             }
             break;
           case UP:
-            if (!MovableGrid.this.isTouchingGrids(Direction.UP, obstacles)) {
+            if (!MovableGrid.this.isGoingToTouchGrids(Direction.UP, obstacles)) {
               MovableGrid.this.setY(MovableGrid.this.getY() - MapConfig.STEP);
               MovableGrid.this.handleMoveUp(MovableGrid.this.getX(), MovableGrid.this.getY());
             }
             break;
           case DOWN:
-            if (!MovableGrid.this.isTouchingGrids(Direction.DOWN, obstacles)) {
+            if (!MovableGrid.this.isGoingToTouchGrids(Direction.DOWN, obstacles)) {
               MovableGrid.this.setY(MovableGrid.this.getY() + MapConfig.STEP);
               MovableGrid.this.handleMoveDown(MovableGrid.this.getX(), MovableGrid.this.getY());
             }
@@ -59,7 +59,7 @@ public abstract class MovableGrid extends Grid {
     };
   }
 
-  private boolean isTouchingGrids(Direction direction, Set<Grid> grids, double padding) {
+  private boolean isGoingToTouchGrids(Direction direction, Set<Grid> grids, double padding) {
     // generate a mock pacman at the next step
     double nextX = this.getX();
     double nextY = this.getY();
@@ -89,8 +89,8 @@ public abstract class MovableGrid extends Grid {
     return false;
   }
 
-  private boolean isTouchingGrids(Direction direction, Set<Grid> grids) {
-    return this.isTouchingGrids(direction, grids, 0);
+  private boolean isGoingToTouchGrids(Direction direction, Set<Grid> grids) {
+    return this.isGoingToTouchGrids(direction, grids, 0);
   }
 
   public void handleMove(double x, double y) {};
