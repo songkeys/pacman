@@ -2,7 +2,6 @@ package pacman.model;
 
 import java.util.Set;
 import javafx.scene.Group;
-import javafx.scene.input.KeyEvent;
 import pacman.util.MapPainter;
 import pacman.util.MapReader;
 
@@ -74,40 +73,5 @@ public class Map {
     mapPainter.drawCookies(cookies);
     mapPainter.drawPacman(pacman);
     mapPainter.drawGhost(ghosts);
-  }
-
-  // TODO: make it into GameManager
-  public void movePacman(KeyEvent event) {
-    switch (event.getCode()) {
-      case RIGHT:
-        pacman.moveRight.start();
-        break;
-      case LEFT:
-        pacman.moveLeft.start();
-        break;
-      case UP:
-        pacman.moveUp.start();
-        break;
-      case DOWN:
-        pacman.moveDown.start();
-        break;
-    }
-  }
-
-  public void stopPacman(KeyEvent event) {
-    switch (event.getCode()) {
-      case RIGHT:
-        pacman.moveRight.stop();
-        break;
-      case LEFT:
-        pacman.moveLeft.stop();
-        break;
-      case UP:
-        pacman.moveUp.stop();
-        break;
-      case DOWN:
-        pacman.moveDown.stop();
-        break;
-    }
   }
 }

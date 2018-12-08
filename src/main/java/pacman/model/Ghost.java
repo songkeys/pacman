@@ -7,14 +7,15 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import pacman.constant.Direction;
 import pacman.constant.FileName;
+import pacman.constant.MapConfig;
 
 public class Ghost extends MovableGrid implements Runnable {
 
   private Direction direction;
   private int timeWalked;
 
-  public Ghost(Map map, double x, double y) {
-    super(map, x, y);
+  public Ghost(Map map, double row, double column) {
+    super(map, row, column);
 
     // set image
     Image image = new Image(FileName.IMAGE_PACMAN);
@@ -90,6 +91,12 @@ public class Ghost extends MovableGrid implements Runnable {
     moveTo(this.direction);
   }
 
+  private void checkTouchingPacman() {
+    if (getParentMap().getPacman().isTouching(this, MapConfig.GHOST_PADDING)) {
+      System.out.println("123");
+    }
+  }
+
   @Override
   public void handleMove(Direction direction) {
     timeWalked++;
@@ -97,6 +104,7 @@ public class Ghost extends MovableGrid implements Runnable {
       moveToAnotherDirection();
       timeWalked = 0;
     }
+    checkTouchingPacman();
   }
 
   @Override
