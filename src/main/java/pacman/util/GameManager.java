@@ -23,13 +23,15 @@ public class GameManager {
 
     // add controller to control UI
     this.gameController = gameController;
-    this.initUI();
 
     // init game status
     this.gameStatus = GameStatus.PAUSE;
 
     // init life
     this.life = new Life();
+
+    // init UI
+    this.initUI();
   }
 
   public void startGame() {
@@ -57,13 +59,16 @@ public class GameManager {
   public void handleGhostTouched() {
     sendPacmanToSpawn();
     life.lost();
-    if (life.getRemain() <= 0) {
+    if (life.getRemaining() <= 0) {
       loseGame();
     }
+
+    gameController.setLifeCount(life.getRemaining(), life.getTotal());
   }
 
   public void handleCookieTouched(Cookie cookie) {
     cookie.eat();
+    cookie.
   }
 
   public void handleKeyPressed(KeyEvent event) {
@@ -130,5 +135,7 @@ public class GameManager {
 
   private void initUI() {
     gameController.setTitle(map.getTitle());
+    gameController.setScoreCount(0);
+    gameController.setLifeCount(life.getRemaining(), life.getTotal());
   }
 }

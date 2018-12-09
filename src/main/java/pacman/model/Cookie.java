@@ -4,7 +4,7 @@ import pacman.constant.FileName;
 
 public class Cookie extends Grid {
 
-  private int value;
+  private int score;
 
   public Cookie(Map map, double row, double column) {
     super(map, row, column);
@@ -12,8 +12,8 @@ public class Cookie extends Grid {
     this.setImage(FileName.IMAGE_COOKIE);
   }
 
-  public int getValue() {
-    return value;
+  public int getScore() {
+    return score;
   }
 
   public void eat() {

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
@@ -17,13 +20,35 @@
   <top>
     <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1250.0" styleClass="top" BorderPane.alignment="CENTER">
       <children>
-        <Pane prefWidth="200.0" />
+            <Pane prefWidth="25.0" />
+            <FlowPane alignment="CENTER_LEFT" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="top-icon">
+                     <image>
+                        <Image url="@../image/heart.png" />
+                     </image>
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </ImageView>
+                  <Text id="title" fx:id="lifeCount" fill="#e12525" text="0" textAlignment="CENTER" />
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="top-icon">
+                     <image>
+                        <Image url="@../image/cookie.png" />
+                     </image>
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </ImageView>
+                  <Text id="title" fx:id="scoreCount" fill="#d0b323" text="0" textAlignment="CENTER" />
+               </children>
+            </FlowPane>
         <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" HBox.hgrow="ALWAYS">
           <children>
             <Text id="title" fx:id="title" fill="#ffe34a" text="This is a Level Title" textAlignment="CENTER" />
           </children>
         </FlowPane>
-        <Pane prefWidth="100.0" />
+        <Pane prefWidth="25.0" />
       </children>
     </HBox>
   </top>

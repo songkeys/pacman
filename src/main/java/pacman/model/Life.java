@@ -2,11 +2,11 @@ package pacman.model;
 
 public class Life {
   private int total;
-  private int remain;
+  private int remaining;
 
   public Life(int total) {
     this.total = total;
-    this.remain = total;
+    this.remaining = total;
   }
 
   public Life() {
@@ -14,21 +14,21 @@ public class Life {
   }
 
   public void lost() {
-    remain--;
-    if (remain < 0) {
-      remain = 0;
+    remaining--;
+    if (remaining < 0) {
+      remaining = 0;
     }
   }
 
   public void gain() {
-    remain++;
-    if (remain > total) {
-      remain = total;
+    remaining++;
+    if (remaining > total) {
+      remaining = total;
     }
   }
 
-  public int getRemain() {
-    return remain;
+  public int getRemaining() {
+    return remaining;
   }
 
   public int getTotal() {
