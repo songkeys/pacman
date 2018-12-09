@@ -3,8 +3,6 @@ package pacman.model;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import pacman.constant.Direction;
 import pacman.constant.FileName;
 import pacman.constant.MapConfig;
@@ -17,14 +15,10 @@ public class Ghost extends MovableGrid implements Runnable {
   public Ghost(Map map, double row, double column) {
     super(map, row, column);
 
-    // set image
-    Image image = new Image(FileName.IMAGE_PACMAN);
-    this.setFill(new ImagePattern(image));
+    this.setImage(FileName.IMAGE_PACMAN);
 
     // set initial direction
     this.direction = Direction.UP;
-
-    run();
   }
 
   private void moveTo(Direction direction) {
@@ -83,12 +77,9 @@ public class Ghost extends MovableGrid implements Runnable {
   }
 
   private void moveToAnotherDirection() {
-    this.direction = findDirectionToMove();
-    moveUp.stop();
-    moveDown.stop();
-    moveLeft.stop();
-    moveRight.stop();
-    moveTo(this.direction);
+    direction = findDirectionToMove();
+    freeze();
+    moveTo(direction);
   }
 
   private void checkTouchingPacman() {
@@ -115,5 +106,12 @@ public class Ghost extends MovableGrid implements Runnable {
   @Override
   public void run() {
     moveTo(direction);
+  }
+
+  public void freeze() {
+    moveUp.stop();
+    moveDown.stop();
+    moveLeft.stop();
+    moveRight.stop();
   }
 }
