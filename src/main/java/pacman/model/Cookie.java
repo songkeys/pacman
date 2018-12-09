@@ -1,7 +1,5 @@
 package pacman.model;
 
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import pacman.constant.FileName;
 
 public class Cookie extends Grid {
@@ -11,9 +9,7 @@ public class Cookie extends Grid {
   public Cookie(Map map, double row, double column) {
     super(map, row, column);
 
-    // set image
-    Image image = new Image(FileName.IMAGE_COOKIE);
-    this.setFill(new ImagePattern(image));
+    this.setImage(FileName.IMAGE_COOKIE);
   }
 
   public int getValue() {

@@ -1,8 +1,6 @@
 package pacman.model;
 
 import java.util.Set;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import pacman.constant.Direction;
 import pacman.constant.FileName;
 import pacman.constant.MapConfig;
@@ -12,9 +10,7 @@ public class Pacman extends MovableGrid {
   public Pacman(Map map, double row, double column) {
     super(map, row, column);
 
-    // set image
-    Image image = new Image(FileName.IMAGE_PACMAN);
-    this.setFill(new ImagePattern(image));
+    this.setImage(FileName.IMAGE_PACMAN);
   }
 
   @Override
