@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="800.0" prefWidth="1250.0" styleClass="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pacman.controller.Game">
+<BorderPane prefHeight="800.0" prefWidth="1250.0" styleClass="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pacman.controller.GameController">
   <stylesheets>
     <URL value="@../css/game.css" />
   </stylesheets>
@@ -20,7 +20,7 @@
         <Pane prefWidth="200.0" />
         <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" HBox.hgrow="ALWAYS">
           <children>
-            <Text id="title" fill="#ffe34a" text="This is a Level Title" textAlignment="CENTER" />
+            <Text id="title" fx:id="title" fill="#ffe34a" text="This is a Level Title" textAlignment="CENTER" />
           </children>
         </FlowPane>
         <Pane prefWidth="100.0" />

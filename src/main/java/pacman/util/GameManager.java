@@ -2,6 +2,7 @@ package pacman.util;
 
 import javafx.scene.input.KeyEvent;
 import pacman.constant.GameStatus;
+import pacman.controller.GameController;
 import pacman.model.Cookie;
 import pacman.model.Ghost;
 import pacman.model.Life;
@@ -10,14 +11,19 @@ import pacman.model.Spawn;
 
 public class GameManager {
   private Map map;
+  private GameController gameController;
   private GameStatus gameStatus;
   private Life life;
 
   /** Constructor */
-  public GameManager(Map map) {
+  public GameManager(Map map, GameController gameController) {
     // add map
     this.map = map;
-    map.setParentGameManager(this);
+    this.map.setParentGameManager(this);
+
+    // add controller to control UI
+    this.gameController = gameController;
+    this.initUI();
 
     // init game status
     this.gameStatus = GameStatus.PAUSE;
@@ -120,5 +126,9 @@ public class GameManager {
     Spawn spawn = map.getSpawn();
     map.getPacman().setX(spawn.getX());
     map.getPacman().setY(spawn.getY());
+  }
+
+  private void initUI() {
+    gameController.setTitle(map.getTitle());
   }
 }

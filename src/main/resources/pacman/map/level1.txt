@@ -1,5 +1,5 @@
 /* Level 1 */
-/* @DESCRIPTION Here we go! */
+@TITLE #1 So Easy!
 
 #########################
 #@....#...........#.....#

@@ -15,6 +15,7 @@ public class Map {
   private Set<Ghost> ghosts;
   private Pacman pacman;
   private Spawn spawn;
+  private String title;
 
   public Map(String mapFileName) {
     this.mapFileName = mapFileName;
@@ -48,11 +49,18 @@ public class Map {
     return spawn;
   }
 
+  public String getTitle() {
+    return title;
+  }
+
   private void read(String fileName) throws Exception {
 
     // read map
     MapReader mapReader = new MapReader(fileName, this);
     mapReader.readFile();
+
+    // get config
+    title = mapReader.getTitle();
 
     // initialize grids
     obstacles = mapReader.getObstacles();

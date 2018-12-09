@@ -9,6 +9,7 @@ import pacman.Main;
 import pacman.constant.FileName;
 import pacman.constant.MapConfig;
 import pacman.constant.SceneName;
+import pacman.controller.GameController;
 import pacman.model.Map;
 
 public class SceneSwitch {
@@ -32,7 +33,8 @@ public class SceneSwitch {
   }
 
   private void switchToGame() throws Exception {
-    Pane root = FXMLLoader.load(getClass().getResource(FileName.VIEW_GAME));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource(FileName.VIEW_GAME));
+    Pane root = loader.load();
     Scene gameScene = new Scene(root);
     setScene(gameScene);
 
@@ -43,7 +45,8 @@ public class SceneSwitch {
     Map map = new Map(FileName.MAP_LEVEL_1);
     map.draw(mapPane);
 
-    GameManager gameManager = new GameManager(map);
+    GameController gameController = loader.getController();
+    GameManager gameManager = new GameManager(map, gameController);
 
     gameScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.handleKeyPressed(event));
     gameScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameManager.handleKeyReleased(event));

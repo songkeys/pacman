@@ -17,6 +17,7 @@ public class MapReader {
   private String fileName;
   private int mazeLineCount;
   private Map map;
+  private String title;
   private Set<Obstacle> obstacles;
   private Set<Cookie> cookies;
   private Set<Ghost> ghosts;
@@ -52,6 +53,10 @@ public class MapReader {
     return spawn;
   }
 
+  public String getTitle() {
+    return title;
+  }
+
   private boolean isPacmanGrid(String grid) {
     return grid.equals("@");
   }
@@ -76,9 +81,19 @@ public class MapReader {
     return line.replaceAll("\\s+", "").isEmpty();
   }
 
+  private boolean isTitleLine(String line) {
+    return line.startsWith("@TITLE ");
+  }
+
   private void processLine(String line) {
     // check if the line is a comment or is empty
     if (isCommentLine(line) || isEmptyLine(line)) {
+      return;
+    }
+
+    // check if the line is a title
+    if (isTitleLine(line)) {
+      title = line.replace("@TITLE ", "").trim();
       return;
     }
 
