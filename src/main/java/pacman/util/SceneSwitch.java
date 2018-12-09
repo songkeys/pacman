@@ -27,26 +27,27 @@ public class SceneSwitch {
   }
 
   private void switchToStart() throws Exception {
-    Pane root = FXMLLoader.load(getClass().getResource("/pacman/view/start.fxml"));
+    Pane root = FXMLLoader.load(getClass().getResource(FileName.VIEW_START));
     Scene startScene = new Scene(root);
     setScene(startScene);
   }
 
   private void switchToGame() throws Exception {
-    Pane root = new Pane();
-    Scene theScene = new Scene(root);
-    setScene(theScene);
+    Pane root = FXMLLoader.load(getClass().getResource(FileName.VIEW_GAME));
+    Scene gameScene = new Scene(root);
+    setScene(gameScene);
 
+    Pane mapPane = (Pane) gameScene.lookup("#map");
     Canvas canvas = new Canvas(MapConfig.WIDTH, MapConfig.HEIGHT);
-    root.getChildren().add(canvas);
+    mapPane.getChildren().add(canvas);
 
     Map map = new Map(FileName.MAP_LEVEL_1);
-    map.draw(root);
+    map.draw(mapPane);
 
     GameManager gameManager = new GameManager(map);
 
-    theScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.handleKeyPressed(event));
-    theScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameManager.handleKeyReleased(event));
+    gameScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.handleKeyPressed(event));
+    gameScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameManager.handleKeyReleased(event));
   }
 
   public void switchTo(SceneName sceneName) throws Exception {

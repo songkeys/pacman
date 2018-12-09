@@ -1,6 +1,9 @@
 package pacman.model;
 
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import pacman.constant.FileName;
 
 public class Obstacle extends Grid {
 
@@ -18,5 +21,9 @@ public class Obstacle extends Grid {
 
     // set color
     this.setFill(Color.RED);
+
+    // set image
+    Image image = new Image(FileName.IMAGE_OBSTACLE);
+    this.setFill(new ImagePattern(image));
   }
 }

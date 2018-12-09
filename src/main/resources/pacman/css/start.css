@@ -1,5 +1,6 @@
 .root {
   -fx-font-size: 30px;
+  -fx-font-family: "Comic Sans MS";
   -fx-background-image: url("../image/startbg.jpg");
   -fx-background-repeat: no-repeat;
   -fx-background-attachment: fixed;
