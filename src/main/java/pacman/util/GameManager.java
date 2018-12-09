@@ -7,13 +7,8 @@ import pacman.model.Ghost;
 import pacman.model.Life;
 import pacman.model.Map;
 import pacman.model.Spawn;
-import pacman.util.Animation;
 
 public class GameManager {
-  private int lifes;
-  private int score;
-  private boolean gameEnded;
-  private int cookiesEaten;
   private Map map;
   private GameStatus gameStatus;
   private Life life;
@@ -61,7 +56,7 @@ public class GameManager {
     }
   }
 
-  public void handleCookieEaten(Cookie cookie) {
+  public void handleCookieTouched(Cookie cookie) {
     cookie.eat();
   }
 

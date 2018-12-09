@@ -39,6 +39,7 @@ public class Ghost extends MovableGrid implements Runnable {
   }
 
   private Direction findDirectionToMove() {
+    // get all possible directions to go on flank
     Set<Direction> directionsToGo = new HashSet<>();
     Set<Grid> obstacles = (Set<Grid>) (Set<?>) getParentMap().getObstacles();
     switch (direction) {
@@ -62,18 +63,23 @@ public class Ghost extends MovableGrid implements Runnable {
         break;
     }
 
-    Direction directionToGo = direction;
-    int i = 0;
-    Boolean randBool = new Random().nextBoolean();
-    int j = randBool ? 1 : 0;
-    for (Direction direction : directionsToGo) {
-      if (i == j) {
-        directionToGo = direction;
+    // check if there is no directions to go but the opposite one
+    if (directionsToGo.size() == 0 && isGoingToTouchGrids(direction, obstacles)) {
+      return Direction.getOpposite(direction);
+    } else {
+      //  pick a direction randomly
+      Direction directionToGo = direction;
+      int i = 0;
+      Boolean randBool = new Random().nextBoolean();
+      int j = randBool ? 1 : 0;
+      for (Direction direction : directionsToGo) {
+        if (i == j) {
+          directionToGo = direction;
+        }
+        i++;
       }
-      i++;
+      return directionToGo;
     }
-
-    return directionToGo;
   }
 
   private void moveToAnotherDirection() {

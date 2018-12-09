@@ -33,15 +33,21 @@ public class Pacman extends MovableGrid {
   }
 
   private void checkTouchingCookies() {
+    boolean isAllEaten = true;
     Set<Cookie> cookies = getParentMap().getCookies();
     for (Cookie cookie : cookies) {
       if (!cookie.isEaten() && isTouching(cookie, MapConfig.COOKIE_PADDING)) {
-        getParentMap().getParentGameManager().handleCookieEaten(cookie);
+        getParentMap().getParentGameManager().handleCookieTouched(cookie);
         return;
+      }
+      if (!cookie.isEaten()) {
+        isAllEaten = false;
       }
     }
 
-    // if every cookie has been eaten
-    getParentMap().getParentGameManager().winGame();
+    // wining condition: all cookies is eaten
+    if (isAllEaten) {
+      getParentMap().getParentGameManager().winGame();
+    }
   }
 }
