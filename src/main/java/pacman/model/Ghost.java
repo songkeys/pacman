@@ -15,7 +15,15 @@ public class Ghost extends MovableGrid implements Runnable {
   public Ghost(Map map, double row, double column) {
     super(map, row, column);
 
-    this.setImage(FileName.IMAGE_PACMAN);
+    // set a random ghost image
+    int randomIndex = new Random().nextInt(FileName.IMAGE_GHOSTS.size());
+    int index = 0;
+    for (String image : FileName.IMAGE_GHOSTS) {
+      if (index == randomIndex) {
+        this.setImage(image);
+      }
+      index++;
+    }
 
     // set initial direction
     this.direction = Direction.UP;
@@ -24,15 +32,19 @@ public class Ghost extends MovableGrid implements Runnable {
   private void moveTo(Direction direction) {
     switch (direction) {
       case UP:
+        setScaleX(-1); // to reverse the image in x-axis
         moveUp.start();
         break;
       case DOWN:
+        setScaleX(1);
         moveDown.start();
         break;
       case LEFT:
+        setScaleX(-1);
         moveLeft.start();
         break;
       case RIGHT:
+        setScaleX(1);
         moveRight.start();
         break;
     }
