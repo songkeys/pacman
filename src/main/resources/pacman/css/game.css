@@ -1,0 +1,27 @@
+
+.root {
+  -fx-font-family: "Comic Sans MS";
+}
+
+.top {
+  -fx-background-color: #353535;
+  -fx-stroke: #000;
+  -fx-stroke-width: 1;
+  -fx-effect: dropshadow(two-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+  -fx-text-fill: #ff0;
+  -fx-font-size: 25px;
+}
+
+.top-icon {
+}
+
+#title {
+}
+
+#map {
+  -fx-background-image: url("../image/floor2.png");
+  -fx-background-repeat: repeat;
+  -fx-background-attachment: fixed;
+  -fx-background-position: center;
+  -fx-background-size: 50px 50px;
+}

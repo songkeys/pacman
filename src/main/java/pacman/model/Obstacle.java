@@ -1,11 +1,8 @@
 package pacman.model;
 
-import javafx.scene.paint.Color;
+import pacman.constant.FileName;
 
 public class Obstacle extends Grid {
-
-  /** The thickness of the obstacle. */
-  public static double THICKNESS = 25;
 
   /**
    * Initializes the Obstacle object.
@@ -16,7 +13,6 @@ public class Obstacle extends Grid {
   public Obstacle(Map map, double row, double column) {
     super(map, row, column);
 
-    // set color
-    this.setFill(Color.RED);
+    this.setImage(FileName.IMAGE_OBSTACLE);
   }
 }

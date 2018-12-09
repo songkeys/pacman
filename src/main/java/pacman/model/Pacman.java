@@ -1,8 +1,6 @@
 package pacman.model;
 
 import java.util.Set;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import pacman.constant.Direction;
 import pacman.constant.FileName;
 import pacman.constant.MapConfig;
@@ -12,9 +10,7 @@ public class Pacman extends MovableGrid {
   public Pacman(Map map, double row, double column) {
     super(map, row, column);
 
-    // set image
-    Image image = new Image(FileName.IMAGE_PACMAN);
-    this.setFill(new ImagePattern(image));
+    this.setImage(FileName.IMAGE_PACMAN);
   }
 
   @Override
@@ -37,12 +33,21 @@ public class Pacman extends MovableGrid {
   }
 
   private void checkTouchingCookies() {
+    boolean isAllEaten = true;
     Set<Cookie> cookies = getParentMap().getCookies();
     for (Cookie cookie : cookies) {
-      if (isTouching(cookie, MapConfig.COOKIE_PADDING)) {
-        cookie.hide();
+      if (!cookie.isEaten() && isTouching(cookie, MapConfig.COOKIE_PADDING)) {
+        getParentMap().getParentGameManager().handleCookieTouched(cookie);
         return;
       }
+      if (!cookie.isEaten()) {
+        isAllEaten = false;
+      }
+    }
+
+    // wining condition: all cookies is eaten
+    if (isAllEaten) {
+      getParentMap().getParentGameManager().winGame();
     }
   }
 }

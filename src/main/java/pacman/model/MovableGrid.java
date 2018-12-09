@@ -66,7 +66,7 @@ public abstract class MovableGrid extends Grid {
   }
 
   public boolean isGoingToTouchGrids(Direction direction, Set<Grid> grids, double padding) {
-    // generate a mock grid at the next step
+    // calculate next step based on direction
     double nextX = this.getX();
     double nextY = this.getY();
     switch (direction) {
@@ -83,6 +83,16 @@ public abstract class MovableGrid extends Grid {
         nextY += MapConfig.STEP;
         break;
     }
+
+    // check if the next step is beyond screen
+    if (nextX < 0
+        || nextY < 0
+        || nextX + MapConfig.GRID_LENGTH > MapConfig.WIDTH
+        || nextY + MapConfig.GRID_LENGTH > MapConfig.HEIGHT) {
+      return true;
+    }
+
+    // generate a mock grid at the next step
     Grid nextPositionGrid =
         new Grid(getParentMap(), nextX / MapConfig.GRID_LENGTH, nextY / MapConfig.GRID_LENGTH);
 

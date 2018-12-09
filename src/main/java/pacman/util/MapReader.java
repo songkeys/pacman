@@ -10,16 +10,19 @@ import pacman.model.Ghost;
 import pacman.model.Map;
 import pacman.model.Obstacle;
 import pacman.model.Pacman;
+import pacman.model.Spawn;
 
 public class MapReader {
 
   private String fileName;
   private int mazeLineCount;
   private Map map;
+  private String title;
   private Set<Obstacle> obstacles;
   private Set<Cookie> cookies;
   private Set<Ghost> ghosts;
   private Pacman pacman;
+  private Spawn spawn;
 
   public MapReader(String fileName, Map map) {
     this.fileName = fileName;
@@ -46,6 +49,26 @@ public class MapReader {
     return ghosts;
   }
 
+  public Spawn getSpawn() {
+    return spawn;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  private int getCookieScore(String cookieGrid) {
+    if (cookieGrid.equals(".")) {
+      return 1;
+    } else if (cookieGrid.equals("o")) {
+      return 5;
+    } else if (cookieGrid.equals("O")) {
+      return 10;
+    } else {
+      return 0;
+    }
+  }
+
   private boolean isPacmanGrid(String grid) {
     return grid.equals("@");
   }
@@ -55,7 +78,7 @@ public class MapReader {
   }
 
   private boolean isCookieGrid(String grid) {
-    return grid.equals(".");
+    return grid.equals(".") || grid.equals("o") || grid.equals("O");
   }
 
   private boolean isObstacleGrid(String grid) {
@@ -70,9 +93,19 @@ public class MapReader {
     return line.replaceAll("\\s+", "").isEmpty();
   }
 
+  private boolean isTitleLine(String line) {
+    return line.startsWith("@TITLE ");
+  }
+
   private void processLine(String line) {
     // check if the line is a comment or is empty
     if (isCommentLine(line) || isEmptyLine(line)) {
+      return;
+    }
+
+    // check if the line is a title
+    if (isTitleLine(line)) {
+      title = line.replace("@TITLE ", "").trim();
       return;
     }
 
@@ -90,11 +123,12 @@ public class MapReader {
       // pacman
       if (isPacmanGrid(grid)) {
         pacman = new Pacman(map, mazeGridCount, mazeLineCount);
+        spawn = new Spawn(map, mazeGridCount, mazeLineCount);
       }
 
       // cookie
       if (isCookieGrid(grid)) {
-        Cookie cookie = new Cookie(map, mazeGridCount, mazeLineCount);
+        Cookie cookie = new Cookie(map, mazeGridCount, mazeLineCount, getCookieScore(grid));
         cookies.add(cookie);
       }
 

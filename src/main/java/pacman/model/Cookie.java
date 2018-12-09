@@ -1,30 +1,41 @@
 package pacman.model;
 
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import pacman.constant.FileName;
 
 public class Cookie extends Grid {
 
   private int value;
 
-  public Cookie(Map map, double row, double column) {
+  public Cookie(Map map, double row, double column, int value) {
     super(map, row, column);
 
-    // set image
-    Image image = new Image(FileName.IMAGE_COOKIE);
-    this.setFill(new ImagePattern(image));
+    switch (value) {
+      case 1:
+        this.setImage(FileName.IMAGE_COOKIE_SMALL);
+      case 5:
+        this.setImage(FileName.IMAGE_COOKIE_MEDIUM);
+      case 10:
+        this.setImage(FileName.IMAGE_COOKIE_BIG);
+      default:
+        this.setImage(FileName.IMAGE_COOKIE_SMALL);
+    }
+
+    this.value = value;
+  }
+
+  public Cookie(Map map, double row, double column) {
+    this(map, row, column, 1);
   }
 
   public int getValue() {
     return value;
   }
 
-  public void hide() {
-    this.setVisible(false);
+  public void eat() {
+    setVisible(false);
   }
 
-  public void show() {
-    this.setVisible(true);
+  public boolean isEaten() {
+    return !isVisible();
   }
 }

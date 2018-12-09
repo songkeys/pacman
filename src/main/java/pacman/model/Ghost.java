@@ -3,47 +3,55 @@ package pacman.model;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import pacman.constant.Direction;
 import pacman.constant.FileName;
+import pacman.constant.MapConfig;
 
 public class Ghost extends MovableGrid implements Runnable {
 
   private Direction direction;
   private int timeWalked;
 
-  public Ghost(Map map, double x, double y) {
-    super(map, x, y);
+  public Ghost(Map map, double row, double column) {
+    super(map, row, column);
 
-    // set image
-    Image image = new Image(FileName.IMAGE_PACMAN);
-    this.setFill(new ImagePattern(image));
+    // set a random ghost image
+    int randomIndex = new Random().nextInt(FileName.IMAGE_GHOSTS.size());
+    int index = 0;
+    for (String image : FileName.IMAGE_GHOSTS) {
+      if (index == randomIndex) {
+        this.setImage(image);
+      }
+      index++;
+    }
 
     // set initial direction
     this.direction = Direction.UP;
-
-    run();
   }
 
   private void moveTo(Direction direction) {
     switch (direction) {
       case UP:
+        setScaleX(-1); // to reverse the image in x-axis
         moveUp.start();
         break;
       case DOWN:
+        setScaleX(1);
         moveDown.start();
         break;
       case LEFT:
+        setScaleX(-1);
         moveLeft.start();
         break;
       case RIGHT:
+        setScaleX(1);
         moveRight.start();
         break;
     }
   }
 
   private Direction findDirectionToMove() {
+    // get all possible directions to go on flank
     Set<Direction> directionsToGo = new HashSet<>();
     Set<Grid> obstacles = (Set<Grid>) (Set<?>) getParentMap().getObstacles();
     switch (direction) {
@@ -67,27 +75,35 @@ public class Ghost extends MovableGrid implements Runnable {
         break;
     }
 
-    Direction directionToGo = direction;
-    int i = 0;
-    Boolean randBool = new Random().nextBoolean();
-    int j = randBool ? 1 : 0;
-    for (Direction direction : directionsToGo) {
-      if (i == j) {
-        directionToGo = direction;
+    // check if there is no directions to go but the opposite one
+    if (directionsToGo.size() == 0 && isGoingToTouchGrids(direction, obstacles)) {
+      return Direction.getOpposite(direction);
+    } else {
+      //  pick a direction randomly
+      Direction directionToGo = direction;
+      int i = 0;
+      Boolean randBool = new Random().nextBoolean();
+      int j = randBool ? 1 : 0;
+      for (Direction direction : directionsToGo) {
+        if (i == j) {
+          directionToGo = direction;
+        }
+        i++;
       }
-      i++;
+      return directionToGo;
     }
-
-    return directionToGo;
   }
 
   private void moveToAnotherDirection() {
-    this.direction = findDirectionToMove();
-    moveUp.stop();
-    moveDown.stop();
-    moveLeft.stop();
-    moveRight.stop();
-    moveTo(this.direction);
+    direction = findDirectionToMove();
+    freeze();
+    moveTo(direction);
+  }
+
+  private void checkTouchingPacman() {
+    if (getParentMap().getPacman().isTouching(this, MapConfig.GHOST_PADDING)) {
+      getParentMap().getParentGameManager().handleGhostTouched();
+    }
   }
 
   @Override
@@ -97,6 +113,7 @@ public class Ghost extends MovableGrid implements Runnable {
       moveToAnotherDirection();
       timeWalked = 0;
     }
+    checkTouchingPacman();
   }
 
   @Override
@@ -107,5 +124,12 @@ public class Ghost extends MovableGrid implements Runnable {
   @Override
   public void run() {
     moveTo(direction);
+  }
+
+  public void freeze() {
+    moveUp.stop();
+    moveDown.stop();
+    moveLeft.stop();
+    moveRight.stop();
   }
 }

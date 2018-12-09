@@ -1,25 +1,21 @@
 package pacman.model;
 
-import javafx.scene.Group;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-
 public class Score {
+  private int value;
 
-  public Text score;
-  public Text lifes;
+  public Score() {
+    this.value = 0;
+  }
 
-  public Score(Group root) {
-    this.score = new Text(Obstacle.THICKNESS * 4, Obstacle.THICKNESS * 28, "Score: 0");
-    this.lifes = new Text(Obstacle.THICKNESS * 20, Obstacle.THICKNESS * 28, "Lifes: 3");
-    score.setFill(Color.MAGENTA);
-    score.setFont(Font.font("Arial", 30));
+  public void gain(int value) {
+    this.value += value;
+  }
 
-    lifes.setFill(Color.MAROON);
-    lifes.setFont(Font.font("Arial", 30));
+  public void lose(int value) {
+    this.value -= value;
+  }
 
-    root.getChildren().add(score);
-    root.getChildren().add(lifes);
+  public int getValue() {
+    return value;
   }
 }

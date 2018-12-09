@@ -5,35 +5,37 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-
-<BorderPane prefHeight="700.0" prefWidth="1250.0" styleClass="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pacman.controller.Start">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="700.0" prefWidth="1250.0"
+  styleClass="root" xmlns="http://javafx.com/javafx/11.0.1"
+  fx:controller="pacman.controller.StartController">
   <stylesheets>
-    <URL value="@../css/start.css" />
+    <URL value="@../css/start.css"/>
   </stylesheets>
   <center>
-    <Pane styleClass="center" BorderPane.alignment="CENTER">
+    <Pane BorderPane.alignment="CENTER" styleClass="center">
       <children>
         <VBox prefHeight="450.0" prefWidth="850.0" styleClass="menu">
           <children>
-            <Button mnemonicParsing="false" onAction="#handleClickStart" styleClass="menu-item" text="Start" />
-            <Button mnemonicParsing="false" styleClass="menu-item" text="Scores" />
-            <Button mnemonicParsing="false" styleClass="menu-item" text="Settings" />
-                  <Button mnemonicParsing="false" styleClass="menu-item" text="Exit" />
+            <Button mnemonicParsing="false" onAction="#handleClickStart" styleClass="menu-item"
+              text="Start"/>
+            <Button mnemonicParsing="false" styleClass="menu-item" text="Scores"/>
+            <Button mnemonicParsing="false" styleClass="menu-item" text="Settings"/>
+            <Button mnemonicParsing="false" styleClass="menu-item" text="Exit"/>
           </children>
         </VBox>
       </children>
     </Pane>
   </center>
   <top>
-    <Pane prefHeight="200.0" prefWidth="200.0" styleClass="top" BorderPane.alignment="CENTER" />
+    <Pane BorderPane.alignment="CENTER" prefHeight="200.0" prefWidth="200.0" styleClass="top"/>
   </top>
   <left>
-    <Pane prefHeight="450.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+    <Pane BorderPane.alignment="CENTER" prefHeight="450.0" prefWidth="200.0"/>
   </left>
   <right>
-    <Pane prefHeight="450.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+    <Pane BorderPane.alignment="CENTER" prefHeight="450.0" prefWidth="200.0"/>
   </right>
   <bottom>
-    <Pane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+    <Pane BorderPane.alignment="CENTER" prefHeight="50.0" prefWidth="200.0"/>
   </bottom>
 </BorderPane>

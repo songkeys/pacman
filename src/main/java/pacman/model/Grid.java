@@ -1,5 +1,7 @@
 package pacman.model;
 
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import pacman.constant.MapConfig;
 
@@ -25,6 +27,11 @@ public class Grid extends Rectangle {
     return parentMap;
   }
 
+  public void setImage(String filename) {
+    Image image = new Image(filename);
+    setFill(new ImagePattern(image));
+  }
+
   public boolean isTouching(Grid grid, double padding) {
     double myX = this.getX();
     double myY = this.getY();
@@ -35,9 +42,5 @@ public class Grid extends Rectangle {
         && myX > itsX - MapConfig.GRID_LENGTH + padding
         && myY < itsY + MapConfig.GRID_LENGTH - padding
         && myY > itsY - MapConfig.GRID_LENGTH + padding;
-  }
-
-  public boolean isTouching(Grid grid) {
-    return isTouching(grid, 0);
   }
 }
