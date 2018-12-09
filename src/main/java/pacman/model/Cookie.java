@@ -16,11 +16,11 @@ public class Cookie extends Grid {
     return value;
   }
 
-  public void hide() {
-    this.setVisible(false);
+  public void eat() {
+    setVisible(false);
   }
 
-  public void show() {
-    this.setVisible(true);
+  public boolean isEaten() {
+    return !isVisible();
   }
 }

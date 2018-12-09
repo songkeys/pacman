@@ -5,7 +5,6 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import pacman.GameManager;
 import pacman.Main;
 import pacman.constant.FileName;
 import pacman.constant.MapConfig;

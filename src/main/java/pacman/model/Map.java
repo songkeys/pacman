@@ -2,7 +2,7 @@ package pacman.model;
 
 import java.util.Set;
 import javafx.scene.layout.Pane;
-import pacman.GameManager;
+import pacman.util.GameManager;
 import pacman.util.MapPainter;
 import pacman.util.MapReader;
 

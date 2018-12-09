@@ -1,7 +1,8 @@
-package pacman;
+package pacman.util;
 
 import javafx.scene.input.KeyEvent;
 import pacman.constant.GameStatus;
+import pacman.model.Cookie;
 import pacman.model.Ghost;
 import pacman.model.Life;
 import pacman.model.Map;
@@ -42,8 +43,26 @@ public class GameManager {
     gameStatus = GameStatus.PAUSE;
   }
 
-  public void handleTouchedGhost() {
+  public void loseGame() {
+    freezeGhosts();
+    gameStatus = GameStatus.LOSE;
+  }
+
+  public void winGame() {
+    freezeGhosts();
+    gameStatus = GameStatus.WIN;
+  }
+
+  public void handleGhostTouched() {
     sendPacmanToSpawn();
+    life.lost();
+    if (life.getRemain() <= 0) {
+      loseGame();
+    }
+  }
+
+  public void handleCookieEaten(Cookie cookie) {
+    cookie.eat();
   }
 
   public void handleKeyPressed(KeyEvent event) {
@@ -107,53 +126,4 @@ public class GameManager {
     map.getPacman().setX(spawn.getX());
     map.getPacman().setY(spawn.getY());
   }
-
-  /** Set one life less */
-  //  private void lifeLost() {
-  //    for (Ghost ghost : ghosts) {
-  //      //      ghost.getAnimation().stop();
-  //    }
-  //    this.pacman.setX(2.5 * Obstacle.THICKNESS);
-  //    this.pacman.setY(2.5 * Obstacle.THICKNESS);
-  //    lifes--;
-  //    score -= 10;
-  //    this.scoreBoard.lifes.setText("Lifes: " + this.lifes);
-  //    this.scoreBoard.score.setText("Score: " + this.score);
-  //    if (lifes == 0) {
-  //      this.endGame();
-  //    }
-  //  }
-  //
-  //  /** Ends the game */
-  //  private void endGame() {
-  //    this.gameEnded = true;
-  //    root.getChildren().remove(pacman);
-  //    for (Ghost ghost : ghosts) {
-  //      root.getChildren().remove(ghost);
-  //    }
-  //    javafx.scene.text.Text endGame = new javafx.scene.text.Text("Game Over, press ESC to
-  // restart");
-  //    endGame.setX(Obstacle.THICKNESS * 3);
-  //    endGame.setY(Obstacle.THICKNESS * 28);
-  //    endGame.setFont(Font.font("Arial", 40));
-  //    endGame.setFill(Color.ROYALBLUE);
-  //    root.getChildren().remove(this.scoreBoard.score);
-  //    root.getChildren().remove(this.scoreBoard.lifes);
-  //    root.getChildren().add(endGame);
-  //  }
-  //
-  //  /** Restart the game */
-  //  public void restartGame(KeyEvent event) throws Exception {
-  //    if (event.getCode() == KeyCode.ESCAPE && gameEnded) {
-  //      root.getChildren().clear();
-  //      this.cookieSet.clear();
-  //      this.ghosts.clear();
-  //      this.pacman.setX(2.5 * Obstacle.THICKNESS);
-  //      this.pacman.setY(2.5 * Obstacle.THICKNESS);
-  //      this.lifes = 3;
-  //      this.score = 0;
-  //      this.cookiesEaten = 0;
-  //      gameEnded = false;
-  //    }
-  //  }
 }
