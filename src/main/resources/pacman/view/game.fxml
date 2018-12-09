@@ -32,9 +32,9 @@
                      </FlowPane.margin>
                   </ImageView>
                   <Text id="title" fx:id="lifeCount" fill="#e12525" text="0" textAlignment="CENTER" />
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" styleClass="top-icon">
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="top-icon">
                      <image>
-                        <Image url="@../image/cookie.png" />
+                        <Image url="@../image/cookie1.png" />
                      </image>
                      <FlowPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

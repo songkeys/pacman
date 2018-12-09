@@ -7,6 +7,7 @@ import pacman.model.Cookie;
 import pacman.model.Ghost;
 import pacman.model.Life;
 import pacman.model.Map;
+import pacman.model.Score;
 import pacman.model.Spawn;
 
 public class GameManager {
@@ -14,6 +15,7 @@ public class GameManager {
   private GameController gameController;
   private GameStatus gameStatus;
   private Life life;
+  private Score score;
 
   /** Constructor */
   public GameManager(Map map, GameController gameController) {
@@ -29,6 +31,9 @@ public class GameManager {
 
     // init life
     this.life = new Life();
+
+    // int score
+    this.score = new Score();
 
     // init UI
     this.initUI();
@@ -68,7 +73,9 @@ public class GameManager {
 
   public void handleCookieTouched(Cookie cookie) {
     cookie.eat();
-    cookie.
+    score.gain(cookie.getValue());
+
+    gameController.setScoreCount(score.getValue());
   }
 
   public void handleKeyPressed(KeyEvent event) {

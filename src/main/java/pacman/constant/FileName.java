@@ -8,7 +8,9 @@ public class FileName {
   public static final String MAP_LEVEL_1 = "level1.txt";
 
   public static final String IMAGE_PACMAN = "/pacman/image/pacman.png";
-  public static final String IMAGE_COOKIE = "/pacman/image/cookie.png";
+  public static final String IMAGE_COOKIE_SMALL = "/pacman/image/cookie1.png";
+  public static final String IMAGE_COOKIE_MEDIUM = "/pacman/image/cookie5.png";
+  public static final String IMAGE_COOKIE_BIG = "/pacman/image/cookie10.png";
   public static final String IMAGE_OBSTACLE = "/pacman/image/obstacle.png";
   public static final Set<String> IMAGE_GHOSTS =
       new HashSet<>(

@@ -57,6 +57,18 @@ public class MapReader {
     return title;
   }
 
+  private int getCookieScore(String cookieGrid) {
+    if (cookieGrid.equals(".")) {
+      return 1;
+    } else if (cookieGrid.equals("o")) {
+      return 5;
+    } else if (cookieGrid.equals("O")) {
+      return 10;
+    } else {
+      return 0;
+    }
+  }
+
   private boolean isPacmanGrid(String grid) {
     return grid.equals("@");
   }
@@ -66,7 +78,7 @@ public class MapReader {
   }
 
   private boolean isCookieGrid(String grid) {
-    return grid.equals(".");
+    return grid.equals(".") || grid.equals("o") || grid.equals("O");
   }
 
   private boolean isObstacleGrid(String grid) {
@@ -116,7 +128,7 @@ public class MapReader {
 
       // cookie
       if (isCookieGrid(grid)) {
-        Cookie cookie = new Cookie(map, mazeGridCount, mazeLineCount);
+        Cookie cookie = new Cookie(map, mazeGridCount, mazeLineCount, getCookieScore(grid));
         cookies.add(cookie);
       }
 
