@@ -1,6 +1,6 @@
 package pacman.constant;
 
 public enum SceneName {
-  START,
+  HOME,
   GAME,
 }

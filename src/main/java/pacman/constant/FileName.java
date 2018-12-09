@@ -26,6 +26,6 @@ public class FileName {
               "/pacman/image/ghost9.png",
               "/pacman/image/ghost10.png"));
 
-  public static final String VIEW_START = "/pacman/view/start.fxml";
+  public static final String VIEW_START = "/pacman/view/home.fxml";
   public static final String VIEW_GAME = "/pacman/view/game.fxml";
 }

@@ -26,6 +26,6 @@ public class Main extends Application {
 
     // set up start scene
     SceneSwitch sceneSwitch = new SceneSwitch();
-    sceneSwitch.switchTo(SceneName.START);
+    sceneSwitch.switchTo(SceneName.HOME);
   }
 }

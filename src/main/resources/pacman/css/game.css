@@ -13,6 +13,20 @@
 }
 
 .top-icon {
+  -fx-stroke: #000;
+  -fx-stroke-width: 1;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0, 0, 0);
+}
+.top-icon-clickable:hover {
+  -fx-effect: dropshadow(three-pass-box, rgba(255, 255, 0, 0.6), 5, 0, 0, 0);
+  -fx-rotate: 10;
+  -fx-scale-x: 1.1;
+  -fx-scale-y: 1.1;
+}
+.top-icon-clickable:pressed {
+  -fx-rotate: 5;
+  -fx-scale-x: 1.05;
+  -fx-scale-y: 1.05;
 }
 
 #title {

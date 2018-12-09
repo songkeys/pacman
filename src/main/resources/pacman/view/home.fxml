@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.VBox?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="700.0" prefWidth="1250.0"
   styleClass="root" xmlns="http://javafx.com/javafx/11.0.1"
-  fx:controller="pacman.controller.StartController">
+  fx:controller="pacman.controller.HomeController">
   <stylesheets>
-    <URL value="@../css/start.css"/>
+    <URL value="@../css/home.css"/>
   </stylesheets>
   <center>
     <Pane BorderPane.alignment="CENTER" styleClass="center">

@@ -55,7 +55,7 @@ public class SceneSwitch {
   public void switchTo(SceneName sceneName) throws Exception {
     hideStage();
     switch (sceneName) {
-      case START:
+      case HOME:
         switchToStart();
         break;
       case GAME:

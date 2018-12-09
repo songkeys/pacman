@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import pacman.constant.SceneName;
 import pacman.util.SceneSwitch;
 
-public class StartController {
+public class HomeController {
 
   @FXML
   protected void handleClickStart() throws Exception {
