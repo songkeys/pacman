@@ -84,7 +84,7 @@ public class Ghost extends MovableGrid implements Runnable {
 
   private void checkTouchingPacman() {
     if (getParentMap().getPacman().isTouching(this, MapConfig.GHOST_PADDING)) {
-      System.out.println("123");
+      getParentMap().getParentGameManager().handleTouchedGhost();
     }
   }
 

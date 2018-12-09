@@ -10,6 +10,7 @@ import pacman.model.Ghost;
 import pacman.model.Map;
 import pacman.model.Obstacle;
 import pacman.model.Pacman;
+import pacman.model.Spawn;
 
 public class MapReader {
 
@@ -20,6 +21,7 @@ public class MapReader {
   private Set<Cookie> cookies;
   private Set<Ghost> ghosts;
   private Pacman pacman;
+  private Spawn spawn;
 
   public MapReader(String fileName, Map map) {
     this.fileName = fileName;
@@ -44,6 +46,10 @@ public class MapReader {
 
   public Set<Ghost> getGhosts() {
     return ghosts;
+  }
+
+  public Spawn getSpawn() {
+    return spawn;
   }
 
   private boolean isPacmanGrid(String grid) {
@@ -90,6 +96,7 @@ public class MapReader {
       // pacman
       if (isPacmanGrid(grid)) {
         pacman = new Pacman(map, mazeGridCount, mazeLineCount);
+        spawn = new Spawn(map, mazeGridCount, mazeLineCount);
       }
 
       // cookie

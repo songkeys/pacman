@@ -2,51 +2,50 @@ package pacman.model;
 
 import java.util.Set;
 import javafx.scene.layout.Pane;
+import pacman.GameManager;
 import pacman.util.MapPainter;
 import pacman.util.MapReader;
 
 public class Map {
 
   private String mapFileName;
+  private GameManager parentGameManager;
   private Set<Obstacle> obstacles;
   private Set<Cookie> cookies;
   private Set<Ghost> ghosts;
   private Pacman pacman;
+  private Spawn spawn;
 
   public Map(String mapFileName) {
     this.mapFileName = mapFileName;
+  }
+
+  public GameManager getParentGameManager() {
+    return parentGameManager;
+  }
+
+  public void setParentGameManager(GameManager parentGameManager) {
+    this.parentGameManager = parentGameManager;
   }
 
   public Pacman getPacman() {
     return pacman;
   }
 
-  public void setPacman(Pacman pacman) {
-    this.pacman = pacman;
-  }
-
   public Set<Cookie> getCookies() {
     return cookies;
-  }
-
-  public void setCookies(Set<Cookie> cookies) {
-    this.cookies = cookies;
   }
 
   public Set<Obstacle> getObstacles() {
     return obstacles;
   }
 
-  public void setObstacles(Set<Obstacle> obstacles) {
-    this.obstacles = obstacles;
-  }
-
   public Set<Ghost> getGhosts() {
     return ghosts;
   }
 
-  public void setGhosts(Set<Ghost> ghosts) {
-    this.ghosts = ghosts;
+  public Spawn getSpawn() {
+    return spawn;
   }
 
   private void read(String fileName) throws Exception {
@@ -60,6 +59,7 @@ public class Map {
     cookies = mapReader.getCookies();
     pacman = mapReader.getPacman();
     ghosts = mapReader.getGhosts();
+    spawn = mapReader.getSpawn();
   }
 
   public void draw(Pane root) throws Exception {
