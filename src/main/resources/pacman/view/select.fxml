@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="700.0" prefWidth="1250.0" styleClass="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pacman.controller.SelectController">
+
+  <stylesheets>
+    <URL value="@../css/select.css" />
+  </stylesheets>
+  <center>
+    <HBox alignment="CENTER" prefWidth="1000.0">
+      <children>
+        <FlowPane fx:id="leftPane" alignment="CENTER" prefWidth="500.0" styleClass="center-pane">
+          <children>
+            <VBox alignment="CENTER">
+              <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Set Up" />
+                <GridPane prefHeight="450.0" prefWidth="400.0">
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                  <children>
+                    <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                      <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nickname" textAlignment="CENTER" />
+                      </children>
+                    </FlowPane>
+                    <FlowPane alignment="CENTER" GridPane.columnIndex="1">
+                      <children>
+                        <TextField prefHeight="40.0" prefWidth="150.0" promptText="palyer" styleClass="text-field" />
+                      </children>
+                    </FlowPane>
+                    <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                      <children>
+
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Background" textAlignment="CENTER" />
+                      </children>
+                    </FlowPane>
+                    <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                      <children>
+                        <ComboBox fx:id="backgroundComboBox" onAction="#handleBackgroundChange" prefWidth="150.0" />
+                      </children>
+                    </FlowPane>
+                              <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wall" textAlignment="CENTER" />
+                                 </children>
+                              </FlowPane>
+                              <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <children>
+                                    <ComboBox fx:id="wallComboBox" onAction="#handleWallChange" prefWidth="150.0" />
+                                 </children>
+                              </FlowPane>
+                  </children>
+                </GridPane>
+              </children>
+            </VBox>
+          </children>
+        </FlowPane>
+        <Pane prefWidth="50.0" />
+        <FlowPane fx:id="rightPane" alignment="CENTER" prefWidth="500.0" styleClass="center-pane">
+          <children>
+            <VBox alignment="CENTER">
+              <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Levels" />
+                        <ListView prefHeight="450.0" prefWidth="400.0" />
+              </children>
+            </VBox>
+          </children>
+        </FlowPane>
+      </children>
+    </HBox>
+  </center>
+  <top>
+    <Pane prefHeight="50.0" BorderPane.alignment="CENTER" />
+  </top>
+  <bottom>
+    <FlowPane alignment="CENTER" prefHeight="50.0">
+      <children>
+        <Button mnemonicParsing="false" styleClass="confirm-btn" text="Go" />
+      </children>
+    </FlowPane>
+  </bottom>
+  <left>
+    <Pane prefWidth="100.0" BorderPane.alignment="CENTER" />
+  </left>
+  <right>
+    <Pane prefWidth="100.0" BorderPane.alignment="CENTER" />
+  </right>
+</BorderPane>

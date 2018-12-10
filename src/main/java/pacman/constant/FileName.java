@@ -7,6 +7,27 @@ import java.util.Set;
 public class FileName {
   public static final String MAP_LEVEL_1 = "level1.txt";
 
+  public static final Set<String> IMAGE_BACKGROUNDS =
+      new HashSet<>(
+          Arrays.asList(
+              "/pacman/image/floor/bedrock.png",
+              "/pacman/image/floor/dirt.png",
+              "/pacman/image/floor/gravel.png",
+              "/pacman/image/floor/packed_ice.png",
+              "/pacman/image/floor/polished_andesite.png",
+              "/pacman/image/floor/polished_diorite.png",
+              "/pacman/image/floor/polished_granite.png",
+              "/pacman/image/floor/red_concrete.png",
+              "/pacman/image/floor/red_sand.png",
+              "/pacman/image/floor/red_terracotta.png",
+              "/pacman/image/floor/sandstone.png",
+              "/pacman/image/floor/stone.png"));
+  public static final Set<String> IMAGE_OBSTACLES =
+      new HashSet<>(
+          Arrays.asList(
+              "/pacman/image/obstacle/prismarine_bricks.png",
+              "/pacman/image/obstacle/red_nether_bricks.png",
+              "/pacman/image/obstacle/stone_bricks.png"));
   public static final String IMAGE_PACMAN = "/pacman/image/pacman.png";
   public static final String IMAGE_COOKIE_SMALL = "/pacman/image/cookie1.png";
   public static final String IMAGE_COOKIE_MEDIUM = "/pacman/image/cookie5.png";
@@ -26,6 +47,7 @@ public class FileName {
               "/pacman/image/ghost9.png",
               "/pacman/image/ghost10.png"));
 
-  public static final String VIEW_START = "/pacman/view/home.fxml";
+  public static final String VIEW_HOME = "/pacman/view/home.fxml";
   public static final String VIEW_GAME = "/pacman/view/game.fxml";
+  public static final String VIEW_SELECT = "/pacman/view/select.fxml";
 }

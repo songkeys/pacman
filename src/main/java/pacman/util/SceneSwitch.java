@@ -27,9 +27,16 @@ public class SceneSwitch {
   }
 
   private void switchToStart() throws Exception {
-    Pane root = FXMLLoader.load(getClass().getResource(FileName.VIEW_START));
-    Scene startScene = new Scene(root);
-    setScene(startScene);
+    Pane root = FXMLLoader.load(getClass().getResource(FileName.VIEW_HOME));
+    Scene scene = new Scene(root);
+    setScene(scene);
+  }
+
+  private void switchToSelect() throws Exception {
+    Pane root = FXMLLoader.load(getClass().getResource(FileName.VIEW_SELECT));
+    Scene scene = new Scene(root);
+    //    scene.setCamera(new PerspectiveCamera());
+    setScene(scene);
   }
 
   private void switchToGame() throws Exception {
@@ -60,6 +67,9 @@ public class SceneSwitch {
         break;
       case GAME:
         switchToGame();
+        break;
+      case SELECT:
+        switchToSelect();
         break;
       default:
         switchToStart();

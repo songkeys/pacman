@@ -44,14 +44,14 @@
 }
 .menu-item:hover {
   -fx-text-fill: #ff0;
-  -fx-font-size: 33px;
+  -fx-font-size: 35px;
   -fx-stroke: #f00;
   -fx-stroke-width: 1;
   -fx-effect: dropshadow(three-pass-box, rgba(255, 0, 0, 0.8), 10, 0, 0, 0);
 }
 .menu-item:pressed {
   -fx-text-fill: #ff0;
-  -fx-font-size: 35px;
+  -fx-font-size: 33px;
   -fx-stroke: #f00;
   -fx-stroke-width: 1;
   -fx-effect: dropshadow(three-pass-box, rgba(255, 0, 0, 0.9), 10, 0, 0, 0);

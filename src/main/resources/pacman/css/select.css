@@ -1,0 +1,89 @@
+.root {
+  -fx-font-size: 30px;
+  -fx-font-family: "Comic Sans MS";
+  -fx-background-image: url("../image/selectbg.png");
+  -fx-background-repeat: no-repeat;
+  -fx-background-attachment: fixed;
+  -fx-background-position: center;
+  -fx-background-size: 100%;
+}
+
+.center-pane {
+  -fx-padding: 40px;
+  -fx-background-color: rgba(255, 255, 255, 0.5);
+  -fx-background-radius: 50px;
+  -fx-border-radius: 50px;
+  -fx-border-width: 3px;
+  -fx-border-color: rgba(255, 0, 0, 0.2);
+  -fx-effect: dropshadow(three-pass-box, rgba(255, 0, 0, 0.8), 5, 0, 0, 0);
+}
+
+.title {
+  -fx-font-size: 40px;
+  -fx-font-weight: bold;
+}
+
+.confirm-btn {
+  -fx-background-color: rgba(255, 255, 255, 0);
+  -fx-alignment: center;
+  -fx-font-size: 45px;
+  -fx-text-fill: #fff;
+  -fx-font-weight: bold;
+}
+
+.confirm-btn:hover {
+  -fx-text-fill: #ff0;
+  -fx-font-size: 48px;
+  -fx-stroke: #f00;
+  -fx-stroke-width: 1;
+  -fx-effect: dropshadow(three-pass-box, rgba(255, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.confirm-btn:pressed {
+  -fx-text-fill: #ff0;
+  -fx-font-size: 46px;
+  -fx-stroke: #f00;
+  -fx-stroke-width: 1;
+  -fx-effect: dropshadow(three-pass-box, rgba(255, 0, 0, 0.9), 10, 0, 0, 0);
+}
+
+.text-field {
+  -fx-background-color: rgba(0, 0, 0, 0);
+  -fx-border-width: 0px 0px 2px 0px;
+  -fx-border-color: #000;
+}
+
+.combo-box {
+  -fx-background-color: rgba(0, 0, 0, 0);
+  -fx-border-width: 2px;
+  -fx-border-color: #000;
+  -fx-border-radius: 10px;
+}
+
+.combo-box-popup .list-view {
+  /*-fx-pref-width: 200;*/ /* not working! */
+  -fx-pref-height: 300;
+}
+
+.combo-box-popup .list-view .list-cell {
+  -fx-background-color: rgba(255, 255, 255, 0.5);
+  -fx-text-fill: #000;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover {
+  -fx-background-color: rgba(0, 0, 0, 0.8);
+  -fx-text-fill: #fff;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover {
+  -fx-background-color: rgba(0, 0, 0, 0.5);
+  -fx-text-fill: #fff;
+}
+
+.list-view {
+  -fx-background-color: rgba(0, 0, 0, 0.1);
+  -fx-background-radius: 10px;
+  -fx-border-width: 1px;
+  -fx-border-color: #000;
+  -fx-border-radius: 10px;
+}

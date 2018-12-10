@@ -9,6 +9,6 @@ public class HomeController {
   @FXML
   protected void handleClickStart() throws Exception {
     SceneSwitch sceneSwitch = new SceneSwitch();
-    sceneSwitch.switchTo(SceneName.GAME);
+    sceneSwitch.switchTo(SceneName.SELECT);
   }
 }
