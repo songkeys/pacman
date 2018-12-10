@@ -82,7 +82,7 @@
             <VBox alignment="CENTER">
               <children>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Levels" />
-                        <ListView prefHeight="450.0" prefWidth="400.0" />
+                        <ListView fx:id="levelListView" prefHeight="450.0" prefWidth="400.0" />
               </children>
             </VBox>
           </children>

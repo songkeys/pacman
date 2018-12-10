@@ -3,12 +3,15 @@ package pacman.constant;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class FileName {
   public static final String MAP_LEVEL_1 = "level1.txt";
+  public static final Set<String> MAPS =
+      new TreeSet<>(Arrays.asList("#1 So Easy.txt", "#2 Sooo Esay.txt"));
 
   public static final Set<String> IMAGE_BACKGROUNDS =
-      new HashSet<>(
+      new TreeSet<>(
           Arrays.asList(
               "/pacman/image/floor/bedrock.png",
               "/pacman/image/floor/dirt.png",
@@ -23,7 +26,7 @@ public class FileName {
               "/pacman/image/floor/sandstone.png",
               "/pacman/image/floor/stone.png"));
   public static final Set<String> IMAGE_OBSTACLES =
-      new HashSet<>(
+      new TreeSet<>(
           Arrays.asList(
               "/pacman/image/obstacle/prismarine_bricks.png",
               "/pacman/image/obstacle/red_nether_bricks.png",

@@ -2,19 +2,20 @@ package pacman.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import pacman.constant.FileName;
 
 public class SelectController {
-  //  @FXML private FlowPane leftPane;
-  //  @FXML private FlowPane rightPane;
   @FXML private ComboBox backgroundComboBox;
   @FXML private ComboBox wallComboBox;
+  @FXML private ListView levelListView;
 
   @FXML
   public void initialize() {
@@ -25,22 +26,20 @@ public class SelectController {
     //    leftPane.getTransforms().add(new Rotate(-30, 0, 0, 0, Rotate.Y_AXIS));
     //    rightPane.getTransforms().add(new Rotate(30, 0, 0, 0, Rotate.Y_AXIS));
     //
-    // fallback:
 
     initBackgroundComboBox();
     initWallComboBox();
+    initLevelListView();
   }
 
   @FXML
-  protected void handleBackgroundChange(ActionEvent event) {
-    backgroundComboBox.setButtonCell(new ListCellFactory());
-    backgroundComboBox.getValue();
+  protected void handleBackgroundChange() {
+    backgroundComboBox.setButtonCell(new TextureListCellFactory());
   }
 
   @FXML
-  protected void handleWallChange(ActionEvent event) {
-    wallComboBox.setButtonCell(new ListCellFactory());
-    wallComboBox.getValue();
+  protected void handleWallChange() {
+    wallComboBox.setButtonCell(new TextureListCellFactory());
   }
 
   @FXML
@@ -48,7 +47,7 @@ public class SelectController {
     ObservableList<String> options = FXCollections.observableArrayList();
     options.addAll(FileName.IMAGE_BACKGROUNDS);
     backgroundComboBox.setItems(options);
-    backgroundComboBox.setCellFactory(f -> new ListCellFactory());
+    backgroundComboBox.setCellFactory(c -> new TextureListCellFactory());
   }
 
   @FXML
@@ -56,10 +55,18 @@ public class SelectController {
     ObservableList<String> options = FXCollections.observableArrayList();
     options.addAll(FileName.IMAGE_OBSTACLES);
     wallComboBox.setItems(options);
-    wallComboBox.setCellFactory(f -> new ListCellFactory());
+    wallComboBox.setCellFactory(c -> new TextureListCellFactory());
   }
 
-  public class ListCellFactory extends ListCell<String> {
+  @FXML
+  private void initLevelListView() {
+    ObservableList<String> options = FXCollections.observableArrayList();
+    options.addAll(FileName.MAPS);
+    levelListView.setItems(options);
+    levelListView.setCellFactory(c -> new LevelListCellFactory());
+  }
+
+  private class TextureListCellFactory extends ListCell<String> {
     private ImageView imageView = new ImageView();
 
     @Override
@@ -68,14 +75,46 @@ public class SelectController {
       setGraphic(null);
       setText(null);
       if (item != null) {
-        imageView.setImage(new Image(item, true));
-        imageView.setFitWidth(40);
-        imageView.setFitHeight(40);
-        setGraphic(imageView);
+        try {
+          Image image = new Image(item, true);
+          imageView.setImage(image);
+          imageView.setFitWidth(40);
+          imageView.setFitHeight(40);
+          setGraphic(imageView);
+        } catch (Exception e) {
+          e.printStackTrace();
+        } finally {
+          // get filename
+          String filename = item.substring(item.lastIndexOf("/") + 1); // remove path
+          filename = filename.substring(0, filename.lastIndexOf(".")); // remove type suffix
+          setText(filename);
+        }
+      }
+    }
+  }
+
+  private class LevelListCellFactory extends ListCell<String> {
+    private VBox vbox = new VBox();
+    private Label title = new Label();
+    private Label bestScore = new Label();
+
+    LevelListCellFactory() {
+      vbox.getChildren().addAll(title, bestScore);
+    }
+
+    @Override
+    protected void updateItem(String item, boolean empty) {
+      super.updateItem(item, empty);
+      setText(null);
+      setGraphic(null);
+      if (item != null) {
         // get filename
         String filename = item.substring(item.lastIndexOf("/") + 1); // remove path
         filename = filename.substring(0, filename.lastIndexOf(".")); // remove type suffix
-        setText(filename);
+        title.setText(filename);
+
+        // get bestScore
+        setGraphic(vbox);
       }
     }
   }
