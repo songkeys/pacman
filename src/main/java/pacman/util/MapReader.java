@@ -31,6 +31,7 @@ public class MapReader {
     this.obstacles = new HashSet<>();
     this.cookies = new HashSet<>();
     this.ghosts = new HashSet<>();
+    this.title = "Unnamed Level";
   }
 
   public Set<Obstacle> getObstacles() {
@@ -103,7 +104,7 @@ public class MapReader {
       return;
     }
 
-    // check if the line is a title
+    // title
     if (isTitleLine(line)) {
       title = line.replace("@TITLE ", "").trim();
       return;
