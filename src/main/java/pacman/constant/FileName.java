@@ -1,5 +1,6 @@
 package pacman.constant;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -53,4 +54,9 @@ public class FileName {
   public static final String VIEW_HOME = "/pacman/view/home.fxml";
   public static final String VIEW_GAME = "/pacman/view/game.fxml";
   public static final String VIEW_SELECT = "/pacman/view/select.fxml";
+
+  public static final String SYSTEM_PATH =
+      System.getProperty("user.home") + File.separator + ".pacman" + File.separator;
+
+  public static final String SCORE_BOARD_PATH = SYSTEM_PATH + "scoreboard/";
 }
