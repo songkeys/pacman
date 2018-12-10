@@ -1,7 +1,9 @@
 package pacman.util;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
@@ -158,7 +160,9 @@ public class MapReader {
         System.out.println(line);
         processLine(line);
       }
-    } catch (Error e) {
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
       e.printStackTrace();
     }
   }
