@@ -160,8 +160,6 @@ public class MapReader {
         System.out.println(line);
         processLine(line);
       }
-    } catch (FileNotFoundException e) {
-      e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
     }
