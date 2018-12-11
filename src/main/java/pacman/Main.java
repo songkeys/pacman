@@ -24,7 +24,6 @@ public class Main extends Application {
     primaryStage.setTitle("Pacman");
 
     // set up start scene
-    SceneSwitch sceneSwitch = new SceneSwitch();
-    sceneSwitch.switchToHome();
+    SceneSwitch.INSTANCE.switchToHome();
   }
 }

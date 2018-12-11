@@ -28,7 +28,6 @@ public class GameController {
 
   @FXML
   protected void handleHomeClicked() throws Exception {
-    SceneSwitch sceneSwitch = new SceneSwitch();
-    sceneSwitch.switchToHome();
+    SceneSwitch.INSTANCE.switchToHome();
   }
 }

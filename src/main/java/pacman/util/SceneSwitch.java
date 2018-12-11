@@ -11,7 +11,8 @@ import pacman.constant.MapResolution;
 import pacman.controller.GameController;
 import pacman.model.Map;
 
-public class SceneSwitch {
+public enum SceneSwitch {
+  INSTANCE;
 
   private void hideStage() {
     Main.getPrimaryStage().hide();

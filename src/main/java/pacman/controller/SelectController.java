@@ -68,8 +68,7 @@ public class SelectController {
 
   @FXML
   protected void handleGoClicked() throws Exception {
-    SceneSwitch sceneSwitch = new SceneSwitch();
-    sceneSwitch.switchToGame(map);
+    SceneSwitch.INSTANCE.switchToGame(map);
   }
 
   @FXML

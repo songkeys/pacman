@@ -7,7 +7,6 @@ public class HomeController {
 
   @FXML
   protected void handleClickStart() throws Exception {
-    SceneSwitch sceneSwitch = new SceneSwitch();
-    sceneSwitch.switchToSelect();
+    SceneSwitch.INSTANCE.switchToSelect();
   }
 }
