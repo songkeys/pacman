@@ -13,7 +13,7 @@ public class Life {
     this(3);
   }
 
-  public void lost() {
+  public void lose() {
     remaining--;
     if (remaining < 0) {
       remaining = 0;

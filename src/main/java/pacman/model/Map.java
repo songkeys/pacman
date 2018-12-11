@@ -9,6 +9,7 @@ import pacman.util.MapReader;
 public class Map {
 
   private String fileName;
+  private String nickname;
   private String backgroundFileName;
   private String wallFileName;
 
@@ -53,6 +54,14 @@ public class Map {
 
   public MapConfig getMapConfig() {
     return mapConfig;
+  }
+
+  public String getNickname() {
+    return nickname;
+  }
+
+  public void setNickname(String nickname) {
+    this.nickname = nickname;
   }
 
   public void setFileName(String fileName) {

@@ -34,7 +34,7 @@ public enum GameManager {
     this.life = new Life();
 
     // init score
-    this.score = new Score();
+    this.score = new Score(map.getNickname());
 
     // init UI
     this.initUI();
@@ -55,11 +55,13 @@ public enum GameManager {
   public void loseGame() {
     freezeGhosts();
     gameStatus = GameStatus.LOSE;
+    calculateScore();
   }
 
   public void winGame() {
     freezeGhosts();
     gameStatus = GameStatus.WIN;
+    calculateScore();
   }
 
   public void endGame() {
@@ -67,22 +69,21 @@ public enum GameManager {
     gameStatus = GameStatus.END;
   }
 
-  public void handleGhostTouched() {
+  public void handleGhostTouched(Ghost ghost) {
     Thread.currentThread().interrupt();
     sendPacmanToSpawn();
-    life.lost();
+    life.lose();
+    score.lose(ghost.getValue());
     if (life.getRemaining() <= 0) {
       loseGame();
     }
-
-    gameController.setLifeCount(life.getRemaining(), life.getTotal());
+    updateUI();
   }
 
   public void handleCookieTouched(Cookie cookie) {
     cookie.eat();
     score.gain(cookie.getValue());
-
-    gameController.setScoreCount(score.getValue());
+    updateUI();
   }
 
   public void handleKeyPressed(KeyEvent event) {
@@ -151,5 +152,18 @@ public enum GameManager {
     gameController.setTitle(map.getMapConfig().getTitle());
     gameController.setScoreCount(0);
     gameController.setLifeCount(life.getRemaining(), life.getTotal());
+  }
+
+  private void updateUI() {
+
+    gameController.setLifeCount(life.getRemaining(), life.getTotal());
+    gameController.setScoreCount(score.getValue());
+  }
+
+  private void calculateScore() {
+    ScoreBoardWriter scoreBoardWriter =
+        new ScoreBoardWriter(map.getMapConfig().getTitle() + ".txt");
+    score.settle();
+    scoreBoardWriter.write(score);
   }
 }

@@ -46,7 +46,7 @@
                     </FlowPane>
                     <FlowPane alignment="CENTER" GridPane.columnIndex="1">
                       <children>
-                        <TextField prefHeight="40.0" prefWidth="150.0" promptText="palyer" styleClass="text-field" />
+                        <TextField fx:id="nicknameTextField" onKeyTyped="#handleNicknameChange" prefHeight="40.0" prefWidth="150.0" promptText="player" styleClass="text-field" />
                       </children>
                     </FlowPane>
                     <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">

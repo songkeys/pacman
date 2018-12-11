@@ -1,15 +1,16 @@
 package pacman.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Score {
+public class Score implements Serializable {
   private int value;
-  private String nickName;
+  private String nickname;
   private Date time;
 
-  public Score(String nickName) {
+  public Score(String nickname) {
     this.value = 0;
-    this.nickName = nickName;
+    this.nickname = nickname;
     this.time = new Date();
   }
 
@@ -33,8 +34,8 @@ public class Score {
     return value;
   }
 
-  public String getNickName() {
-    return nickName;
+  public String getNickname() {
+    return nickname;
   }
 
   public Date getTime() {

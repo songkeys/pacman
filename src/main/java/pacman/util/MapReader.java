@@ -23,7 +23,6 @@ public class MapReader {
   private int mazeGridCount;
   private Map map;
   private MapConfig mapConfig;
-  private String title;
   private Set<Obstacle> obstacles;
   private Set<Cookie> cookies;
   private Set<Ghost> ghosts;
@@ -38,8 +37,12 @@ public class MapReader {
     this.obstacles = new HashSet<>();
     this.cookies = new HashSet<>();
     this.ghosts = new HashSet<>();
-    this.title = "Unnamed Level";
     this.mapConfig = new MapConfig(50);
+
+    // set title
+    String title = fileName.substring(fileName.lastIndexOf("/") + 1); // remove path
+    title = title.substring(0, title.lastIndexOf(".")); // remove type suffix
+    mapConfig.setTitle(title);
   }
 
   public Set<Obstacle> getObstacles() {
@@ -102,10 +105,6 @@ public class MapReader {
     return line.replaceAll("\\s+", "").isEmpty();
   }
 
-  private boolean isTitleLine(String line) {
-    return line.startsWith("@TITLE ");
-  }
-
   private boolean isPacmanStepRate(String line) {
     return line.startsWith("@PACMAN_STEP_RATE ");
   }
@@ -126,13 +125,6 @@ public class MapReader {
 
     // check if the line is a comment or is empty
     if (isCommentLine(line) || isEmptyLine(line)) {
-      return;
-    }
-
-    // title
-    if (isTitleLine(line)) {
-      title = line.replace("@TITLE ", "").trim();
-      mapConfig.setTitle(title);
       return;
     }
 
@@ -173,7 +165,6 @@ public class MapReader {
     // skip all not map lines
     if (isCommentLine(line)
         || isEmptyLine(line)
-        || isTitleLine(line)
         || isPacmanStepRate(line)
         || isGhostStepRate(line)
         || isCookiePaddingRate(line)

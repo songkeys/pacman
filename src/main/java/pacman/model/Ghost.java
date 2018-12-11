@@ -10,6 +10,7 @@ import pacman.constant.MovableGridType;
 public class Ghost extends MovableGrid implements Runnable {
 
   private Direction direction;
+  private int value = 5;
   private int timeWalked;
 
   public Ghost(Map map, double row, double column) {
@@ -104,7 +105,7 @@ public class Ghost extends MovableGrid implements Runnable {
     if (getParentMap()
         .getPacman()
         .isTouching(this, getParentMap().getMapConfig().getGhostPadding())) {
-      getParentMap().getParentGameManager().handleGhostTouched();
+      getParentMap().getParentGameManager().handleGhostTouched(this);
     }
   }
 
@@ -133,5 +134,9 @@ public class Ghost extends MovableGrid implements Runnable {
     moveDown.stop();
     moveLeft.stop();
     moveRight.stop();
+  }
+
+  public int getValue() {
+    return value;
   }
 }
