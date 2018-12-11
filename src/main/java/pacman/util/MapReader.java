@@ -62,10 +62,6 @@ public class MapReader {
     return spawn;
   }
 
-  public String getTitle() {
-    return title;
-  }
-
   public MapConfig getMapConfig() {
     return mapConfig;
   }
@@ -136,6 +132,7 @@ public class MapReader {
     // title
     if (isTitleLine(line)) {
       title = line.replace("@TITLE ", "").trim();
+      mapConfig.setTitle(title);
       return;
     }
 

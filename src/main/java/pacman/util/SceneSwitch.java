@@ -64,10 +64,10 @@ public enum SceneSwitch {
             + "px;");
 
     GameController gameController = loader.getController();
-    GameManager gameManager = new GameManager(map, gameController);
+    GameManager.INSTANCE.init(map, gameController);
 
-    gameScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> gameManager.handleKeyPressed(event));
-    gameScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> gameManager.handleKeyReleased(event));
+    gameScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> GameManager.INSTANCE.handleKeyPressed(event));
+    gameScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> GameManager.INSTANCE.handleKeyReleased(event));
     showStage();
   }
 }
