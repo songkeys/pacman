@@ -81,11 +81,11 @@ public class Map {
     MapReader mapReader = new MapReader(fileName, this);
 
     // get config
-    mapReader.readFile(true);
+    mapReader.readFileForConfig();
     mapConfig = mapReader.getMapConfig();
 
     // get grids
-    mapReader.readFile(false);
+    mapReader.readFileForMap();
     obstacles = mapReader.getObstacles();
     cookies = mapReader.getCookies();
     pacman = mapReader.getPacman();

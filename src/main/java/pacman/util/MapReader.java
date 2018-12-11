@@ -218,7 +218,7 @@ public class MapReader {
     mazeGridCount = 0;
   }
 
-  public void readFile(boolean isForConfig) {
+  private void readFile(boolean isForConfig) {
     ClassLoader classLoader = getClass().getClassLoader();
     URL resource = classLoader.getResource(fileName);
     String path = null;
@@ -241,5 +241,13 @@ public class MapReader {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  public void readFileForConfig() {
+    readFile(true);
+  }
+
+  public void readFileForMap() {
+    readFile(false);
   }
 }
