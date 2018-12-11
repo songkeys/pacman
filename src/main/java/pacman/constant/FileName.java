@@ -1,14 +1,15 @@
 package pacman.constant;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class FileName {
-  public static final String MAP_LEVEL_1 = "level1.txt";
+  public static final String MAP_LEVEL_1 = "pacman/map/level1.txt";
   public static final Set<String> MAPS =
-      new TreeSet<>(Arrays.asList("#1 So Easy.txt", "#2 Sooo Esay.txt"));
+      new TreeSet<>(Arrays.asList("pacman/map/#1 So Easy.txt", "pacman/map/#2 Sooo Esay.txt"));
 
   public static final Set<String> IMAGE_BACKGROUNDS =
       new TreeSet<>(
@@ -53,4 +54,9 @@ public class FileName {
   public static final String VIEW_HOME = "/pacman/view/home.fxml";
   public static final String VIEW_GAME = "/pacman/view/game.fxml";
   public static final String VIEW_SELECT = "/pacman/view/select.fxml";
+
+  private static final String SYSTEM_PATH =
+      System.getProperty("user.home") + File.separator + ".pacman" + File.separator;
+
+  public static final String SCORE_BOARD_PATH = SYSTEM_PATH + "scoreboard/";
 }

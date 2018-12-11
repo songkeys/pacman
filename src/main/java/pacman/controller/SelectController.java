@@ -11,11 +11,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import pacman.constant.FileName;
+import pacman.model.Map;
+import pacman.model.Score;
+import pacman.model.ScoreBoard;
+import pacman.util.SceneSwitch;
+import pacman.util.ScoreBoardReader;
 
 public class SelectController {
   @FXML private ComboBox backgroundComboBox;
   @FXML private ComboBox wallComboBox;
   @FXML private ListView levelListView;
+
+  private Map map;
 
   @FXML
   public void initialize() {
@@ -27,19 +34,41 @@ public class SelectController {
     //    rightPane.getTransforms().add(new Rotate(30, 0, 0, 0, Rotate.Y_AXIS));
     //
 
+    // init UI
     initBackgroundComboBox();
     initWallComboBox();
     initLevelListView();
+
+    // init map
+    map = new Map();
+    map.setFileName(levelListView.getSelectionModel().getSelectedItem().toString());
+    map.setBackgroundFileName(backgroundComboBox.getSelectionModel().getSelectedItem().toString());
+    map.setWallFileName(wallComboBox.getSelectionModel().getSelectedItem().toString());
   }
 
   @FXML
   protected void handleBackgroundChange() {
     backgroundComboBox.setButtonCell(new TextureListCellFactory());
+    String fileName = backgroundComboBox.getSelectionModel().getSelectedItem().toString();
+    map.setBackgroundFileName(fileName);
   }
 
   @FXML
   protected void handleWallChange() {
     wallComboBox.setButtonCell(new TextureListCellFactory());
+    String fileName = wallComboBox.getSelectionModel().getSelectedItem().toString();
+    map.setWallFileName(fileName);
+  }
+
+  @FXML
+  protected void handleLevelChange() {
+    String fileName = levelListView.getSelectionModel().getSelectedItem().toString();
+    map.setFileName(fileName);
+  }
+
+  @FXML
+  protected void handleGoClicked() throws Exception {
+    SceneSwitch.INSTANCE.switchToGame(map);
   }
 
   @FXML
@@ -48,6 +77,8 @@ public class SelectController {
     options.addAll(FileName.IMAGE_BACKGROUNDS);
     backgroundComboBox.setItems(options);
     backgroundComboBox.setCellFactory(c -> new TextureListCellFactory());
+    backgroundComboBox.getSelectionModel().selectFirst();
+    backgroundComboBox.setButtonCell(new TextureListCellFactory());
   }
 
   @FXML
@@ -56,6 +87,8 @@ public class SelectController {
     options.addAll(FileName.IMAGE_OBSTACLES);
     wallComboBox.setItems(options);
     wallComboBox.setCellFactory(c -> new TextureListCellFactory());
+    wallComboBox.getSelectionModel().selectFirst();
+    wallComboBox.setButtonCell(new TextureListCellFactory());
   }
 
   @FXML
@@ -64,19 +97,20 @@ public class SelectController {
     options.addAll(FileName.MAPS);
     levelListView.setItems(options);
     levelListView.setCellFactory(c -> new LevelListCellFactory());
+    levelListView.getSelectionModel().selectFirst();
   }
 
   private class TextureListCellFactory extends ListCell<String> {
     private ImageView imageView = new ImageView();
 
     @Override
-    protected void updateItem(String item, boolean empty) {
-      super.updateItem(item, empty);
+    protected void updateItem(String path, boolean empty) {
+      super.updateItem(path, empty);
       setGraphic(null);
       setText(null);
-      if (item != null) {
+      if (path != null) {
         try {
-          Image image = new Image(item, true);
+          Image image = new Image(path, true);
           imageView.setImage(image);
           imageView.setFitWidth(40);
           imageView.setFitHeight(40);
@@ -85,9 +119,9 @@ public class SelectController {
           e.printStackTrace();
         } finally {
           // get filename
-          String filename = item.substring(item.lastIndexOf("/") + 1); // remove path
-          filename = filename.substring(0, filename.lastIndexOf(".")); // remove type suffix
-          setText(filename);
+          String filename = path.substring(path.lastIndexOf("/") + 1); // remove path
+          String title = filename.substring(0, filename.lastIndexOf(".")); // remove type suffix
+          setText(title);
         }
       }
     }
@@ -103,17 +137,28 @@ public class SelectController {
     }
 
     @Override
-    protected void updateItem(String item, boolean empty) {
-      super.updateItem(item, empty);
+    protected void updateItem(String path, boolean empty) {
+      super.updateItem(path, empty);
       setText(null);
       setGraphic(null);
-      if (item != null) {
-        // get filename
-        String filename = item.substring(item.lastIndexOf("/") + 1); // remove path
-        filename = filename.substring(0, filename.lastIndexOf(".")); // remove type suffix
-        title.setText(filename);
+      if (path != null) {
+        // get fileName
+        String fileName = path.substring(path.lastIndexOf("/") + 1); // remove path
+        String title = fileName.substring(0, fileName.lastIndexOf(".")); // remove type suffix
+        this.title.setText(title);
 
-        // get bestScore
+        // get best score
+        try {
+          ScoreBoardReader scoreBoardReader = new ScoreBoardReader(path);
+          scoreBoardReader.read();
+          ScoreBoard scoreBoard = scoreBoardReader.getScoreBoard();
+          Score bestScore = scoreBoard.getBestScore();
+          this.bestScore.setText("Best: " + bestScore.getValue());
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+
+        // set list cell
         setGraphic(vbox);
       }
     }

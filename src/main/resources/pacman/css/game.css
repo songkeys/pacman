@@ -33,7 +33,6 @@
 }
 
 #map {
-  -fx-background-image: url("../image/floor2.png");
   -fx-background-repeat: repeat;
   -fx-background-attachment: fixed;
   -fx-background-position: center;

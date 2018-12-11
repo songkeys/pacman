@@ -2,7 +2,7 @@ package pacman.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
-import pacman.constant.SceneName;
+import pacman.util.GameManager;
 import pacman.util.SceneSwitch;
 
 public class GameController {
@@ -28,8 +28,8 @@ public class GameController {
   }
 
   @FXML
-  protected void handleClickHome() throws Exception {
-    SceneSwitch sceneSwitch = new SceneSwitch();
-    sceneSwitch.switchTo(SceneName.HOME);
+  protected void handleHomeClicked() throws Exception {
+    GameManager.INSTANCE.endGame();
+    SceneSwitch.INSTANCE.switchToHome();
   }
 }

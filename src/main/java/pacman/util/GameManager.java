@@ -10,20 +10,21 @@ import pacman.model.Map;
 import pacman.model.Score;
 import pacman.model.Spawn;
 
-public class GameManager {
+public enum GameManager {
+  INSTANCE;
+
   private Map map;
   private GameController gameController;
   private GameStatus gameStatus;
   private Life life;
   private Score score;
 
-  /** Constructor */
-  public GameManager(Map map, GameController gameController) {
+  public void init(Map map, GameController gameController) {
     // add map
     this.map = map;
     this.map.setParentGameManager(this);
 
-    // add controller to control UI
+    // add game controller
     this.gameController = gameController;
 
     // init game status
@@ -32,7 +33,7 @@ public class GameManager {
     // init life
     this.life = new Life();
 
-    // int score
+    // init score
     this.score = new Score();
 
     // init UI
@@ -61,7 +62,13 @@ public class GameManager {
     gameStatus = GameStatus.WIN;
   }
 
+  public void endGame() {
+    freezeGhosts();
+    gameStatus = GameStatus.END;
+  }
+
   public void handleGhostTouched() {
+    Thread.currentThread().interrupt();
     sendPacmanToSpawn();
     life.lost();
     if (life.getRemaining() <= 0) {
@@ -141,7 +148,7 @@ public class GameManager {
   }
 
   private void initUI() {
-    gameController.setTitle(map.getTitle());
+    gameController.setTitle(map.getMapConfig().getTitle());
     gameController.setScoreCount(0);
     gameController.setLifeCount(life.getRemaining(), life.getTotal());
   }

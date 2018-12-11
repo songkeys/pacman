@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.Set;
 import pacman.constant.Direction;
 import pacman.constant.FileName;
-import pacman.constant.MapConfig;
+import pacman.constant.MovableGridType;
 
 public class Ghost extends MovableGrid implements Runnable {
 
@@ -13,7 +13,7 @@ public class Ghost extends MovableGrid implements Runnable {
   private int timeWalked;
 
   public Ghost(Map map, double row, double column) {
-    super(map, row, column);
+    super(map, row, column, MovableGridType.GHOST);
 
     // set a random ghost image
     int randomIndex = new Random().nextInt(FileName.IMAGE_GHOSTS.size());
@@ -101,7 +101,9 @@ public class Ghost extends MovableGrid implements Runnable {
   }
 
   private void checkTouchingPacman() {
-    if (getParentMap().getPacman().isTouching(this, MapConfig.GHOST_PADDING)) {
+    if (getParentMap()
+        .getPacman()
+        .isTouching(this, getParentMap().getMapConfig().getGhostPadding())) {
       getParentMap().getParentGameManager().handleGhostTouched();
     }
   }

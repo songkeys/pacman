@@ -1,15 +1,17 @@
 package pacman.util;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
+import pacman.constant.MapResolution;
 import pacman.model.Cookie;
 import pacman.model.Ghost;
 import pacman.model.Map;
+import pacman.model.MapConfig;
 import pacman.model.Obstacle;
 import pacman.model.Pacman;
 import pacman.model.Spawn;
@@ -18,7 +20,9 @@ public class MapReader {
 
   private String fileName;
   private int mazeLineCount;
+  private int mazeGridCount;
   private Map map;
+  private MapConfig mapConfig;
   private String title;
   private Set<Obstacle> obstacles;
   private Set<Cookie> cookies;
@@ -30,10 +34,12 @@ public class MapReader {
     this.fileName = fileName;
     this.map = map;
     this.mazeLineCount = 0;
+    this.mazeGridCount = 0;
     this.obstacles = new HashSet<>();
     this.cookies = new HashSet<>();
     this.ghosts = new HashSet<>();
     this.title = "Unnamed Level";
+    this.mapConfig = new MapConfig(50);
   }
 
   public Set<Obstacle> getObstacles() {
@@ -56,8 +62,8 @@ public class MapReader {
     return spawn;
   }
 
-  public String getTitle() {
-    return title;
+  public MapConfig getMapConfig() {
+    return mapConfig;
   }
 
   private int getCookieScore(String cookieGrid) {
@@ -100,7 +106,24 @@ public class MapReader {
     return line.startsWith("@TITLE ");
   }
 
-  private void processLine(String line) {
+  private boolean isPacmanStepRate(String line) {
+    return line.startsWith("@PACMAN_STEP_RATE ");
+  }
+
+  private boolean isGhostStepRate(String line) {
+    return line.startsWith("@GHOST_STEP_RATE ");
+  }
+
+  private boolean isCookiePaddingRate(String line) {
+    return line.startsWith("@COOKIE_PADDING_RATE ");
+  }
+
+  private boolean isGhostPaddingRate(String line) {
+    return line.startsWith("@GHOST_PADDING_RATE ");
+  }
+
+  private void processConfigLine(String line) {
+
     // check if the line is a comment or is empty
     if (isCommentLine(line) || isEmptyLine(line)) {
       return;
@@ -109,12 +132,57 @@ public class MapReader {
     // title
     if (isTitleLine(line)) {
       title = line.replace("@TITLE ", "").trim();
+      mapConfig.setTitle(title);
+      return;
+    }
+
+    // pacman step rate
+    if (isPacmanStepRate(line)) {
+      double pacmanStepRate = Double.parseDouble(line.replace("@PACMAN_STEP_RATE ", "").trim());
+      mapConfig.setPacmanStepRate(pacmanStepRate);
+      return;
+    }
+
+    // ghost step rate
+    if (isGhostStepRate(line)) {
+      double ghostStepRate = Double.parseDouble(line.replace("@GHOST_STEP_RATE ", "").trim());
+      mapConfig.setGhostStepRate(ghostStepRate);
+      return;
+    }
+
+    // cookie padding rate
+    if (isCookiePaddingRate(line)) {
+      double cookiePaddingRate =
+          Double.parseDouble(line.replace("@COOKIE_PADDING_RATE ", "").trim());
+      mapConfig.setCookiePaddingRate(cookiePaddingRate);
+      return;
+    }
+
+    // ghost padding rate
+    if (isGhostPaddingRate((line))) {
+      double ghostPaddingRate = Double.parseDouble(line.replace("@GHOST_PADDING_RATE ", "").trim());
+      mapConfig.setGhostPaddingRate(ghostPaddingRate);
+      return;
+    }
+
+    // grid length (in map lines)
+    mapConfig.setGridLength(MapResolution.WIDTH / line.length());
+  }
+
+  private void processMapLine(String line) {
+    // skip all not map lines
+    if (isCommentLine(line)
+        || isEmptyLine(line)
+        || isTitleLine(line)
+        || isPacmanStepRate(line)
+        || isGhostStepRate(line)
+        || isCookiePaddingRate(line)
+        || isGhostPaddingRate(line)) {
       return;
     }
 
     // read every character in the line
     String[] grids = line.split("");
-    int mazeGridCount = 0;
     for (String grid : grids) {
 
       // obstacle
@@ -144,24 +212,39 @@ public class MapReader {
       mazeGridCount++;
     }
     mazeLineCount++;
+    mazeGridCount = 0;
   }
 
-  public void readFile() throws Exception {
+  private void readFile(boolean isForConfig) {
     ClassLoader classLoader = getClass().getClassLoader();
-    URL resource = classLoader.getResource("pacman/map/" + fileName);
-    String path = resource.getPath();
-    System.out.println(path);
-    // FileReader fileReader = new FileReader("src/main/resources/pacman/map/level1.txt");
-    FileReader fileReader = new FileReader(path);
-    try (BufferedReader br = new BufferedReader(fileReader)) {
+    URL resource = classLoader.getResource(fileName);
+    String path = null;
+    try {
+      path = resource.toURI().getPath();
+    } catch (URISyntaxException e) {
+      e.printStackTrace();
+    }
+
+    try (BufferedReader br = new BufferedReader(new FileReader(path))) {
       String line;
 
       while ((line = br.readLine()) != null) {
-        System.out.println(line);
-        processLine(line);
+        if (isForConfig) {
+          processConfigLine(line);
+        } else {
+          processMapLine(line);
+        }
       }
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  public void readFileForConfig() {
+    readFile(true);
+  }
+
+  public void readFileForMap() {
+    readFile(false);
   }
 }
