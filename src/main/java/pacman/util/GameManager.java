@@ -87,6 +87,12 @@ public enum GameManager {
   }
 
   public void handleKeyPressed(KeyEvent event) {
+    if (gameStatus == GameStatus.END
+        || gameStatus == GameStatus.WIN
+        || gameStatus == gameStatus.LOSE) {
+      return;
+    }
+
     switch (event.getCode()) {
       case RIGHT:
         startGame();
