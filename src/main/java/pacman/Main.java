@@ -2,7 +2,6 @@ package pacman;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import pacman.constant.SceneName;
 import pacman.util.SceneSwitch;
 
 public class Main extends Application {
@@ -26,6 +25,6 @@ public class Main extends Application {
 
     // set up start scene
     SceneSwitch sceneSwitch = new SceneSwitch();
-    sceneSwitch.switchTo(SceneName.HOME);
+    sceneSwitch.switchToHome();
   }
 }

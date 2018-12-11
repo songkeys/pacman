@@ -3,7 +3,6 @@ package pacman.model;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import pacman.constant.MapConfig;
 
 public class Grid extends Rectangle {
 
@@ -15,12 +14,14 @@ public class Grid extends Rectangle {
     this.parentMap = parentMap;
 
     // set position
-    this.setX(row * MapConfig.GRID_LENGTH);
-    this.setY(column * MapConfig.GRID_LENGTH);
+    double gridLength = parentMap.getMapConfig().getGridLength();
+
+    this.setX(row * gridLength);
+    this.setY(column * gridLength);
 
     // set height and width
-    this.setHeight(MapConfig.GRID_LENGTH);
-    this.setWidth(MapConfig.GRID_LENGTH);
+    this.setHeight(gridLength);
+    this.setWidth(gridLength);
   }
 
   public Map getParentMap() {
@@ -37,10 +38,11 @@ public class Grid extends Rectangle {
     double myY = this.getY();
     double itsX = grid.getX();
     double itsY = grid.getY();
+    double gridLength = getParentMap().getMapConfig().getGridLength();
 
-    return myX < itsX + MapConfig.GRID_LENGTH - padding
-        && myX > itsX - MapConfig.GRID_LENGTH + padding
-        && myY < itsY + MapConfig.GRID_LENGTH - padding
-        && myY > itsY - MapConfig.GRID_LENGTH + padding;
+    return myX < itsX + gridLength - padding
+        && myX > itsX - gridLength + padding
+        && myY < itsY + gridLength - padding
+        && myY > itsY - gridLength + padding;
   }
 }

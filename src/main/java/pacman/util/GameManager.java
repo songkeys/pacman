@@ -141,7 +141,7 @@ public class GameManager {
   }
 
   private void initUI() {
-    gameController.setTitle(map.getTitle());
+    gameController.setTitle(map.getMapConfig().getTitle());
     gameController.setScoreCount(0);
     gameController.setLifeCount(life.getRemaining(), life.getTotal());
   }

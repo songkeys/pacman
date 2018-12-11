@@ -11,14 +11,18 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import pacman.constant.FileName;
+import pacman.model.Map;
 import pacman.model.Score;
 import pacman.model.ScoreBoard;
+import pacman.util.SceneSwitch;
 import pacman.util.ScoreBoardReader;
 
 public class SelectController {
   @FXML private ComboBox backgroundComboBox;
   @FXML private ComboBox wallComboBox;
   @FXML private ListView levelListView;
+
+  private Map map;
 
   @FXML
   public void initialize() {
@@ -30,19 +34,42 @@ public class SelectController {
     //    rightPane.getTransforms().add(new Rotate(30, 0, 0, 0, Rotate.Y_AXIS));
     //
 
+    // init UI
     initBackgroundComboBox();
     initWallComboBox();
     initLevelListView();
+
+    // init map
+    map = new Map();
+    map.setFileName(levelListView.getSelectionModel().getSelectedItem().toString());
+    map.setBackgroundFileName(backgroundComboBox.getSelectionModel().getSelectedItem().toString());
+    map.setWallFileName(wallComboBox.getSelectionModel().getSelectedItem().toString());
   }
 
   @FXML
   protected void handleBackgroundChange() {
     backgroundComboBox.setButtonCell(new TextureListCellFactory());
+    String fileName = backgroundComboBox.getSelectionModel().getSelectedItem().toString();
+    map.setBackgroundFileName(fileName);
   }
 
   @FXML
   protected void handleWallChange() {
     wallComboBox.setButtonCell(new TextureListCellFactory());
+    String fileName = wallComboBox.getSelectionModel().getSelectedItem().toString();
+    map.setWallFileName(fileName);
+  }
+
+  @FXML
+  protected void handleLevelChange() {
+    String fileName = levelListView.getSelectionModel().getSelectedItem().toString();
+    map.setFileName(fileName);
+  }
+
+  @FXML
+  protected void handleGoClicked() throws Exception {
+    SceneSwitch sceneSwitch = new SceneSwitch();
+    sceneSwitch.switchToGame(map);
   }
 
   @FXML

@@ -82,7 +82,7 @@
             <VBox alignment="CENTER">
               <children>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Levels" />
-                        <ListView fx:id="levelListView" prefHeight="450.0" prefWidth="400.0" />
+                        <ListView fx:id="levelListView" onMouseClicked="#handleLevelChange" prefHeight="450.0" prefWidth="400.0" />
               </children>
             </VBox>
           </children>
@@ -96,7 +96,7 @@
   <bottom>
     <FlowPane alignment="CENTER" prefHeight="50.0">
       <children>
-        <Button mnemonicParsing="false" styleClass="confirm-btn" text="Go" />
+        <Button mnemonicParsing="false" onAction="#handleGoClicked" styleClass="confirm-btn" text="Go" />
       </children>
     </FlowPane>
   </bottom>

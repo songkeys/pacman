@@ -13,6 +13,6 @@ public class Obstacle extends Grid {
   public Obstacle(Map map, double row, double column) {
     super(map, row, column);
 
-    this.setImage(FileName.IMAGE_OBSTACLE);
+    this.setImage(map.getWallFileName());
   }
 }

@@ -8,18 +8,20 @@ import pacman.util.MapReader;
 
 public class Map {
 
-  private String mapFileName;
+  private String fileName;
+  private String backgroundFileName;
+  private String wallFileName;
+
+  private MapConfig mapConfig;
   private GameManager parentGameManager;
+
   private Set<Obstacle> obstacles;
   private Set<Cookie> cookies;
   private Set<Ghost> ghosts;
   private Pacman pacman;
   private Spawn spawn;
-  private String title;
 
-  public Map(String mapFileName) {
-    this.mapFileName = mapFileName;
-  }
+  public Map() {}
 
   public GameManager getParentGameManager() {
     return parentGameManager;
@@ -49,20 +51,41 @@ public class Map {
     return spawn;
   }
 
-  public String getTitle() {
-    return title;
+  public MapConfig getMapConfig() {
+    return mapConfig;
   }
 
-  private void read(String fileName) throws Exception {
+  public void setFileName(String fileName) {
+    this.fileName = fileName;
+  }
+
+  public String getBackgroundFileName() {
+    return backgroundFileName;
+  }
+
+  public void setBackgroundFileName(String backgroundFileName) {
+    this.backgroundFileName = backgroundFileName;
+  }
+
+  public String getWallFileName() {
+    return wallFileName;
+  }
+
+  public void setWallFileName(String wallFileName) {
+    this.wallFileName = wallFileName;
+  }
+
+  private void read() {
 
     // read map
     MapReader mapReader = new MapReader(fileName, this);
-    mapReader.readFile();
 
     // get config
-    title = mapReader.getTitle();
+    mapReader.readFile(true);
+    mapConfig = mapReader.getMapConfig();
 
-    // initialize grids
+    // get grids
+    mapReader.readFile(false);
     obstacles = mapReader.getObstacles();
     cookies = mapReader.getCookies();
     pacman = mapReader.getPacman();
@@ -70,12 +93,12 @@ public class Map {
     spawn = mapReader.getSpawn();
   }
 
-  public void draw(Pane root) throws Exception {
+  public void draw(Pane root) {
 
     // read map
-    this.read(this.mapFileName);
+    read();
 
-    // build map
+    // paint map
     MapPainter mapPainter = new MapPainter(root);
     mapPainter.drawObstacles(obstacles);
     mapPainter.drawCookies(cookies);

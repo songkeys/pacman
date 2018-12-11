@@ -3,12 +3,12 @@ package pacman.model;
 import java.util.Set;
 import pacman.constant.Direction;
 import pacman.constant.FileName;
-import pacman.constant.MapConfig;
+import pacman.constant.MovableGridType;
 
 public class Pacman extends MovableGrid {
 
   public Pacman(Map map, double row, double column) {
-    super(map, row, column);
+    super(map, row, column, MovableGridType.PACMAN);
 
     this.setImage(FileName.IMAGE_PACMAN);
   }
@@ -36,7 +36,8 @@ public class Pacman extends MovableGrid {
     boolean isAllEaten = true;
     Set<Cookie> cookies = getParentMap().getCookies();
     for (Cookie cookie : cookies) {
-      if (!cookie.isEaten() && isTouching(cookie, MapConfig.COOKIE_PADDING)) {
+      if (!cookie.isEaten()
+          && isTouching(cookie, getParentMap().getMapConfig().getCookiePadding())) {
         getParentMap().getParentGameManager().handleCookieTouched(cookie);
         return;
       }

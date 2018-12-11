@@ -3,7 +3,8 @@ package pacman.model;
 import java.util.Set;
 import javafx.animation.AnimationTimer;
 import pacman.constant.Direction;
-import pacman.constant.MapConfig;
+import pacman.constant.MapResolution;
+import pacman.constant.MovableGridType;
 
 public abstract class MovableGrid extends Grid {
 
@@ -11,9 +12,13 @@ public abstract class MovableGrid extends Grid {
   public AnimationTimer moveRight;
   public AnimationTimer moveUp;
   public AnimationTimer moveDown;
+  private double step;
 
-  public MovableGrid(Map map, double row, double column) {
+  public MovableGrid(Map map, double row, double column, MovableGridType movableGridType) {
     super(map, row, column);
+
+    // set step rate according to type
+    initConfig(movableGridType);
 
     // set animation
     this.moveLeft = this.move(Direction.LEFT);
@@ -30,7 +35,7 @@ public abstract class MovableGrid extends Grid {
         switch (direction) {
           case RIGHT:
             if (!MovableGrid.this.isGoingToTouchGrids(Direction.RIGHT, obstacles)) {
-              MovableGrid.this.setX(MovableGrid.this.getX() + MapConfig.STEP);
+              MovableGrid.this.setX(MovableGrid.this.getX() + step);
               MovableGrid.this.handleMove(Direction.RIGHT);
             } else {
               MovableGrid.this.handleCantMove(Direction.RIGHT);
@@ -38,7 +43,7 @@ public abstract class MovableGrid extends Grid {
             break;
           case LEFT:
             if (!MovableGrid.this.isGoingToTouchGrids(Direction.LEFT, obstacles)) {
-              MovableGrid.this.setX(MovableGrid.this.getX() - MapConfig.STEP);
+              MovableGrid.this.setX(MovableGrid.this.getX() - step);
               MovableGrid.this.handleMove(Direction.LEFT);
             } else {
               MovableGrid.this.handleCantMove(Direction.LEFT);
@@ -46,7 +51,7 @@ public abstract class MovableGrid extends Grid {
             break;
           case UP:
             if (!MovableGrid.this.isGoingToTouchGrids(Direction.UP, obstacles)) {
-              MovableGrid.this.setY(MovableGrid.this.getY() - MapConfig.STEP);
+              MovableGrid.this.setY(MovableGrid.this.getY() - step);
               MovableGrid.this.handleMove(Direction.UP);
             } else {
               MovableGrid.this.handleCantMove(Direction.UP);
@@ -54,7 +59,7 @@ public abstract class MovableGrid extends Grid {
             break;
           case DOWN:
             if (!MovableGrid.this.isGoingToTouchGrids(Direction.DOWN, obstacles)) {
-              MovableGrid.this.setY(MovableGrid.this.getY() + MapConfig.STEP);
+              MovableGrid.this.setY(MovableGrid.this.getY() + step);
               MovableGrid.this.handleMove(Direction.DOWN);
             } else {
               MovableGrid.this.handleCantMove(Direction.DOWN);
@@ -65,36 +70,47 @@ public abstract class MovableGrid extends Grid {
     };
   }
 
+  private void initConfig(MovableGridType movableGridType) {
+    switch (movableGridType) {
+      case GHOST:
+        step = getParentMap().getMapConfig().getGhostStep();
+        break;
+      case PACMAN:
+        step = getParentMap().getMapConfig().getPacmanStep();
+        break;
+    }
+  }
+
   public boolean isGoingToTouchGrids(Direction direction, Set<Grid> grids, double padding) {
     // calculate next step based on direction
-    double nextX = this.getX();
-    double nextY = this.getY();
+    double nextX = getX();
+    double nextY = getY();
     switch (direction) {
       case RIGHT:
-        nextX += MapConfig.STEP;
+        nextX += step;
         break;
       case LEFT:
-        nextX -= MapConfig.STEP;
+        nextX -= step;
         break;
       case UP:
-        nextY -= MapConfig.STEP;
+        nextY -= step;
         break;
       case DOWN:
-        nextY += MapConfig.STEP;
+        nextY += step;
         break;
     }
 
     // check if the next step is beyond screen
     if (nextX < 0
         || nextY < 0
-        || nextX + MapConfig.GRID_LENGTH > MapConfig.WIDTH
-        || nextY + MapConfig.GRID_LENGTH > MapConfig.HEIGHT) {
+        || nextX + step > MapResolution.WIDTH
+        || nextY + step > MapResolution.HEIGHT) {
       return true;
     }
 
     // generate a mock grid at the next step
-    Grid nextPositionGrid =
-        new Grid(getParentMap(), nextX / MapConfig.GRID_LENGTH, nextY / MapConfig.GRID_LENGTH);
+    double gridLength = getParentMap().getMapConfig().getGridLength();
+    Grid nextPositionGrid = new Grid(getParentMap(), nextX / gridLength, nextY / gridLength);
 
     // check if the mock grid overlaps any obstacle
     for (Grid grid : grids) {
@@ -107,7 +123,7 @@ public abstract class MovableGrid extends Grid {
   }
 
   public boolean isGoingToTouchGrids(Direction direction, Set<Grid> grids) {
-    return this.isGoingToTouchGrids(direction, grids, 0);
+    return isGoingToTouchGrids(direction, grids, 0);
   }
 
   public void handleMove(Direction direction) {}
