@@ -3,7 +3,6 @@ package pacman.model;
 import java.util.Set;
 import javafx.animation.AnimationTimer;
 import pacman.constant.Direction;
-import pacman.constant.MapResolution;
 import pacman.constant.MovableGridType;
 
 public abstract class MovableGrid extends Grid {
@@ -126,16 +125,19 @@ public abstract class MovableGrid extends Grid {
     }
 
     // check if the next step is beyond screen
-    if (nextX < 0
-        || nextY < 0
-        || nextX + getParentMap().getMapConfig().getGridLength() + step > MapResolution.WIDTH
-        || nextY + getParentMap().getMapConfig().getGridLength() + step > MapResolution.HEIGHT) {
-      return true;
-    }
+    //    if (nextX < 0
+    //        || nextY < 0
+    //        || nextX + getParentMap().getMapConfig().getGridLength() + step > MapResolution.WIDTH
+    //        || nextY + getParentMap().getMapConfig().getGridLength() + step >
+    // MapResolution.HEIGHT) {
+    //      return true;
+    //    }
 
     // generate a mock grid at the next step
     double gridLength = getParentMap().getMapConfig().getGridLength();
     Grid nextPositionGrid = new Grid(getParentMap(), nextX / gridLength, nextY / gridLength);
+    nextPositionGrid.setX(nextX);
+    nextPositionGrid.setY(nextY);
 
     // check if the mock grid overlaps any obstacle
     for (Grid grid : grids) {
@@ -148,7 +150,7 @@ public abstract class MovableGrid extends Grid {
   }
 
   public boolean isGoingToTouchGrids(Direction direction, Set<Grid> grids) {
-    return isGoingToTouchGrids(direction, grids, 0);
+    return isGoingToTouchGrids(direction, grids, 1); // padding = 1 for the error
   }
 
   public void handleMove(Direction direction) {}
