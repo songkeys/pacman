@@ -32,22 +32,22 @@ public class FileName {
               "/pacman/image/obstacle/red_nether_bricks.png",
               "/pacman/image/obstacle/stone_bricks.png"));
   public static final String IMAGE_PACMAN = "/pacman/image/pacman.png";
-  public static final String IMAGE_COOKIE_SMALL = "/pacman/image/cookie1.png";
-  public static final String IMAGE_COOKIE_MEDIUM = "/pacman/image/cookie5.png";
-  public static final String IMAGE_COOKIE_BIG = "/pacman/image/cookie10.png";
+  public static final String IMAGE_COOKIE_SMALL = "/pacman/image/cookie/cookie1.png";
+  public static final String IMAGE_COOKIE_MEDIUM = "/pacman/image/cookie/cookie5.png";
+  public static final String IMAGE_COOKIE_BIG = "/pacman/image/cookie/cookie10.png";
   public static final Set<String> IMAGE_GHOSTS =
       new HashSet<>(
           Arrays.asList(
-              "/pacman/image/ghost1.png",
-              "/pacman/image/ghost2.png",
-              "/pacman/image/ghost3.png",
-              "/pacman/image/ghost4.png",
-              "/pacman/image/ghost5.png",
-              "/pacman/image/ghost6.png",
-              "/pacman/image/ghost7.png",
-              "/pacman/image/ghost8.png",
-              "/pacman/image/ghost9.png",
-              "/pacman/image/ghost10.png"));
+              "/pacman/image/ghost/ghost1.png",
+              "/pacman/image/ghost/ghost2.png",
+              "/pacman/image/ghost/ghost3.png",
+              "/pacman/image/ghost/ghost4.png",
+              "/pacman/image/ghost/ghost5.png",
+              "/pacman/image/ghost/ghost6.png",
+              "/pacman/image/ghost/ghost7.png",
+              "/pacman/image/ghost/ghost8.png",
+              "/pacman/image/ghost/ghost9.png",
+              "/pacman/image/ghost/ghost10.png"));
 
   public static final String VIEW_HOME = "/pacman/view/home.fxml";
   public static final String VIEW_GAME = "/pacman/view/game.fxml";
