@@ -1,5 +1,6 @@
 package pacman.util;
 
+import java.util.Set;
 import javafx.scene.input.KeyEvent;
 import pacman.constant.GameStatus;
 import pacman.controller.GameController;
@@ -22,7 +23,6 @@ public enum GameManager {
   public void init(Map map, GameController gameController) {
     // add map
     this.map = map;
-    this.map.setParentGameManager(this);
 
     // add game controller
     this.gameController = gameController;
@@ -40,6 +40,10 @@ public enum GameManager {
     this.initUI();
   }
 
+  public GameStatus getGameStatus() {
+    return gameStatus;
+  }
+
   public void startGame() {
     if (gameStatus.equals(GameStatus.PAUSE)) {
       wakeUpGhosts();
@@ -53,15 +57,19 @@ public enum GameManager {
   }
 
   public void loseGame() {
-    freezeGhosts();
-    gameStatus = GameStatus.LOSE;
-    calculateScore();
+    if (GameManager.INSTANCE.getGameStatus() == GameStatus.START) {
+      endGame();
+      calculateScore();
+      navigateBack();
+    }
   }
 
   public void winGame() {
-    freezeGhosts();
-    gameStatus = GameStatus.WIN;
-    calculateScore();
+    if (GameManager.INSTANCE.getGameStatus() == GameStatus.START) {
+      endGame();
+      calculateScore();
+      navigateBack();
+    }
   }
 
   public void endGame() {
@@ -70,7 +78,6 @@ public enum GameManager {
   }
 
   public void handleGhostTouched(Ghost ghost) {
-    Thread.currentThread().interrupt();
     sendPacmanToSpawn();
     life.lose();
     score.lose(ghost.getValue());
@@ -84,15 +91,13 @@ public enum GameManager {
     cookie.eat();
     score.gain(cookie.getValue());
     updateUI();
+    checkWin();
   }
 
   public void handleKeyPressed(KeyEvent event) {
-    if (gameStatus == GameStatus.END
-        || gameStatus == GameStatus.WIN
-        || gameStatus == GameStatus.LOSE) {
+    if (gameStatus == GameStatus.END) {
       return;
     }
-
     switch (event.getCode()) {
       case RIGHT:
         startGame();
@@ -170,7 +175,23 @@ public enum GameManager {
         new ScoreBoardWriter(map.getMapConfig().getTitle() + ".txt");
     score.settle();
     scoreBoardWriter.write(score);
+  }
 
+  private void checkWin() {
+    // check if all cookie is touched
+    boolean isAllEaten = true;
+    Set<Cookie> cookies = map.getCookies();
+    for (Cookie cookie : cookies) {
+      if (!cookie.isEaten()) {
+        isAllEaten = false;
+      }
+    }
+    if (isAllEaten) {
+      winGame();
+    }
+  }
+
+  private void navigateBack() {
     // navigate back to select
     SceneSwitch.INSTANCE.switchToSelect();
 

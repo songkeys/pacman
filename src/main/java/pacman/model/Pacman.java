@@ -4,6 +4,7 @@ import java.util.Set;
 import pacman.constant.Direction;
 import pacman.constant.FileName;
 import pacman.constant.MovableGridType;
+import pacman.util.GameManager;
 
 public class Pacman extends MovableGrid {
 
@@ -33,22 +34,13 @@ public class Pacman extends MovableGrid {
   }
 
   private void checkTouchingCookies() {
-    boolean isAllEaten = true;
     Set<Cookie> cookies = getParentMap().getCookies();
     for (Cookie cookie : cookies) {
       if (!cookie.isEaten()
           && isTouching(cookie, getParentMap().getMapConfig().getCookiePadding())) {
-        getParentMap().getParentGameManager().handleCookieTouched(cookie);
+        GameManager.INSTANCE.handleCookieTouched(cookie);
         return;
       }
-      if (!cookie.isEaten()) {
-        isAllEaten = false;
-      }
-    }
-
-    // wining condition: all cookies is eaten
-    if (isAllEaten) {
-      getParentMap().getParentGameManager().winGame();
     }
   }
 }

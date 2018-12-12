@@ -6,6 +6,7 @@ import java.util.Set;
 import pacman.constant.Direction;
 import pacman.constant.FileName;
 import pacman.constant.MovableGridType;
+import pacman.util.GameManager;
 
 public class Ghost extends MovableGrid implements Runnable {
 
@@ -105,7 +106,7 @@ public class Ghost extends MovableGrid implements Runnable {
     if (getParentMap()
         .getPacman()
         .isTouching(this, getParentMap().getMapConfig().getGhostPadding())) {
-      getParentMap().getParentGameManager().handleGhostTouched(this);
+      GameManager.INSTANCE.handleGhostTouched(this);
     }
   }
 

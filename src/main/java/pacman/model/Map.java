@@ -2,7 +2,6 @@ package pacman.model;
 
 import java.util.Set;
 import javafx.scene.layout.Pane;
-import pacman.util.GameManager;
 import pacman.util.MapPainter;
 import pacman.util.MapReader;
 
@@ -14,7 +13,6 @@ public class Map {
   private String wallFileName;
 
   private MapConfig mapConfig;
-  private GameManager parentGameManager;
 
   private Set<Obstacle> obstacles;
   private Set<Cookie> cookies;
@@ -24,14 +22,6 @@ public class Map {
   private Set<Portal> portals;
 
   public Map() {}
-
-  public GameManager getParentGameManager() {
-    return parentGameManager;
-  }
-
-  public void setParentGameManager(GameManager parentGameManager) {
-    this.parentGameManager = parentGameManager;
-  }
 
   public Pacman getPacman() {
     return pacman;
