@@ -8,7 +8,18 @@ import java.util.TreeSet;
 
 public class FileName {
   public static final Set<String> MAPS =
-      new TreeSet<>(Arrays.asList("pacman/map/#1 So Easy.txt", "pacman/map/#2 Sooo Esay.txt"));
+      new TreeSet<>(
+          Arrays.asList(
+              "pacman/map/#001 So Easy.txt",
+              "pacman/map/#002 Easy Again?.txt",
+              "pacman/map/#003 A Traitor.txt",
+              "pacman/map/#004 Freedom.txt",
+              "pacman/map/#005 Less is More.txt",
+              "pacman/map/#006 Up and Down.txt",
+              "pacman/map/#007 One Way.txt",
+              "pacman/map/#008 The Maze.txt",
+              "pacman/map/#009 Accel World.txt",
+              "pacman/map/#010 Do Not Stop.txt"));
 
   public static final Set<String> IMAGE_BACKGROUNDS =
       new TreeSet<>(
