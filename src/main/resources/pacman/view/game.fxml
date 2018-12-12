@@ -26,7 +26,7 @@
           <children>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="top-icon">
               <image>
-                <Image url="@../image/heart.png" />
+                <Image url="@../image/icon/heart.png" />
               </image>
               <FlowPane.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -35,7 +35,7 @@
             <Text id="title" fx:id="lifeCount" fill="#e12525" text="0" textAlignment="CENTER" />
             <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="top-icon">
               <image>
-                <Image url="@../image/cookie1.png" />
+                <Image url="@../image/icon/cookie.png" />
               </image>
               <FlowPane.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -53,7 +53,7 @@
           <children>
             <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#handleHomeClicked" pickOnBounds="true" preserveRatio="true">
               <image>
-                <Image url="@../image/home.png" />
+                <Image url="@../image/icon/home.png" />
               </image>
               <FlowPane.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -65,7 +65,7 @@
             </ImageView>
                   <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#handleScoreBoardClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/scoreboard.png" />
+                        <Image url="@../image/icon/scoreboard.png" />
                      </image>
                      <styleClass>
                         <String fx:value="top-icon" />
@@ -77,7 +77,7 @@
                   </ImageView>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
               <image>
-                <Image url="@../image/help.png" />
+                <Image url="@../image/icon/help.png" />
               </image>
               <styleClass>
                 <String fx:value="top-icon" />
