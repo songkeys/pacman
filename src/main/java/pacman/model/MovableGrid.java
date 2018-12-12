@@ -66,6 +66,8 @@ public abstract class MovableGrid extends Grid {
             }
             break;
         }
+
+        checkIfTouchingPortal();
       }
     };
   }
@@ -78,6 +80,29 @@ public abstract class MovableGrid extends Grid {
       case PACMAN:
         step = getParentMap().getMapConfig().getPacmanStep();
         break;
+    }
+  }
+
+  private void checkIfTouchingPortal() {
+    for (Portal portal : getParentMap().getPortals()) {
+      if (isTouching(portal, getParentMap().getMapConfig().getGridLength() * 0.8)) {
+        if (portal.isOpen()) {
+          // send to another portal
+          setX(portal.getTwinPortal().getX());
+          setY(portal.getTwinPortal().getY());
+
+          // close portal
+          portal.getTwinPortal().close();
+        }
+        return;
+      }
+    }
+
+    // open portals if leaving portals
+    for (Portal portal : getParentMap().getPortals()) {
+      if (isTouching(portal, 0)) {
+        portal.open();
+      }
     }
   }
 
@@ -103,8 +128,8 @@ public abstract class MovableGrid extends Grid {
     // check if the next step is beyond screen
     if (nextX < 0
         || nextY < 0
-        || nextX + step > MapResolution.WIDTH
-        || nextY + step > MapResolution.HEIGHT) {
+        || nextX + getParentMap().getMapConfig().getGridLength() + step > MapResolution.WIDTH
+        || nextY + getParentMap().getMapConfig().getGridLength() + step > MapResolution.HEIGHT) {
       return true;
     }
 
