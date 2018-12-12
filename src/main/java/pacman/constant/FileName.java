@@ -49,6 +49,9 @@ public class FileName {
               "/pacman/image/ghost/ghost9.png",
               "/pacman/image/ghost/ghost10.png"));
 
+  public static final String IMAGE_PORTAL_A = "/pacman/image/portal/portal1.png";
+  public static final String IMAGE_PORTAL_B = "/pacman/image/portal/portal2.png";
+
   public static final String VIEW_HOME = "/pacman/view/home.fxml";
   public static final String VIEW_GAME = "/pacman/view/game.fxml";
   public static final String VIEW_SELECT = "/pacman/view/select.fxml";

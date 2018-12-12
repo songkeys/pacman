@@ -6,6 +6,7 @@ import pacman.model.Cookie;
 import pacman.model.Ghost;
 import pacman.model.Obstacle;
 import pacman.model.Pacman;
+import pacman.model.Portal;
 
 public class MapPainter {
 
@@ -29,5 +30,9 @@ public class MapPainter {
 
   public void drawGhost(Set<Ghost> ghosts) {
     root.getChildren().addAll(ghosts);
+  }
+
+  public void drawPortals(Set<Portal> portals) {
+    root.getChildren().addAll(portals);
   }
 }

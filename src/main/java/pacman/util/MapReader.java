@@ -8,12 +8,14 @@ import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
 import pacman.constant.MapResolution;
+import pacman.constant.PortalType;
 import pacman.model.Cookie;
 import pacman.model.Ghost;
 import pacman.model.Map;
 import pacman.model.MapConfig;
 import pacman.model.Obstacle;
 import pacman.model.Pacman;
+import pacman.model.Portal;
 import pacman.model.Spawn;
 
 public class MapReader {
@@ -28,6 +30,8 @@ public class MapReader {
   private Set<Ghost> ghosts;
   private Pacman pacman;
   private Spawn spawn;
+  private Portal portalA;
+  private Portal portalB;
 
   public MapReader(String fileName, Map map) {
     this.fileName = fileName;
@@ -65,6 +69,14 @@ public class MapReader {
     return spawn;
   }
 
+  public Set<Portal> getPortals() {
+    Set<Portal> portals = new HashSet<>();
+    portals.add(portalA);
+    portals.add(portalB);
+
+    return portals;
+  }
+
   public MapConfig getMapConfig() {
     return mapConfig;
   }
@@ -95,6 +107,14 @@ public class MapReader {
 
   private boolean isObstacleGrid(String grid) {
     return grid.equals("#");
+  }
+
+  private boolean isPortalAGrid(String grid) {
+    return grid.equals("<");
+  }
+
+  private boolean isPortalBGrid(String grid) {
+    return grid.equals(">");
   }
 
   private boolean isCommentLine(String line) {
@@ -200,6 +220,16 @@ public class MapReader {
         ghosts.add(ghost);
       }
 
+      // portalA
+      if (isPortalAGrid(grid)) {
+        portalA = new Portal(map, mazeGridCount, mazeLineCount, PortalType.A);
+      }
+
+      // portalB
+      if (isPortalBGrid(grid)) {
+        portalB = new Portal(map, mazeGridCount, mazeLineCount, PortalType.B);
+      }
+
       mazeGridCount++;
     }
     mazeLineCount++;
@@ -237,5 +267,9 @@ public class MapReader {
 
   public void readFileForMap() {
     readFile(false);
+
+    // link two portals
+    portalA.setTwinPortal(portalB);
+    portalB.setTwinPortal(portalA);
   }
 }

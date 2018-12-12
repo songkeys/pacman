@@ -21,6 +21,7 @@ public class Map {
   private Set<Ghost> ghosts;
   private Pacman pacman;
   private Spawn spawn;
+  private Set<Portal> portals;
 
   public Map() {}
 
@@ -50,6 +51,10 @@ public class Map {
 
   public Spawn getSpawn() {
     return spawn;
+  }
+
+  public Set<Portal> getPortals() {
+    return portals;
   }
 
   public MapConfig getMapConfig() {
@@ -100,6 +105,7 @@ public class Map {
     pacman = mapReader.getPacman();
     ghosts = mapReader.getGhosts();
     spawn = mapReader.getSpawn();
+    portals = mapReader.getPortals();
   }
 
   public void draw(Pane root) {
@@ -110,6 +116,7 @@ public class Map {
     // paint map
     MapPainter mapPainter = new MapPainter(root);
     mapPainter.drawObstacles(obstacles);
+    mapPainter.drawPortals(portals);
     mapPainter.drawCookies(cookies);
     mapPainter.drawPacman(pacman);
     mapPainter.drawGhost(ghosts);
