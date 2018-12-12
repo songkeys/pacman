@@ -19,9 +19,25 @@ public class MapConfig {
   }
 
   private void init(double gridLength) {
+    updateGhostStep();
+    updatePacmanStep();
+    updateCookiePadding();
+    updateGhostPadding();
+  }
+
+  private void updatePacmanStep() {
     pacmanStep = gridLength * pacmanStepRate;
+  }
+
+  private void updateGhostStep() {
     ghostStep = gridLength * ghostStepRate;
+  }
+
+  private void updateCookiePadding() {
     cookiePadding = gridLength * cookiePaddingRate;
+  }
+
+  private void updateGhostPadding() {
     ghostPadding = gridLength * ghostPaddingRate;
   }
 
@@ -45,6 +61,10 @@ public class MapConfig {
     return gridLength;
   }
 
+  public void setGridLength(double gridLength) {
+    this.gridLength = gridLength;
+  }
+
   public String getTitle() {
     return title;
   }
@@ -55,21 +75,21 @@ public class MapConfig {
 
   public void setPacmanStepRate(double pacmanStepRate) {
     this.pacmanStepRate = pacmanStepRate;
-  }
-
-  public void setGhostPaddingRate(double ghostPadding) {
-    this.ghostPaddingRate = ghostPadding;
-  }
-
-  public void setCookiePaddingRate(double cookiePadding) {
-    this.cookiePaddingRate = cookiePadding;
+    updatePacmanStep();
   }
 
   public void setGhostStepRate(double ghostStepRate) {
     this.ghostStepRate = ghostStepRate;
+    updateGhostStep();
   }
 
-  public void setGridLength(double gridLength) {
-    this.gridLength = gridLength;
+  public void setGhostPaddingRate(double ghostPadding) {
+    this.ghostPaddingRate = ghostPadding;
+    updateGhostPadding();
+  }
+
+  public void setCookiePaddingRate(double cookiePadding) {
+    this.cookiePaddingRate = cookiePadding;
+    updateCookiePadding();
   }
 }
