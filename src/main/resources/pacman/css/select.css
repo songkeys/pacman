@@ -23,6 +23,30 @@
   -fx-font-weight: bold;
 }
 
+.back-btn {
+  -fx-background-color: rgba(255, 255, 255, 0);
+  -fx-alignment: center;
+  -fx-font-size: 45px;
+  -fx-text-fill: #fff;
+  -fx-font-weight: bold;
+}
+
+.back-btn:hover {
+  -fx-text-fill: #ff0;
+  -fx-font-size: 48px;
+  -fx-stroke: #f00;
+  -fx-stroke-width: 1;
+  -fx-effect: dropshadow(three-pass-box, rgba(255, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.back-btn:pressed {
+  -fx-text-fill: #ff0;
+  -fx-font-size: 46px;
+  -fx-stroke: #f00;
+  -fx-stroke-width: 1;
+  -fx-effect: dropshadow(three-pass-box, rgba(255, 0, 0, 0.9), 10, 0, 0, 0);
+}
+
 .confirm-btn {
   -fx-background-color: rgba(255, 255, 255, 0);
   -fx-alignment: center;

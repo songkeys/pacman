@@ -31,9 +31,6 @@ public class ScoreBoard {
 
   public Score getBestScore() {
     try {
-      for (Score score : scores) {
-        System.out.println(score.getValue());
-      }
       return scores.iterator().next();
     } catch (Exception e) {
       // no score yet

@@ -10,79 +10,86 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefWidth="1250.0" styleClass="root"
-  xmlns="http://javafx.com/javafx/11.0.1" fx:controller="pacman.controller.GameController">
+
+<BorderPane prefWidth="1250.0" styleClass="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pacman.controller.GameController">
   <stylesheets>
-    <URL value="@../css/game.css"/>
+    <URL value="@../css/game.css" />
   </stylesheets>
   <center>
-    <Pane BorderPane.alignment="CENTER" id="map" prefWidth="1250.0"/>
+    <Pane id="map" prefWidth="1250.0" BorderPane.alignment="CENTER" />
   </center>
   <top>
-    <HBox BorderPane.alignment="CENTER" alignment="CENTER" prefHeight="50.0" prefWidth="1250.0"
-      styleClass="top">
+    <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1250.0" styleClass="top" BorderPane.alignment="CENTER">
       <children>
-        <Pane prefWidth="25.0"/>
+        <Pane prefWidth="25.0" />
         <FlowPane alignment="CENTER_LEFT" prefWidth="200.0">
           <children>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true"
-              styleClass="top-icon">
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="top-icon">
               <image>
-                <Image url="@../image/heart.png"/>
+                <Image url="@../image/heart.png" />
               </image>
               <FlowPane.margin>
-                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
               </FlowPane.margin>
             </ImageView>
-            <Text fill="#e12525" id="title" text="0" textAlignment="CENTER" fx:id="lifeCount"/>
-            <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true"
-              styleClass="top-icon">
+            <Text id="title" fx:id="lifeCount" fill="#e12525" text="0" textAlignment="CENTER" />
+            <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" styleClass="top-icon">
               <image>
-                <Image url="@../image/cookie1.png"/>
+                <Image url="@../image/cookie1.png" />
               </image>
               <FlowPane.margin>
-                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
               </FlowPane.margin>
             </ImageView>
-            <Text fill="#d0b323" id="title" text="0" textAlignment="CENTER" fx:id="scoreCount"/>
+            <Text id="title" fx:id="scoreCount" fill="#d0b323" text="0" textAlignment="CENTER" />
           </children>
         </FlowPane>
-        <FlowPane HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT" columnHalignment="CENTER">
+        <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" HBox.hgrow="ALWAYS">
           <children>
-            <Text fill="#ffe34a" id="title" text="This is a Level Title" textAlignment="CENTER"
-              fx:id="title"/>
+            <Text id="title" fx:id="title" fill="#ffe34a" text="This is a Level Title" textAlignment="CENTER" />
           </children>
         </FlowPane>
-        <FlowPane alignment="CENTER_RIGHT" prefWidth="120.0">
+        <FlowPane alignment="CENTER_RIGHT" prefWidth="200.0">
           <children>
-            <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#handleHomeClicked"
-              pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#handleHomeClicked" pickOnBounds="true" preserveRatio="true">
               <image>
-                <Image url="@../image/home.png"/>
+                <Image url="@../image/home.png" />
               </image>
               <FlowPane.margin>
-                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
               </FlowPane.margin>
               <styleClass>
-                <String fx:value="top-icon"/>
-                <String fx:value="top-icon-clickable"/>
+                <String fx:value="top-icon" />
+                <String fx:value="top-icon-clickable" />
               </styleClass>
             </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" onMouseClicked="#handleScoreBoardClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/scoreboard.png" />
+                     </image>
+                     <styleClass>
+                        <String fx:value="top-icon" />
+                        <String fx:value="top-icon-clickable" />
+                     </styleClass>
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </ImageView>
             <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
               <image>
-                <Image url="@../image/help.png"/>
+                <Image url="@../image/help.png" />
               </image>
               <styleClass>
-                <String fx:value="top-icon"/>
-                <String fx:value="top-icon-clickable"/>
+                <String fx:value="top-icon" />
+                <String fx:value="top-icon-clickable" />
               </styleClass>
               <FlowPane.margin>
-                <Insets bottom="10.0" left="10.0" top="10.0"/>
+                <Insets bottom="10.0" left="10.0" top="10.0" />
               </FlowPane.margin>
             </ImageView>
           </children>
         </FlowPane>
-        <Pane prefWidth="25.0"/>
+        <Pane prefWidth="25.0" />
       </children>
     </HBox>
   </top>

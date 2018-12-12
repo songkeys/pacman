@@ -80,6 +80,11 @@ public class SelectController {
   }
 
   @FXML
+  protected void handleBackClicked() throws Exception {
+    SceneSwitch.INSTANCE.switchToHome();
+  }
+
+  @FXML
   private void initBackgroundComboBox() {
     ObservableList<String> options = FXCollections.observableArrayList();
     options.addAll(FileName.IMAGE_BACKGROUNDS);

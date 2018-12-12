@@ -89,7 +89,7 @@ public enum GameManager {
   public void handleKeyPressed(KeyEvent event) {
     if (gameStatus == GameStatus.END
         || gameStatus == GameStatus.WIN
-        || gameStatus == gameStatus.LOSE) {
+        || gameStatus == GameStatus.LOSE) {
       return;
     }
 
@@ -161,7 +161,6 @@ public enum GameManager {
   }
 
   private void updateUI() {
-
     gameController.setLifeCount(life.getRemaining(), life.getTotal());
     gameController.setScoreCount(score.getValue());
   }
@@ -171,5 +170,11 @@ public enum GameManager {
         new ScoreBoardWriter(map.getMapConfig().getTitle() + ".txt");
     score.settle();
     scoreBoardWriter.write(score);
+
+    // navigate back to select
+    SceneSwitch.INSTANCE.switchToSelect();
+
+    // popup score board
+    SceneSwitch.INSTANCE.popupScoreBoard(map.getMapConfig().getTitle());
   }
 }

@@ -5,10 +5,13 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import pacman.Main;
 import pacman.constant.FileName;
 import pacman.constant.MapResolution;
 import pacman.controller.GameController;
+import pacman.controller.ScoreBoardController;
 import pacman.model.Map;
 
 public enum SceneSwitch {
@@ -34,12 +37,16 @@ public enum SceneSwitch {
     showStage();
   }
 
-  public void switchToSelect() throws Exception {
-    hideStage();
-    Pane root = FXMLLoader.load(getClass().getResource(FileName.VIEW_SELECT));
-    Scene scene = new Scene(root);
-    setScene(scene);
-    showStage();
+  public void switchToSelect() {
+    try {
+      hideStage();
+      Pane root = FXMLLoader.load(getClass().getResource(FileName.VIEW_SELECT));
+      Scene scene = new Scene(root);
+      setScene(scene);
+      showStage();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   public void switchToGame(Map map) throws Exception {
@@ -66,8 +73,31 @@ public enum SceneSwitch {
     GameController gameController = loader.getController();
     GameManager.INSTANCE.init(map, gameController);
 
-    gameScene.addEventHandler(KeyEvent.KEY_PRESSED, event -> GameManager.INSTANCE.handleKeyPressed(event));
-    gameScene.addEventHandler(KeyEvent.KEY_RELEASED, event -> GameManager.INSTANCE.handleKeyReleased(event));
+    gameScene.addEventHandler(
+        KeyEvent.KEY_PRESSED, event -> GameManager.INSTANCE.handleKeyPressed(event));
+    gameScene.addEventHandler(
+        KeyEvent.KEY_RELEASED, event -> GameManager.INSTANCE.handleKeyReleased(event));
     showStage();
+  }
+
+  public void popupScoreBoard(String title) {
+    try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource(FileName.VIEW_SCOREBOARD));
+      Pane root = loader.load();
+      Scene scoreBoardScene = new Scene(root);
+      Stage popup = new Stage();
+      popup.setScene(scoreBoardScene);
+      popup.initModality(Modality.WINDOW_MODAL);
+      popup.initOwner(Main.getPrimaryStage().getScene().getWindow());
+      popup.setResizable(false);
+      popup.setTitle("Score Board");
+
+      ScoreBoardController scoreBoardController = loader.getController();
+      scoreBoardController.setTitle(title);
+      scoreBoardController.initUI();
+      popup.show();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }
