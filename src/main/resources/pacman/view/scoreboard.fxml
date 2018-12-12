@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="520.0" prefWidth="400.0" styleClass="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pacman.controller.ScoreBoardController">
+
+  <stylesheets>
+    <URL value="@../css/scoreboard.css" />
+  </stylesheets>
+   <center>
+      <ListView fx:id="scoreBoardList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="50.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#e1ff00" strokeType="OUTSIDE" strokeWidth="0.0" text="Scoreboard" />
+         </children>
+      </FlowPane>
+   </top>
+
+
+</BorderPane>

@@ -32,4 +32,10 @@ public class GameController {
     GameManager.INSTANCE.endGame();
     SceneSwitch.INSTANCE.switchToHome();
   }
+
+  @FXML
+  protected void handleScoreBoardClicked() throws Exception {
+    GameManager.INSTANCE.pauseGame();
+    SceneSwitch.INSTANCE.popupScoreBoard(title.getText());
+  }
 }

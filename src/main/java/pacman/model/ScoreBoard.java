@@ -6,36 +6,27 @@ import java.util.TreeSet;
 
 public class ScoreBoard {
 
-  private String levelTitle;
-  private Set<Score> scores = new TreeSet<>(Comparator.comparingInt(Score::getValue));
+  private Set<Score> scores;
 
-  public ScoreBoard(String levelTitle, Set<Score> scores) {
-    this.levelTitle = levelTitle;
+  public ScoreBoard(Set<Score> scores) {
+    this();
     this.scores.addAll(scores);
   }
 
-  public ScoreBoard(String levelTitle) {
-    this.levelTitle = levelTitle;
+  public ScoreBoard() {
+    this.scores = new TreeSet<>(Comparator.comparingInt(Score::getValue).reversed());
   }
 
   public Set<Score> getScores() {
     return scores;
   }
 
-  public void addScore(Score score) {
-    scores.add(score);
-  }
-
-  public String getLevelTitle() {
-    return levelTitle;
-  }
-
-  public void setLevelTitle(String levelTitle) {
-    this.levelTitle = levelTitle;
-  }
-
   public void setScores(Set<Score> scores) {
     this.scores = scores;
+  }
+
+  public void addScore(Score score) {
+    scores.add(score);
   }
 
   public Score getBestScore() {

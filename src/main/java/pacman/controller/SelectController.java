@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -21,6 +22,7 @@ public class SelectController {
   @FXML private ComboBox backgroundComboBox;
   @FXML private ComboBox wallComboBox;
   @FXML private ListView levelListView;
+  @FXML private TextField nicknameTextField;
 
   private Map map;
 
@@ -41,9 +43,15 @@ public class SelectController {
 
     // init map
     map = new Map();
+    map.setNickname("Unknown Player");
     map.setFileName(levelListView.getSelectionModel().getSelectedItem().toString());
     map.setBackgroundFileName(backgroundComboBox.getSelectionModel().getSelectedItem().toString());
     map.setWallFileName(wallComboBox.getSelectionModel().getSelectedItem().toString());
+  }
+
+  @FXML
+  protected void handleNicknameChange() {
+    map.setNickname(nicknameTextField.getText());
   }
 
   @FXML
@@ -69,6 +77,11 @@ public class SelectController {
   @FXML
   protected void handleGoClicked() throws Exception {
     SceneSwitch.INSTANCE.switchToGame(map);
+  }
+
+  @FXML
+  protected void handleBackClicked() throws Exception {
+    SceneSwitch.INSTANCE.switchToHome();
   }
 
   @FXML
@@ -149,7 +162,7 @@ public class SelectController {
 
         // get best score
         try {
-          ScoreBoardReader scoreBoardReader = new ScoreBoardReader(path);
+          ScoreBoardReader scoreBoardReader = new ScoreBoardReader(title + ".txt");
           scoreBoardReader.read();
           ScoreBoard scoreBoard = scoreBoardReader.getScoreBoard();
           Score bestScore = scoreBoard.getBestScore();

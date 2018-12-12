@@ -46,7 +46,7 @@
                     </FlowPane>
                     <FlowPane alignment="CENTER" GridPane.columnIndex="1">
                       <children>
-                        <TextField prefHeight="40.0" prefWidth="150.0" promptText="palyer" styleClass="text-field" />
+                        <TextField fx:id="nicknameTextField" onKeyTyped="#handleNicknameChange" prefHeight="40.0" prefWidth="150.0" promptText="player" styleClass="text-field" />
                       </children>
                     </FlowPane>
                     <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
@@ -94,9 +94,12 @@
     <Pane prefHeight="50.0" BorderPane.alignment="CENTER" />
   </top>
   <bottom>
-    <FlowPane alignment="CENTER" prefHeight="50.0">
+    <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="50.0" BorderPane.alignment="CENTER">
       <children>
-        <Button mnemonicParsing="false" onAction="#handleGoClicked" styleClass="confirm-btn" text="Go" />
+            <Pane prefWidth="325.0" />
+            <Button mnemonicParsing="false" onAction="#handleBackClicked" prefWidth="300.0" styleClass="back-btn" text="← Back" />
+        <Button mnemonicParsing="false" onAction="#handleGoClicked" prefWidth="300.0" styleClass="confirm-btn" text="Go →" />
+            <Pane prefWidth="325.0" />
       </children>
     </FlowPane>
   </bottom>
