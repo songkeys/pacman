@@ -57,7 +57,7 @@ public enum SceneSwitch {
     setScene(gameScene);
 
     Pane mapPane = (Pane) gameScene.lookup("#map");
-    Canvas canvas = new Canvas(MapResolution.WIDTH, MapResolution.HEIGHT);
+    Canvas canvas = new Canvas();
     mapPane.getChildren().add(canvas);
     map.draw(mapPane);
     mapPane.setStyle(
