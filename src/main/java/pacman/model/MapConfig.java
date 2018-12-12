@@ -15,10 +15,10 @@ public class MapConfig {
 
   public MapConfig(double gridLength) {
     this.gridLength = gridLength;
-    this.init(gridLength);
+    this.calculate();
   }
 
-  private void init(double gridLength) {
+  public void calculate() {
     updateGhostStep();
     updatePacmanStep();
     updateCookiePadding();

@@ -71,8 +71,12 @@ public class MapReader {
 
   public Set<Portal> getPortals() {
     Set<Portal> portals = new HashSet<>();
-    portals.add(portalA);
-    portals.add(portalB);
+    if (portalA != null) {
+      portals.add(portalA);
+    }
+    if (portalB != null) {
+      portals.add(portalB);
+    }
 
     return portals;
   }
@@ -263,13 +267,16 @@ public class MapReader {
 
   public void readFileForConfig() {
     readFile(true);
+    mapConfig.calculate();
   }
 
   public void readFileForMap() {
     readFile(false);
 
     // link two portals
-    portalA.setTwinPortal(portalB);
-    portalB.setTwinPortal(portalA);
+    if (portalA != null && portalB != null) {
+      portalA.setTwinPortal(portalB);
+      portalB.setTwinPortal(portalA);
+    }
   }
 }
