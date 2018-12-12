@@ -19,7 +19,7 @@ public class FileName {
               "pacman/map/#007 One Way.txt",
               "pacman/map/#008 The Maze.txt",
               "pacman/map/#009 Accel World.txt",
-              "pacman/map/#010 Do Not Stop.txt"));
+              "pacman/map/#010 Spires.txt"));
 
   public static final Set<String> IMAGE_BACKGROUNDS =
       new TreeSet<>(
