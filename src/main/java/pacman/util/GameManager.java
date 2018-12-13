@@ -162,6 +162,9 @@ public enum GameManager {
    * @param ghost the {@link Ghost} touching the {@link Pacman}
    */
   public void handleGhostTouched(Ghost ghost) {
+    if (gameStatus == GameStatus.END) {
+      return;
+    }
     sendPacmanToSpawn();
     life.lose();
     score.lose(ghost.getValue());
