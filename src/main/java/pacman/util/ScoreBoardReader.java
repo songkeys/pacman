@@ -12,18 +12,57 @@ import pacman.constant.FileName;
 import pacman.model.Score;
 import pacman.model.ScoreBoard;
 
+/**
+ *
+ *
+ * <h1>ScoreBoardReader</h1>
+ *
+ * <p>A {@link ScoreBoardReader} is an object of utility to read a {@link ScoreBoard} from a file.
+ *
+ * <p>Usage:
+ *
+ * <blockquote>
+ *
+ * <pre>
+ *    ScoreBoardReader scoreBoardReader = new ScoreBoardReader(fileName);
+ *    scoreBoardReader.read();
+ *    ScoreBoard scoreBoard = scoreBoardReader.getScoreBoard();
+ * </pre>
+ *
+ * </blockquote>
+ *
+ * @author Song Zhang
+ * @version 1.0
+ * @since 1.0
+ * @see ScoreBoardWriter
+ * @see ScoreBoard
+ * @see Score
+ */
 public class ScoreBoardReader {
 
+  /** The path of the score board file. */
   private String path;
+  /** The score board read from the file. */
   private ScoreBoard scoreBoard;
 
+  /**
+   * Allocates a new {@link ScoreBoardReader}.
+   *
+   * @param fileName the file name of the score board file to be read
+   */
   public ScoreBoardReader(String fileName) {
     this.path = FileName.SCORE_BOARD_PATH + fileName;
     this.scoreBoard = new ScoreBoard();
   }
 
-  private static Score convertFromByteString(String byteString)
-      throws IOException, ClassNotFoundException {
+  /**
+   * Converts a byte string to a {@link Score} object and returns it.
+   *
+   * @param byteString a byte string in a line from a score board file
+   * @return a {@link Score} object converted from the given byte string
+   * @throws Exception if anything goes wrong with reading object
+   */
+  private static Score convertFromByteString(String byteString) throws Exception {
     final byte[] bytes = Base64.getDecoder().decode(byteString);
     try (ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
         ObjectInput in = new ObjectInputStream(bis)) {
@@ -31,6 +70,7 @@ public class ScoreBoardReader {
     }
   }
 
+  /** Reads the score board file. */
   public void read() {
     File f = new File(path);
     if (f.exists()) {
@@ -50,6 +90,11 @@ public class ScoreBoardReader {
     }
   }
 
+  /**
+   * Returns the {@link ScoreBoard} retrieved from the score board file.
+   *
+   * @return the {@link ScoreBoard} retrieved from the score board file
+   */
   public ScoreBoard getScoreBoard() {
     return scoreBoard;
   }
