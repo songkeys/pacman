@@ -87,7 +87,11 @@ public enum SceneSwitch {
     }
   }
 
-  /** Switched the current scene to Game. */
+  /**
+   * Switched the current scene to Game.
+   *
+   * @param map a configured map (passed from {@link pacman.controller.SelectController})
+   */
   public void switchToGame(Map map) {
     try {
       hideStage();
@@ -123,7 +127,11 @@ public enum SceneSwitch {
     }
   }
 
-  /** Switched the current scene to ScoreBoard. */
+  /**
+   * Switched the current scene to ScoreBoard.
+   *
+   * @param title the current title of this level
+   */
   public void popupScoreBoard(String title) {
     try {
       FXMLLoader loader = new FXMLLoader(getClass().getResource(FileName.VIEW_SCOREBOARD));
@@ -138,7 +146,7 @@ public enum SceneSwitch {
 
       ScoreBoardController scoreBoardController = loader.getController();
       scoreBoardController.setTitle(title);
-      scoreBoardController.initUI();
+      scoreBoardController.initUi();
       popup.show();
     } catch (Exception e) {
       e.printStackTrace();

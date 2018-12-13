@@ -25,7 +25,7 @@ public class ScoreBoard {
   /**
    * Allocates a {@link ScoreBoard} with a set of {@link Score}.
    *
-   * @param scores
+   * @param scores the set of {@link Score} to be added
    */
   public ScoreBoard(Set<Score> scores) {
     this();
@@ -40,7 +40,7 @@ public class ScoreBoard {
   /**
    * Returns a set of {@link Score}.
    *
-   * @return
+   * @return a {@link Score} set
    */
   public Set<Score> getScores() {
     return scores;
@@ -49,7 +49,7 @@ public class ScoreBoard {
   /**
    * Adds a {@link Score} to the score board.
    *
-   * @param score
+   * @param score a {@link Score} to be added
    */
   public void addScore(Score score) {
     scores.add(score);

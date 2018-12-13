@@ -18,14 +18,35 @@ import pacman.model.ScoreBoard;
 import pacman.util.SceneSwitch;
 import pacman.util.ScoreBoardReader;
 
+/**
+ *
+ *
+ * <h1>SelectController</h1>
+ *
+ * <p>A {@link SelectController} is a controller for ScoreBoard scene.
+ *
+ * @author Song Zhang
+ * @version 1.0
+ * @since 1.0
+ */
 public class SelectController {
-  @FXML private ComboBox backgroundComboBox;
-  @FXML private ComboBox wallComboBox;
-  @FXML private ListView levelListView;
-  @FXML private TextField nicknameTextField;
 
+  /** The background combobox shown on the screen. */
+  @FXML private ComboBox backgroundComboBox;
+  /** The wall combobox shown on the screen. */
+  @FXML private ComboBox wallComboBox;
+  /** The level list shown on the screen. */
+  @FXML private ListView levelListView;
+  /** The nickname text field shown on the screen. */
+  @FXML private TextField nicknameTextField;
+  /** The {@link Map} for storing some configurations. */
   private Map map;
 
+  /**
+   * Called when the UI is initialized.
+   *
+   * <p>This method initializes UI and a default configuration in to {@link #map}.
+   */
   @FXML
   public void initialize() {
     // init the 3d effect of panes
@@ -49,11 +70,21 @@ public class SelectController {
     map.setWallFileName(wallComboBox.getSelectionModel().getSelectedItem().toString());
   }
 
+  /**
+   * Called when the nickname text field is changed.
+   *
+   * <p>This methods updates the nickname according to user's input.
+   */
   @FXML
   protected void handleNicknameChange() {
     map.setNickname(nicknameTextField.getText());
   }
 
+  /**
+   * Called when the background combo box is changed.
+   *
+   * <p>This methods updates the background file name according to user's choice.
+   */
   @FXML
   protected void handleBackgroundChange() {
     backgroundComboBox.setButtonCell(new TextureListCellFactory());
@@ -61,6 +92,11 @@ public class SelectController {
     map.setBackgroundFileName(fileName);
   }
 
+  /**
+   * Called when the wall combo box is changed.
+   *
+   * <p>This methods updates the wall file name according to user's choice.
+   */
   @FXML
   protected void handleWallChange() {
     wallComboBox.setButtonCell(new TextureListCellFactory());
@@ -68,22 +104,42 @@ public class SelectController {
     map.setWallFileName(fileName);
   }
 
+  /**
+   * Called when the level selection is changed.
+   *
+   * <p>This methods updates the level file name according to user's choice.
+   */
   @FXML
   protected void handleLevelChange() {
     String fileName = levelListView.getSelectionModel().getSelectedItem().toString();
     map.setFileName(fileName);
   }
 
+  /**
+   * Called when the Go button is clicked.
+   *
+   * <p>This methods switches to the Game scene.
+   */
   @FXML
-  protected void handleGoClicked() throws Exception {
+  protected void handleGoClicked() {
     SceneSwitch.INSTANCE.switchToGame(map);
   }
 
+  /**
+   * Called when the Back button is clicked.
+   *
+   * <p>This methods switches to the Home scene.
+   */
   @FXML
-  protected void handleBackClicked() throws Exception {
+  protected void handleBackClicked() {
     SceneSwitch.INSTANCE.switchToHome();
   }
 
+  /**
+   * Called when the Go button is clicked.
+   *
+   * <p>This methods switches to the Game scene.
+   */
   @FXML
   private void initBackgroundComboBox() {
     ObservableList<String> options = FXCollections.observableArrayList();
@@ -94,6 +150,7 @@ public class SelectController {
     backgroundComboBox.setButtonCell(new TextureListCellFactory());
   }
 
+  /** Initializes the wall combo box. */
   @FXML
   private void initWallComboBox() {
     ObservableList<String> options = FXCollections.observableArrayList();
@@ -104,6 +161,7 @@ public class SelectController {
     wallComboBox.setButtonCell(new TextureListCellFactory());
   }
 
+  /** Initializes the wall combo box. */
   @FXML
   private void initLevelListView() {
     ObservableList<String> options = FXCollections.observableArrayList();
@@ -113,6 +171,7 @@ public class SelectController {
     levelListView.getSelectionModel().selectFirst();
   }
 
+  /** This is the factory for producing background and wall list cell. */
   private class TextureListCellFactory extends ListCell<String> {
     private ImageView imageView = new ImageView();
 
@@ -140,6 +199,7 @@ public class SelectController {
     }
   }
 
+  /** This is the factory for producing level list cell. */
   private class LevelListCellFactory extends ListCell<String> {
     private VBox vbox = new VBox();
     private Label title = new Label();

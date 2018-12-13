@@ -5,7 +5,7 @@ package pacman.model;
  *
  * <h1>Spawn</h1>
  *
- * <p>A {@link Portal} is a invisible {@link Grid} located in a {@link Map}. It indicates where the
+ * <p>A {@link Spawn} is a invisible {@link Grid} located in a {@link Map}. It indicates where the
  * {@link Pacman} were born, so that when the {@link Pacman} is dead, the {@link Pacman} will be
  * sent here.
  *
