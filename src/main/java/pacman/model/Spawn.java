@@ -22,6 +22,8 @@ public class Spawn extends Grid {
   /**
    * Allocates a new {@link Spawn} object.
    *
+   * <p>This constructor sets the {@link Pacman} in the given position of the given {@link Map}.
+   *
    * @param map the {@link Map} where this {@link Spawn} stays
    * @param row the row index in the {@link Map} where this {@link Spawn} stays, starting from 0
    * @param column the column index in the {@link Map} where this {@link Spawn} stays, starting from

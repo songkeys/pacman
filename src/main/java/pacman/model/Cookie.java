@@ -25,9 +25,9 @@ public class Cookie extends Grid {
   /**
    * Allocates a new {@link Cookie} object.
    *
-   * <p>This constructor sets an image of from {@link FileName#IMAGE_COOKIE_SMALL}, {@link
-   * FileName#IMAGE_COOKIE_MEDIUM} and {@link FileName#IMAGE_COOKIE_BIG} base on the {@code value}
-   * parameter.
+   * <p>This constructor sets the {@link Cookie} in the given position of the given {@link Map}, and
+   * sets an image of from {@link FileName#IMAGE_COOKIE_SMALL}, {@link FileName#IMAGE_COOKIE_MEDIUM}
+   * and {@link FileName#IMAGE_COOKIE_BIG} base on the {@code value} parameter.
    *
    * @param map the {@link Map} where this {@link Cookie} stays
    * @param row the row index in the {@link Map} where this {@link Cookie} stays, starting from 0

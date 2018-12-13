@@ -34,6 +34,8 @@ public class Grid extends Rectangle {
   /**
    * Allocates a new {@link Grid} object.
    *
+   * <p>This constructor sets the {@link Grid} in the given position of the given {@link Map}.
+   *
    * @param parentMap the {@link Map} where this {@link Grid} stays
    * @param row the row index in the {@link Map} where this {@link Grid} stays, starting from 0
    * @param column the column index in the {@link Map} where this {@link Grid} stays, starting from

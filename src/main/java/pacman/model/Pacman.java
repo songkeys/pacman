@@ -28,7 +28,8 @@ public class Pacman extends MovableGrid {
   /**
    * Allocates a new {@link Pacman} object.
    *
-   * <p>This constructor sets a image of {@link Pacman}.
+   * <p>This constructor sets the {@link Pacman} in the given position of the given {@link Map}, and
+   * sets a image of {@link Pacman}.
    *
    * @param map the {@link Map} where this {@link Pacman} stays
    * @param row the row index in the {@link Map} where this {@link Pacman} stays, starting from 0

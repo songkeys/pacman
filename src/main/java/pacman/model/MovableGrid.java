@@ -40,8 +40,9 @@ public abstract class MovableGrid extends Grid {
   /**
    * Allocates a new {@link MovableGrid} object.
    *
-   * <p>This constructor sets a random image of {@link MovableGrid}, and gives a initial {@link
-   * Direction#UP} to move to.
+   * <p>This constructor sets the {@link MovableGrid} in the given position of the given {@link
+   * Map}, and sets a random image of {@link MovableGrid}, and gives a initial {@link Direction#UP}
+   * to move to.
    *
    * @param map the {@link Map} where this {@link MovableGrid} stays
    * @param row the row index in the {@link Map} where this {@link MovableGrid} stays, starting from

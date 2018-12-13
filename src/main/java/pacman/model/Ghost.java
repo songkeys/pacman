@@ -41,8 +41,8 @@ public class Ghost extends MovableGrid implements Runnable {
   /**
    * Allocates a new {@link Ghost} object.
    *
-   * <p>This constructor sets a random image of {@link Ghost}, and gives a initial {@link
-   * Direction#UP} to move to.
+   * <p>This constructor sets the {@link Ghost} in the given position of the given {@link Map}, sets
+   * a random image of {@link Ghost}, and gives a initial {@link Direction#UP} to move to.
    *
    * @param map the {@link Map} where this {@link Ghost} stays
    * @param row the row index in the {@link Map} where this {@link Ghost} stays, starting from 0

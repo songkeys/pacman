@@ -18,9 +18,8 @@
           <children>
             <Button mnemonicParsing="false" onAction="#handleClickStart" styleClass="menu-item"
               text="Start"/>
-            <Button mnemonicParsing="false" styleClass="menu-item" text="Scores"/>
-            <Button mnemonicParsing="false" styleClass="menu-item" text="Settings"/>
-            <Button mnemonicParsing="false" styleClass="menu-item" text="Exit"/>
+            <Button mnemonicParsing="false" onAction="#handleClickExit" styleClass="menu-item"
+              text="Exit"/>
           </children>
         </VBox>
       </children>

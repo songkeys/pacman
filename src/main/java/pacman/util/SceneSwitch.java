@@ -1,5 +1,6 @@
 package pacman.util;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -151,5 +152,9 @@ public enum SceneSwitch {
     } catch (Exception e) {
       e.printStackTrace();
     }
+  }
+
+  public void exitApplication() {
+    Platform.exit();
   }
 }

@@ -19,10 +19,20 @@ public class HomeController {
   /**
    * Called when the start menu-item is clicked.
    *
-   * This method switches the scene to Select.
+   * <p>This method switches the scene to Select.
    */
   @FXML
   protected void handleClickStart() {
     SceneSwitch.INSTANCE.switchToSelect();
+  }
+
+  /**
+   * Called when the exit menu-item is clicked.
+   *
+   * <p>This method switches the scene to Select.
+   */
+  @FXML
+  public void handleClickExit() {
+    SceneSwitch.INSTANCE.exitApplication();
   }
 }

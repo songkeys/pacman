@@ -37,8 +37,9 @@ public class Portal extends Grid {
   /**
    * Allocates a new {@link Portal} object.
    *
-   * <p>This constructor sets an image of from {@link FileName#IMAGE_PORTAL_A} and {@link
-   * FileName#IMAGE_PORTAL_B} base on the {@link PortalType} parameter.
+   * <p>This constructor sets the {@link Portal} in the given position of the given {@link Map},
+   * sets an image of from {@link FileName#IMAGE_PORTAL_A} and {@link FileName#IMAGE_PORTAL_B} base
+   * on the {@link PortalType} parameter.
    *
    * @param map the {@link Map} where this {@link Portal} stays
    * @param row the row index in the {@link Map} where this {@link Portal} stays, starting from 0

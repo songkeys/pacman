@@ -19,13 +19,13 @@ package pacman.model;
 public class Obstacle extends Grid {
 
   /**
-   * Allocates a new {@link Cookie} object.
+   * Allocates a new {@link Obstacle} object.
    *
-   * <p>This constructor sets an image of wall.
+   * <p>This constructor sets the {@link Obstacle} in the given position of the given {@link Map}, AND sets an image of wall.
    *
    * @param map the {@link Map} where this {@link Cookie} stays
-   * @param row the row index in the {@link Map} where this {@link Cookie} stays, starting from 0
-   * @param column the column index in the {@link Map} where this {@link Cookie} stays, starting
+   * @param row the row index in the {@link Map} where this {@link Obstacle} stays, starting from 0
+   * @param column the column index in the {@link Map} where this {@link Obstacle} stays, starting
    *     from 0
    */
   public Obstacle(Map map, double row, double column) {
