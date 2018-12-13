@@ -9,7 +9,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import pacman.Main;
 import pacman.constant.FileName;
-import pacman.constant.MapResolution;
 import pacman.controller.GameController;
 import pacman.controller.ScoreBoardController;
 import pacman.model.Map;

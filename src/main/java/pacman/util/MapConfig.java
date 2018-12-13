@@ -1,4 +1,4 @@
-package pacman.model;
+package pacman.util;
 
 public class MapConfig {
   private String title;

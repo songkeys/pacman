@@ -182,7 +182,7 @@ public enum GameManager {
     boolean isAllEaten = true;
     Set<Cookie> cookies = map.getCookies();
     for (Cookie cookie : cookies) {
-      if (!cookie.isEaten()) {
+      if (cookie.isExisting()) {
         isAllEaten = false;
       }
     }

@@ -12,7 +12,6 @@ import pacman.constant.PortalType;
 import pacman.model.Cookie;
 import pacman.model.Ghost;
 import pacman.model.Map;
-import pacman.model.MapConfig;
 import pacman.model.Obstacle;
 import pacman.model.Pacman;
 import pacman.model.Portal;
