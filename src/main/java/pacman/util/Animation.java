@@ -5,11 +5,36 @@ import javafx.animation.Timeline;
 import javafx.util.Duration;
 import pacman.Main;
 
+/**
+ *
+ *
+ * <h1>Animation</h1>
+ *
+ * <p>A {@link Animation} is an object of utility to do some animation with the game running. file.
+ *
+ * <p>Currently just has one method for fun.
+ *
+ * <p>Usage:
+ *
+ * <blockquote>
+ *
+ * <pre>
+ *    Animation animation = new Animation(fileName);
+ *    Animation.shakeStage();
+ * </pre>
+ *
+ * </blockquote>
+ *
+ * @author Song Zhang
+ * @version 1.0
+ * @since 1.0
+ * @see GameManager
+ */
 public class Animation {
-  int stageX = 0;
-  int stageY = 0;
-  int cycleCount = 4;
+  private int stageX = 0;
+  private int stageY = 0;
 
+  /** Shake the primary stage. */
   public void shakeStage() {
     Timeline timelineX =
         new Timeline(
@@ -25,6 +50,7 @@ public class Animation {
                   }
                 }));
 
+    int cycleCount = 4;
     timelineX.setCycleCount(cycleCount);
     timelineX.setAutoReverse(false);
     timelineX.play();

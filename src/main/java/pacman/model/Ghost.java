@@ -24,6 +24,7 @@ import pacman.util.GameManager;
  * @see MovableGrid
  * @see Runnable
  * @see Map
+ * @see Direction
  */
 public class Ghost extends MovableGrid implements Runnable {
   /**

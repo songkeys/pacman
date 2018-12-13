@@ -6,6 +6,17 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+/**
+ *
+ *
+ * <h1>FileName</h1>
+ *
+ * <p>A {@link FileName} is an object to store constant file names.
+ *
+ * @author Song Zhang
+ * @version 1.0
+ * @since 1.0
+ */
 public class FileName {
   public static final Set<String> MAPS =
       new TreeSet<>(

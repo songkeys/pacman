@@ -21,6 +21,8 @@ import pacman.constant.MovableGridType;
  * @see Ghost
  * @see Pacman
  * @see Map
+ * @see MovableGridType
+ * @see Direction
  */
 public abstract class MovableGrid extends Grid {
 

@@ -13,29 +13,68 @@ import pacman.controller.GameController;
 import pacman.controller.ScoreBoardController;
 import pacman.model.Map;
 
+/**
+ *
+ *
+ * <h1>SceneSwitch</h1>
+ *
+ * A {@link SceneSwitch} is an object of utility to provide some methods to switch between different
+ * scenes in the primary stage ({@link Main#getPrimaryStage()}).
+ *
+ * <p><b>Note:</b> this class is implemented an {@link Enum}, thus to be a singleton class.
+ *
+ * <p>Usage:
+ *
+ * <blockquote>
+ *
+ * <pre>
+ *    SceneSwitch.INSTANCE.switchToHome();
+ * </pre>
+ *
+ * </blockquote>
+ *
+ * @author Song Zhang
+ * @version 1.0
+ * @since 1.0
+ * @see Main#getPrimaryStage()
+ */
 public enum SceneSwitch {
+  /** The shared instance for global use. */
   INSTANCE;
 
+  /** Hides the primary stage. */
   private void hideStage() {
     Main.getPrimaryStage().hide();
   }
 
+  /** Shows the primary stage. */
   private void showStage() {
     Main.getPrimaryStage().show();
   }
 
+  /**
+   * Changes the scene in the primary stage to the given one.
+   *
+   * @param scene a {@link Scene} object
+   */
   private void setScene(Scene scene) {
     Main.getPrimaryStage().setScene(scene);
   }
 
-  public void switchToHome() throws Exception {
-    hideStage();
-    Pane root = FXMLLoader.load(getClass().getResource(FileName.VIEW_HOME));
-    Scene scene = new Scene(root);
-    setScene(scene);
-    showStage();
+  /** Switched the current scene to Home. */
+  public void switchToHome() {
+    try {
+      hideStage();
+      Pane root = FXMLLoader.load(getClass().getResource(FileName.VIEW_HOME));
+      Scene scene = new Scene(root);
+      setScene(scene);
+      showStage();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
+  /** Switched the current scene to Select. */
   public void switchToSelect() {
     try {
       hideStage();
@@ -48,37 +87,43 @@ public enum SceneSwitch {
     }
   }
 
-  public void switchToGame(Map map) throws Exception {
-    hideStage();
-    FXMLLoader loader = new FXMLLoader(getClass().getResource(FileName.VIEW_GAME));
-    Pane root = loader.load();
-    Scene gameScene = new Scene(root);
-    setScene(gameScene);
+  /** Switched the current scene to Game. */
+  public void switchToGame(Map map) {
+    try {
+      hideStage();
+      FXMLLoader loader = new FXMLLoader(getClass().getResource(FileName.VIEW_GAME));
+      Pane root = loader.load();
+      Scene gameScene = new Scene(root);
+      setScene(gameScene);
 
-    Pane mapPane = (Pane) gameScene.lookup("#map");
-    Canvas canvas = new Canvas();
-    mapPane.getChildren().add(canvas);
-    map.draw(mapPane);
-    mapPane.setStyle(
-        "-fx-background-image: url('"
-            + map.getBackgroundFileName()
-            + "');"
-            + "-fx-background-size: "
-            + map.getMapConfig().getGridLength()
-            + "px "
-            + map.getMapConfig().getGridLength()
-            + "px;");
+      Pane mapPane = (Pane) gameScene.lookup("#map");
+      Canvas canvas = new Canvas();
+      mapPane.getChildren().add(canvas);
+      map.draw(mapPane);
+      mapPane.setStyle(
+          "-fx-background-image: url('"
+              + map.getBackgroundFileName()
+              + "');"
+              + "-fx-background-size: "
+              + map.getMapConfig().getGridLength()
+              + "px "
+              + map.getMapConfig().getGridLength()
+              + "px;");
 
-    GameController gameController = loader.getController();
-    GameManager.INSTANCE.init(map, gameController);
+      GameController gameController = loader.getController();
+      GameManager.INSTANCE.init(map, gameController);
 
-    gameScene.addEventHandler(
-        KeyEvent.KEY_PRESSED, event -> GameManager.INSTANCE.handleKeyPressed(event));
-    gameScene.addEventHandler(
-        KeyEvent.KEY_RELEASED, event -> GameManager.INSTANCE.handleKeyReleased(event));
-    showStage();
+      gameScene.addEventHandler(
+          KeyEvent.KEY_PRESSED, event -> GameManager.INSTANCE.handleKeyPressed(event));
+      gameScene.addEventHandler(
+          KeyEvent.KEY_RELEASED, event -> GameManager.INSTANCE.handleKeyReleased(event));
+      showStage();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
+  /** Switched the current scene to ScoreBoard. */
   public void popupScoreBoard(String title) {
     try {
       FXMLLoader loader = new FXMLLoader(getClass().getResource(FileName.VIEW_SCOREBOARD));

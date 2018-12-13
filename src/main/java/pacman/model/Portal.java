@@ -18,6 +18,7 @@ import pacman.constant.PortalType;
  * @since 1.0
  * @see Grid
  * @see Map
+ * @see PortalType
  */
 public class Portal extends Grid {
 

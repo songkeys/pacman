@@ -21,6 +21,7 @@ import pacman.util.GameManager;
  * @see Grid
  * @see MovableGrid
  * @see Map
+ * @see Direction
  */
 public class Pacman extends MovableGrid {
 
