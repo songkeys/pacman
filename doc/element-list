@@ -1,4 +1,3 @@
-module:pacman
 pacman
 pacman.constant
 pacman.controller
