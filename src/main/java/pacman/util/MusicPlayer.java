@@ -76,7 +76,7 @@ public enum MusicPlayer {
 
   /** Plays the beginning media. */
   public void playBeginning() {
-    chompPlayer.seek(Duration.ZERO);
+    beginningPlayer.seek(Duration.ZERO);
     beginningPlayer.play();
   }
 
@@ -88,13 +88,13 @@ public enum MusicPlayer {
 
   /** Plays the death media. */
   public void playDeath() {
-    chompPlayer.seek(Duration.ZERO);
+    deathPlayer.seek(Duration.ZERO);
     deathPlayer.play();
   }
 
   /** Plays the setup media. */
   public void playSetup() {
-    chompPlayer.seek(Duration.ZERO);
+    setupPlayer.seek(Duration.ZERO);
     setupPlayer.play();
   }
 }
