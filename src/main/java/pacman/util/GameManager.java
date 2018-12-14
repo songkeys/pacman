@@ -169,6 +169,7 @@ public enum GameManager {
     life.lose();
     score.lose(ghost.getValue());
     if (life.getRemaining() <= 0) {
+      MusicPlayer.INSTANCE.playDeath();
       loseGame();
     }
     updateUi();
@@ -181,6 +182,7 @@ public enum GameManager {
    */
   public void handleCookieTouched(Cookie cookie) {
     cookie.eat();
+    MusicPlayer.INSTANCE.playChomp();
     score.gain(cookie.getValue());
     updateUi();
     checkWin();

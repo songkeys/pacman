@@ -19,8 +19,8 @@ import pacman.model.Map;
  *
  * <h1>SceneSwitch</h1>
  *
- * A {@link SceneSwitch} is an object of utility to provide some methods to switch between different
- * scenes in the primary stage ({@link Main#getPrimaryStage()}).
+ * <p>A {@link SceneSwitch} is an object of utility to provide some methods to switch between
+ * different scenes in the primary stage ({@link Main#getPrimaryStage()}).
  *
  * <p><b>Note:</b> this class is implemented an {@link Enum}, thus to be a singleton class.
  *
@@ -65,6 +65,7 @@ public enum SceneSwitch {
   /** Switched the current scene to Home. */
   public void switchToHome() {
     try {
+      MusicPlayer.INSTANCE.playBeginning();
       hideStage();
       Pane root = FXMLLoader.load(getClass().getResource(FileName.VIEW_HOME));
       Scene scene = new Scene(root);
@@ -78,6 +79,7 @@ public enum SceneSwitch {
   /** Switched the current scene to Select. */
   public void switchToSelect() {
     try {
+      MusicPlayer.INSTANCE.playSetup();
       hideStage();
       Pane root = FXMLLoader.load(getClass().getResource(FileName.VIEW_SELECT));
       Scene scene = new Scene(root);

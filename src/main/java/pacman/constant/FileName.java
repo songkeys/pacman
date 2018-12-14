@@ -79,6 +79,12 @@ public class FileName {
   public static final String VIEW_SELECT = "/pacman/view/select.fxml";
   public static final String VIEW_SCOREBOARD = "/pacman/view/scoreboard.fxml";
 
+  public static final String MUSIC_BEGINNING = "pacman/music/pacman_beginning.wav";
+  public static final String MUSIC_CHOMP = "pacman/music/pacman_chomp.wav";
+  public static final String MUSIC_DEATH = "pacman/music/pacman_death.wav";
+  public static final String MUSIC_EATTING = "pacman/music/pacman_eatfruit.wav";
+  public static final String MUSIC_SETUP = "pacman/music/pacman_intermission.wav";
+
   private static final String SYSTEM_PATH =
       System.getProperty("user.home") + File.separator + ".pacman" + File.separator;
 

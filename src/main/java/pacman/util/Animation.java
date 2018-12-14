@@ -10,7 +10,7 @@ import pacman.Main;
  *
  * <h1>Animation</h1>
  *
- * <p>A {@link Animation} is an object of utility to do some animation with the game running. file.
+ * <p>An {@link Animation} is an object of utility to do some animation with the game running. file.
  *
  * <p>Currently just has one method for fun.
  *
