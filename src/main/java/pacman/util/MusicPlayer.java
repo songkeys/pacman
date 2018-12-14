@@ -45,13 +45,16 @@ public enum MusicPlayer {
   private final MediaPlayer deathPlayer;
   /** The {@link MediaPlayer} for setup. */
   private final MediaPlayer setupPlayer;
+  /** Whether or not the music is on */
+  private boolean isOn;
 
   /** The constructor initializes every {@link MediaPlayer} in this class. */
   MusicPlayer() {
-    beginningPlayer = this.createPlayer(FileName.MUSIC_BEGINNING);
-    chompPlayer = this.createPlayer(FileName.MUSIC_CHOMP);
-    deathPlayer = this.createPlayer(FileName.MUSIC_DEATH);
-    setupPlayer = this.createPlayer(FileName.MUSIC_SETUP);
+    beginningPlayer = createPlayer(FileName.MUSIC_BEGINNING);
+    chompPlayer = createPlayer(FileName.MUSIC_CHOMP);
+    deathPlayer = createPlayer(FileName.MUSIC_DEATH);
+    setupPlayer = createPlayer(FileName.MUSIC_SETUP);
+    isOn = true;
   }
 
   /**
@@ -74,27 +77,49 @@ public enum MusicPlayer {
     return new MediaPlayer(sound);
   }
 
+  /**
+   * Returns whether or not the music is on.
+   *
+   * @return {@code true} if the music is on; {@code false} otherwise.
+   */
+  public boolean isOn() {
+    return isOn;
+  }
+
+  /** Toggles the music. */
+  public void toggle() {
+    isOn = !isOn;
+  }
+
   /** Plays the beginning media. */
   public void playBeginning() {
-    beginningPlayer.seek(Duration.ZERO);
-    beginningPlayer.play();
+    if (isOn) {
+      beginningPlayer.seek(Duration.ZERO);
+      beginningPlayer.play();
+    }
   }
 
   /** Plays the chomp media. */
   public void playChomp() {
-    chompPlayer.seek(Duration.ZERO);
-    chompPlayer.play();
+    if (isOn) {
+      chompPlayer.seek(Duration.ZERO);
+      chompPlayer.play();
+    }
   }
 
   /** Plays the death media. */
   public void playDeath() {
-    deathPlayer.seek(Duration.ZERO);
-    deathPlayer.play();
+    if (isOn) {
+      deathPlayer.seek(Duration.ZERO);
+      deathPlayer.play();
+    }
   }
 
   /** Plays the setup media. */
   public void playSetup() {
-    setupPlayer.seek(Duration.ZERO);
-    setupPlayer.play();
+    if (isOn) {
+      setupPlayer.seek(Duration.ZERO);
+      setupPlayer.play();
+    }
   }
 }

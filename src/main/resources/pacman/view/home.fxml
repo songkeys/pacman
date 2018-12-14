@@ -18,6 +18,8 @@
           <children>
             <Button mnemonicParsing="false" onAction="#handleClickStart" styleClass="menu-item"
               text="Start"/>
+            <Button fx:id="music" mnemonicParsing="false" onAction="#handleClickMusic" styleClass="menu-item"
+              text="&lt; Music: ON &gt;"/>
             <Button mnemonicParsing="false" onAction="#handleClickExit" styleClass="menu-item"
               text="Exit"/>
           </children>
