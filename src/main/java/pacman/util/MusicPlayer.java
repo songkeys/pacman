@@ -89,6 +89,12 @@ public enum MusicPlayer {
   /** Toggles the music. */
   public void toggle() {
     isOn = !isOn;
+
+    // stop all player
+    beginningPlayer.stop();
+    chompPlayer.stop();
+    deathPlayer.stop();
+    setupPlayer.stop();
   }
 
   /** Plays the beginning media. */
