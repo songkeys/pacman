@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+  <classpathentry kind="src" path="src/test/java" output="target/test-classes" including="**/*.java"/>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-controls/11/javafx-controls-11.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-controls/11/javafx-controls-11-mac.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-graphics/11/javafx-graphics-11.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-graphics/11/javafx-graphics-11-mac.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-base/11/javafx-base-11.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-base/11/javafx-base-11-mac.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-fxml/11/javafx-fxml-11.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-fxml/11/javafx-fxml-11-mac.jar"/>
+</classpath>
