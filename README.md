@@ -156,7 +156,7 @@ Feel free to delete it when you don't need mess up with this game any more.
 
 ## About G52SWM CW2
 
-My final submission for the coursework is tagged as [1.0](/tree/1.0).
+My final submission for the coursework is tagged as `1.0`.
 
 ### Class Diagram
 
