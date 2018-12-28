@@ -1,4 +1,7 @@
 # <img src="https://i.loli.net/2018/12/14/5c13bf0563d18.gif" alt="pacman logo" width="50"/> Pacman
+
+[![](https://img.shields.io/github/license/Songkeys/pacman)](https://github.com/Songkeys/pacman)
+
 This is a pacman game project written in JavaFX for G52SWM CW2, using some design patterns like MVC, Singleton and Factory.
 
 ## Content
