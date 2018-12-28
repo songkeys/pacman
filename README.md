@@ -1,6 +1,6 @@
 # <img src="https://i.loli.net/2018/12/14/5c13bf0563d18.gif" alt="pacman logo" width="50"/> Pacman
 
-[![](https://img.shields.io/github/license/Songkeys/pacman.svg)](https://github.com/Songkeys/pacman)[![](https://img.shields.io/badge/GitHub-pacman-blue.svg)](https://github.com/Songkeys/pacman)[![](https://img.shields.io/badge/GitLab-pacman-orange.svg)](https://github.com/Songkeys/pacman)
+[![](https://img.shields.io/github/license/Songkeys/pacman.svg)](https://github.com/Songkeys/pacman) [![](https://img.shields.io/badge/GitHub-pacman-blue.svg)](https://github.com/Songkeys/pacman) [![](https://img.shields.io/badge/GitLab-pacman-orange.svg)](https://github.com/Songkeys/pacman)
 
 > This is a pacman game project written in JavaFX for G52SWM CW2, using some design patterns like MVC, Singleton and Factory, etc.
 
