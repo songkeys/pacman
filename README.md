@@ -1,8 +1,12 @@
 # <img src="https://i.loli.net/2018/12/14/5c13bf0563d18.gif" alt="pacman logo" width="50"/> Pacman
 
-[![](https://img.shields.io/github/license/Songkeys/pacman)](https://github.com/Songkeys/pacman)
+[[![](https://img.shields.io/github/license/Songkeys/pacman.svg)](https://github.com/Songkeys/pacman)](https://github.com/Songkeys/pacman)
 
-This is a pacman game project written in JavaFX for G52SWM CW2, using some design patterns like MVC, Singleton and Factory.
+[[![](https://img.shields.io/badge/GitHub-pacman-blue.svg)](https://github.com/Songkeys/pacman)](https://github.com/Songkeys/pacman)
+
+[[![](https://img.shields.io/badge/GitLab-pacman-orange.svg)](https://github.com/Songkeys/pacman)](https://projects.cs.nott.ac.uk/psysz4/pacman)
+
+> This is a pacman game project written in JavaFX for G52SWM CW2, using some design patterns like MVC, Singleton and Factory, etc.
 
 ## Content
 
@@ -156,7 +160,7 @@ Feel free to delete it when you don't need mess up with this game any more.
 
 ## About G52SWM CW2
 
-My final submission for the coursework is tagged as [1.0](https://projects.cs.nott.ac.uk/psysz4/pacman/tree/1.0).
+My final submission for the coursework is tagged as [1.0](./tree/1.0).
 
 ### Class Diagram
 
