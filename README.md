@@ -5,7 +5,7 @@ This is a pacman game project written in JavaFX for G52SWM CW2, using some desig
 
 - [Screenshots](#screenshots)
 - [Requirements](#requirements)
-- [Compiling & Running](#compiling-&-running)
+- [Compiling & Running](#compiling-running)
 - [Source File Structure](#source-file-structure)
 - [Creating New Levels](#creating-new-levels)
 - [File Storage](#file-storage)
