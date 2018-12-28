@@ -88,16 +88,16 @@ Here is an example file `example.txt` defining the initial state of a level:
 
 #### Symbols
 
-|  Symbol  |             Model              |
-| :------: | :----------------------------: |
-|   `#`    |          An obstacle.          |
-|   `@`    |          The pacman.           |
-|    .     | A small cookie for `1` score.  |
-|   `o`    | A medium cookie for `5` score. |
-|   `O`    |  A big cookie for `10` score.  |
-|   `X`    |            A ghost.            |
-| `<` &`>` |          The portals.          |
-|   ` `    |         A open space.          |
+|  Symbol   |             Model              |
+| :-------: | :----------------------------: |
+|    `#`    |          An obstacle.          |
+|    `@`    |          The pacman.           |
+|    `.`    | A small cookie for `1` score.  |
+|    `o`    | A medium cookie for `5` score. |
+|    `O`    |  A big cookie for `10` score.  |
+|    `X`    |            A ghost.            |
+| `<` & `>` |          The portals.          |
+|    ` `    |         A open space.          |
 
 > Note that neither of portals should be missing when the other twin is defined.
 
@@ -106,7 +106,7 @@ Here is an example file `example.txt` defining the initial state of a level:
 |          Key           |                    Value                     |
 | :--------------------: | :------------------------------------------: |
 | `@PACMAN_PADDING_RATE` | The rate of pacman's padding. Default: `0.1` |
-|  `@PACMAN_STEP_RATE`   |   The rate of pacman's step. Default: `0.1   |
+|  `@PACMAN_STEP_RATE`   |  The rate of pacman's step. Default: `0.1`   |
 | `@GHOST_PADDING_RATE`  | The rate of ghosts' padding. Default: `0.2`  |
 |   `@GHOST_STEP_RATE`   |   The rate of ghosts' step. Default: `0.1`   |
 | `@COOKIE_PADDING_RATE` | The rate of cookies' padding. Default: `0.3` |
