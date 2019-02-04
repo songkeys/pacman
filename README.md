@@ -2,12 +2,14 @@
 
 [![](https://img.shields.io/github/license/Songkeys/pacman.svg)](https://github.com/Songkeys/pacman) [![](https://img.shields.io/badge/GitHub-pacman-blue.svg)](https://github.com/Songkeys/pacman) [![](https://img.shields.io/badge/GitLab-pacman-orange.svg)](https://projects.cs.nott.ac.uk/psysz4/pacman)
 
-> This is a pacman game project written in JavaFX for G52SWM CW2, using some design patterns like MVC, Singleton and Factory, etc.
+[English](README.md) | [简体中文](README.zh-cn.md)
+
+> This is a pacman game project written in JavaFX for *[G52SWM CW2](https://projects.cs.nott.ac.uk/psysz4/swm)*, using some design patterns like MVC, Singleton and Factory, etc.
 
 ## Content
 
 - [Screenshots](#screenshots)
-- [Requirements](#requirements)
+- [Prerequisite](#prerequisite)
 - [Compiling & Running](#compiling-running)
 - [Source File Structure](#source-file-structure)
 - [Creating New Levels](#creating-new-levels)
@@ -20,7 +22,7 @@
 
 ![screenshots.jpg](https://i.loli.net/2018/12/29/5c266b2ff35e1.jpg)
 
-## Requirements
+## Prerequisite
 
 - Java 10
 
@@ -35,7 +37,7 @@
 
 You can launch the app either by running that `pacman.Main.main()` method inside your IDE, or type `mvn clean compile package exec:java` on the command line if you have maven installed.
 
-In IntelliJ, Click <kbd>Run</kbd>  -> <kbd>Run 'Main()'</kbd>.
+For example, in IntelliJ, Click <kbd>Run</kbd>  -> <kbd>Run 'Main()'</kbd>.
 
 ## Source File Structure
 
@@ -100,7 +102,7 @@ Here is an example file `example.txt` defining the initial state of a level:
 |    `O`    |  A big cookie for `10` score.  |
 |    `X`    |            A ghost.            |
 | `<` & `>` |          The portals.          |
-|    ` `    |         A open space.          |
+|    ` `    |         An open space.         |
 
 > Note that neither of portals should be missing when the other twin is defined.
 
@@ -156,6 +158,8 @@ Feel free to delete it when you don't need mess up with this game any more.
 
 ## About G52SWM CW2
 
+Click [here](https://projects.cs.nott.ac.uk/psysz4/swm) to know more about its requirements.
+
 My final submission for the coursework is tagged as `1.0`.
 
 ### Class Diagram
@@ -170,5 +174,6 @@ https://youtu.be/U7muRCK_orU
 
 This project is modified from a basic [one](https://projects.cs.nott.ac.uk/psysz4/swm).
 
-All assets (images & music) are derived from the internet, and are ensured to be free to use for non-commercial use.
+All media assets (images & music) are derived from the internet, and are ensured to be free to use for non-commercial use.
 
+This project adopts MIT license.
