@@ -22,7 +22,7 @@ public class FileName {
       new TreeSet<>(
           Arrays.asList(
               "pacman/map/#001 So Easy.txt",
-              "pacman/map/#002 Easy Again?.txt",
+              "pacman/map/#002 Easy Again.txt",
               "pacman/map/#003 A Traitor.txt",
               "pacman/map/#004 Freedom.txt",
               "pacman/map/#005 Less is More.txt",
